@@ -1,0 +1,670 @@
+   1               		.file	"res.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	ProgRes_Init
+  18               	ProgRes_Init:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 259A      		sbi 36-32,5
+  25               	.LM3:
+  26 0002 249A      		sbi 36-32,4
+  27               	.LM4:
+  28 0004 239A      		sbi 36-32,3
+  29               	.LM5:
+  30 0006 229A      		sbi 36-32,2
+  31               	.LM6:
+  32 0008 219A      		sbi 36-32,1
+  33               	.LM7:
+  34 000a 209A      		sbi 36-32,0
+  35               	.LM8:
+  36 000c 579A      		sbi 42-32,7
+  37               	.LM9:
+  38 000e 569A      		sbi 42-32,6
+  39               	.LM10:
+  40 0010 559A      		sbi 42-32,5
+  41               	.LM11:
+  42 0012 279A      		sbi 36-32,7
+  43               	.LM12:
+  44 0014 269A      		sbi 36-32,6
+  45               	.LM13:
+  46 0016 549A      		sbi 42-32,4
+  47               	.LM14:
+  48 0018 539A      		sbi 42-32,3
+  49               	.LM15:
+  50 001a 529A      		sbi 42-32,2
+  51               	.LM16:
+  52 001c 3B9A      		sbi 39-32,3
+  53               	.LM17:
+  54 001e 3A9A      		sbi 39-32,2
+  55               	.LM18:
+  56 0020 399A      		sbi 39-32,1
+  57               	.LM19:
+  58 0022 389A      		sbi 39-32,0
+  59               	.LM20:
+  60 0024 2D98      		cbi 37-32,5
+  61               	.LM21:
+  62 0026 2C98      		cbi 37-32,4
+  63               	.LM22:
+  64 0028 2B98      		cbi 37-32,3
+  65               	.LM23:
+  66 002a 2A98      		cbi 37-32,2
+  67               	.LM24:
+  68 002c 2998      		cbi 37-32,1
+  69               	.LM25:
+  70 002e 2898      		cbi 37-32,0
+  71               	.LM26:
+  72 0030 5F98      		cbi 43-32,7
+  73               	.LM27:
+  74 0032 5E98      		cbi 43-32,6
+  75               	.LM28:
+  76 0034 5D98      		cbi 43-32,5
+  77               	.LM29:
+  78 0036 2F98      		cbi 37-32,7
+  79               	.LM30:
+  80 0038 2E98      		cbi 37-32,6
+  81               	.LM31:
+  82 003a 5C98      		cbi 43-32,4
+  83               	.LM32:
+  84 003c 5B98      		cbi 43-32,3
+  85               	.LM33:
+  86 003e 5A98      		cbi 43-32,2
+  87               	.LM34:
+  88 0040 4398      		cbi 40-32,3
+  89               	.LM35:
+  90 0042 4298      		cbi 40-32,2
+  91               	.LM36:
+  92 0044 4198      		cbi 40-32,1
+  93               	.LM37:
+  94 0046 4098      		cbi 40-32,0
+  95               	/* epilogue start */
+  96               	.LM38:
+  97 0048 0895      		ret
+  98               	.LFE6:
+ 100               	.global	ProgRes_Disable_All
+ 102               	ProgRes_Disable_All:
+ 103               	.LFB7:
+ 104               	.LM39:
+ 105               	/* prologue: function */
+ 106               	/* frame size = 0 */
+ 107               	.LM40:
+ 108 004a 2D98      		cbi 37-32,5
+ 109               	.LM41:
+ 110 004c 2C98      		cbi 37-32,4
+ 111               	.LM42:
+ 112 004e 2B98      		cbi 37-32,3
+ 113               	.LM43:
+ 114 0050 2A98      		cbi 37-32,2
+ 115               	.LM44:
+ 116 0052 2998      		cbi 37-32,1
+ 117               	.LM45:
+ 118 0054 2898      		cbi 37-32,0
+ 119               	.LM46:
+ 120 0056 5F98      		cbi 43-32,7
+ 121               	.LM47:
+ 122 0058 5E98      		cbi 43-32,6
+ 123               	.LM48:
+ 124 005a 5D98      		cbi 43-32,5
+ 125               	.LM49:
+ 126 005c 2F98      		cbi 37-32,7
+ 127               	.LM50:
+ 128 005e 2E98      		cbi 37-32,6
+ 129               	.LM51:
+ 130 0060 5C98      		cbi 43-32,4
+ 131               	.LM52:
+ 132 0062 5B98      		cbi 43-32,3
+ 133               	.LM53:
+ 134 0064 5A98      		cbi 43-32,2
+ 135               	.LM54:
+ 136 0066 4398      		cbi 40-32,3
+ 137               	.LM55:
+ 138 0068 4298      		cbi 40-32,2
+ 139               	.LM56:
+ 140 006a 4198      		cbi 40-32,1
+ 141               	.LM57:
+ 142 006c 4098      		cbi 40-32,0
+ 143               	/* epilogue start */
+ 144               	.LM58:
+ 145 006e 0895      		ret
+ 146               	.LFE7:
+ 148               	.global	ProgRes_Enable_Resistor1
+ 150               	ProgRes_Enable_Resistor1:
+ 151               	.LFB8:
+ 152               	.LM59:
+ 153               	/* prologue: function */
+ 154               	/* frame size = 0 */
+ 155               	.LM60:
+ 156 0070 2D9A      		sbi 37-32,5
+ 157               	/* epilogue start */
+ 158               	.LM61:
+ 159 0072 0895      		ret
+ 160               	.LFE8:
+ 162               	.global	ProgRes_Enable_Resistor2
+ 164               	ProgRes_Enable_Resistor2:
+ 165               	.LFB9:
+ 166               	.LM62:
+ 167               	/* prologue: function */
+ 168               	/* frame size = 0 */
+ 169               	.LM63:
+ 170 0074 2C9A      		sbi 37-32,4
+ 171               	/* epilogue start */
+ 172               	.LM64:
+ 173 0076 0895      		ret
+ 174               	.LFE9:
+ 176               	.global	ProgRes_Enable_Resistor3
+ 178               	ProgRes_Enable_Resistor3:
+ 179               	.LFB10:
+ 180               	.LM65:
+ 181               	/* prologue: function */
+ 182               	/* frame size = 0 */
+ 183               	.LM66:
+ 184 0078 2B9A      		sbi 37-32,3
+ 185               	/* epilogue start */
+ 186               	.LM67:
+ 187 007a 0895      		ret
+ 188               	.LFE10:
+ 190               	.global	ProgRes_Enable_Resistor4
+ 192               	ProgRes_Enable_Resistor4:
+ 193               	.LFB11:
+ 194               	.LM68:
+ 195               	/* prologue: function */
+ 196               	/* frame size = 0 */
+ 197               	.LM69:
+ 198 007c 2A9A      		sbi 37-32,2
+ 199               	/* epilogue start */
+ 200               	.LM70:
+ 201 007e 0895      		ret
+ 202               	.LFE11:
+ 204               	.global	ProgRes_Enable_Resistor5
+ 206               	ProgRes_Enable_Resistor5:
+ 207               	.LFB12:
+ 208               	.LM71:
+ 209               	/* prologue: function */
+ 210               	/* frame size = 0 */
+ 211               	.LM72:
+ 212 0080 299A      		sbi 37-32,1
+ 213               	/* epilogue start */
+ 214               	.LM73:
+ 215 0082 0895      		ret
+ 216               	.LFE12:
+ 218               	.global	ProgRes_Enable_Resistor6
+ 220               	ProgRes_Enable_Resistor6:
+ 221               	.LFB13:
+ 222               	.LM74:
+ 223               	/* prologue: function */
+ 224               	/* frame size = 0 */
+ 225               	.LM75:
+ 226 0084 289A      		sbi 37-32,0
+ 227               	/* epilogue start */
+ 228               	.LM76:
+ 229 0086 0895      		ret
+ 230               	.LFE13:
+ 232               	.global	ProgRes_Enable_Resistor7
+ 234               	ProgRes_Enable_Resistor7:
+ 235               	.LFB14:
+ 236               	.LM77:
+ 237               	/* prologue: function */
+ 238               	/* frame size = 0 */
+ 239               	.LM78:
+ 240 0088 5F9A      		sbi 43-32,7
+ 241               	/* epilogue start */
+ 242               	.LM79:
+ 243 008a 0895      		ret
+ 244               	.LFE14:
+ 246               	.global	ProgRes_Enable_Resistor8
+ 248               	ProgRes_Enable_Resistor8:
+ 249               	.LFB15:
+ 250               	.LM80:
+ 251               	/* prologue: function */
+ 252               	/* frame size = 0 */
+ 253               	.LM81:
+ 254 008c 5E9A      		sbi 43-32,6
+ 255               	/* epilogue start */
+ 256               	.LM82:
+ 257 008e 0895      		ret
+ 258               	.LFE15:
+ 260               	.global	ProgRes_Enable_Resistor9
+ 262               	ProgRes_Enable_Resistor9:
+ 263               	.LFB16:
+ 264               	.LM83:
+ 265               	/* prologue: function */
+ 266               	/* frame size = 0 */
+ 267               	.LM84:
+ 268 0090 5D9A      		sbi 43-32,5
+ 269               	/* epilogue start */
+ 270               	.LM85:
+ 271 0092 0895      		ret
+ 272               	.LFE16:
+ 274               	.global	ProgRes_Enable_Resistor10
+ 276               	ProgRes_Enable_Resistor10:
+ 277               	.LFB17:
+ 278               	.LM86:
+ 279               	/* prologue: function */
+ 280               	/* frame size = 0 */
+ 281               	.LM87:
+ 282 0094 2F9A      		sbi 37-32,7
+ 283               	/* epilogue start */
+ 284               	.LM88:
+ 285 0096 0895      		ret
+ 286               	.LFE17:
+ 288               	.global	ProgRes_Enable_Resistor11
+ 290               	ProgRes_Enable_Resistor11:
+ 291               	.LFB18:
+ 292               	.LM89:
+ 293               	/* prologue: function */
+ 294               	/* frame size = 0 */
+ 295               	.LM90:
+ 296 0098 2E9A      		sbi 37-32,6
+ 297               	/* epilogue start */
+ 298               	.LM91:
+ 299 009a 0895      		ret
+ 300               	.LFE18:
+ 302               	.global	ProgRes_Enable_Resistor12
+ 304               	ProgRes_Enable_Resistor12:
+ 305               	.LFB19:
+ 306               	.LM92:
+ 307               	/* prologue: function */
+ 308               	/* frame size = 0 */
+ 309               	.LM93:
+ 310 009c 5C9A      		sbi 43-32,4
+ 311               	/* epilogue start */
+ 312               	.LM94:
+ 313 009e 0895      		ret
+ 314               	.LFE19:
+ 316               	.global	ProgRes_Enable_Resistor13
+ 318               	ProgRes_Enable_Resistor13:
+ 319               	.LFB20:
+ 320               	.LM95:
+ 321               	/* prologue: function */
+ 322               	/* frame size = 0 */
+ 323               	.LM96:
+ 324 00a0 5B9A      		sbi 43-32,3
+ 325               	/* epilogue start */
+ 326               	.LM97:
+ 327 00a2 0895      		ret
+ 328               	.LFE20:
+ 330               	.global	ProgRes_Enable_Resistor14
+ 332               	ProgRes_Enable_Resistor14:
+ 333               	.LFB21:
+ 334               	.LM98:
+ 335               	/* prologue: function */
+ 336               	/* frame size = 0 */
+ 337               	.LM99:
+ 338 00a4 5A9A      		sbi 43-32,2
+ 339               	/* epilogue start */
+ 340               	.LM100:
+ 341 00a6 0895      		ret
+ 342               	.LFE21:
+ 344               	.global	ProgRes_Enable_Resistor15
+ 346               	ProgRes_Enable_Resistor15:
+ 347               	.LFB22:
+ 348               	.LM101:
+ 349               	/* prologue: function */
+ 350               	/* frame size = 0 */
+ 351               	.LM102:
+ 352 00a8 439A      		sbi 40-32,3
+ 353               	/* epilogue start */
+ 354               	.LM103:
+ 355 00aa 0895      		ret
+ 356               	.LFE22:
+ 358               	.global	ProgRes_Enable_Resistor16
+ 360               	ProgRes_Enable_Resistor16:
+ 361               	.LFB23:
+ 362               	.LM104:
+ 363               	/* prologue: function */
+ 364               	/* frame size = 0 */
+ 365               	.LM105:
+ 366 00ac 429A      		sbi 40-32,2
+ 367               	/* epilogue start */
+ 368               	.LM106:
+ 369 00ae 0895      		ret
+ 370               	.LFE23:
+ 372               	.global	ProgRes_Enable_Resistor17
+ 374               	ProgRes_Enable_Resistor17:
+ 375               	.LFB24:
+ 376               	.LM107:
+ 377               	/* prologue: function */
+ 378               	/* frame size = 0 */
+ 379               	.LM108:
+ 380 00b0 419A      		sbi 40-32,1
+ 381               	/* epilogue start */
+ 382               	.LM109:
+ 383 00b2 0895      		ret
+ 384               	.LFE24:
+ 386               	.global	ProgRes_Enable_Resistor18
+ 388               	ProgRes_Enable_Resistor18:
+ 389               	.LFB25:
+ 390               	.LM110:
+ 391               	/* prologue: function */
+ 392               	/* frame size = 0 */
+ 393               	.LM111:
+ 394 00b4 409A      		sbi 40-32,0
+ 395               	/* epilogue start */
+ 396               	.LM112:
+ 397 00b6 0895      		ret
+ 398               	.LFE25:
+ 400               	.global	ProgRes_Enable_Resistor
+ 402               	ProgRes_Enable_Resistor:
+ 403               	.LFB26:
+ 404               	.LM113:
+ 405               	.LVL0:
+ 406               	/* prologue: function */
+ 407               	/* frame size = 0 */
+ 408               	.LM114:
+ 409 00b8 8130      		cpi r24,lo8(1)
+ 410 00ba 01F4      		brne .L42
+ 411               	.LBB42:
+ 412               	.LBB43:
+ 413               	.LM115:
+ 414 00bc 2D9A      		sbi 37-32,5
+ 415 00be 0895      		ret
+ 416               	.L42:
+ 417               	.LBE43:
+ 418               	.LBE42:
+ 419               	.LM116:
+ 420 00c0 8230      		cpi r24,lo8(2)
+ 421 00c2 01F4      		brne .L44
+ 422               	.LBB44:
+ 423               	.LBB45:
+ 424               	.LM117:
+ 425 00c4 2C9A      		sbi 37-32,4
+ 426 00c6 0895      		ret
+ 427               	.L44:
+ 428               	.LBE45:
+ 429               	.LBE44:
+ 430               	.LM118:
+ 431 00c8 8330      		cpi r24,lo8(3)
+ 432 00ca 01F4      		brne .L45
+ 433               	.LBB46:
+ 434               	.LBB47:
+ 435               	.LM119:
+ 436 00cc 2B9A      		sbi 37-32,3
+ 437 00ce 0895      		ret
+ 438               	.L45:
+ 439               	.LBE47:
+ 440               	.LBE46:
+ 441               	.LM120:
+ 442 00d0 8430      		cpi r24,lo8(4)
+ 443 00d2 01F4      		brne .L46
+ 444               	.LBB48:
+ 445               	.LBB49:
+ 446               	.LM121:
+ 447 00d4 2A9A      		sbi 37-32,2
+ 448 00d6 0895      		ret
+ 449               	.L46:
+ 450               	.LBE49:
+ 451               	.LBE48:
+ 452               	.LM122:
+ 453 00d8 8530      		cpi r24,lo8(5)
+ 454 00da 01F4      		brne .L47
+ 455               	.LBB50:
+ 456               	.LBB51:
+ 457               	.LM123:
+ 458 00dc 299A      		sbi 37-32,1
+ 459 00de 0895      		ret
+ 460               	.L47:
+ 461               	.LBE51:
+ 462               	.LBE50:
+ 463               	.LM124:
+ 464 00e0 8630      		cpi r24,lo8(6)
+ 465 00e2 01F4      		brne .L48
+ 466               	.LBB52:
+ 467               	.LBB53:
+ 468               	.LM125:
+ 469 00e4 289A      		sbi 37-32,0
+ 470 00e6 0895      		ret
+ 471               	.L48:
+ 472               	.LBE53:
+ 473               	.LBE52:
+ 474               	.LM126:
+ 475 00e8 8730      		cpi r24,lo8(7)
+ 476 00ea 01F4      		brne .L49
+ 477               	.LBB54:
+ 478               	.LBB55:
+ 479               	.LM127:
+ 480 00ec 5F9A      		sbi 43-32,7
+ 481 00ee 0895      		ret
+ 482               	.L49:
+ 483               	.LBE55:
+ 484               	.LBE54:
+ 485               	.LM128:
+ 486 00f0 8830      		cpi r24,lo8(8)
+ 487 00f2 01F4      		brne .L50
+ 488               	.LBB56:
+ 489               	.LBB57:
+ 490               	.LM129:
+ 491 00f4 5E9A      		sbi 43-32,6
+ 492 00f6 0895      		ret
+ 493               	.L50:
+ 494               	.LBE57:
+ 495               	.LBE56:
+ 496               	.LM130:
+ 497 00f8 8930      		cpi r24,lo8(9)
+ 498 00fa 01F4      		brne .L51
+ 499               	.LBB58:
+ 500               	.LBB59:
+ 501               	.LM131:
+ 502 00fc 5D9A      		sbi 43-32,5
+ 503 00fe 0895      		ret
+ 504               	.L51:
+ 505               	.LBE59:
+ 506               	.LBE58:
+ 507               	.LM132:
+ 508 0100 8A30      		cpi r24,lo8(10)
+ 509 0102 01F4      		brne .L52
+ 510               	.LBB60:
+ 511               	.LBB61:
+ 512               	.LM133:
+ 513 0104 2F9A      		sbi 37-32,7
+ 514 0106 0895      		ret
+ 515               	.L52:
+ 516               	.LBE61:
+ 517               	.LBE60:
+ 518               	.LM134:
+ 519 0108 8B30      		cpi r24,lo8(11)
+ 520 010a 01F4      		brne .L53
+ 521               	.LBB62:
+ 522               	.LBB63:
+ 523               	.LM135:
+ 524 010c 2E9A      		sbi 37-32,6
+ 525 010e 0895      		ret
+ 526               	.L53:
+ 527               	.LBE63:
+ 528               	.LBE62:
+ 529               	.LM136:
+ 530 0110 8C30      		cpi r24,lo8(12)
+ 531 0112 01F4      		brne .L54
+ 532               	.LBB64:
+ 533               	.LBB65:
+ 534               	.LM137:
+ 535 0114 5C9A      		sbi 43-32,4
+ 536 0116 0895      		ret
+ 537               	.L54:
+ 538               	.LBE65:
+ 539               	.LBE64:
+ 540               	.LM138:
+ 541 0118 8D30      		cpi r24,lo8(13)
+ 542 011a 01F4      		brne .L55
+ 543               	.LBB66:
+ 544               	.LBB67:
+ 545               	.LM139:
+ 546 011c 5B9A      		sbi 43-32,3
+ 547 011e 0895      		ret
+ 548               	.L55:
+ 549               	.LBE67:
+ 550               	.LBE66:
+ 551               	.LM140:
+ 552 0120 8E30      		cpi r24,lo8(14)
+ 553 0122 01F4      		brne .L56
+ 554               	.LBB68:
+ 555               	.LBB69:
+ 556               	.LM141:
+ 557 0124 5A9A      		sbi 43-32,2
+ 558 0126 0895      		ret
+ 559               	.L56:
+ 560               	.LBE69:
+ 561               	.LBE68:
+ 562               	.LM142:
+ 563 0128 8F30      		cpi r24,lo8(15)
+ 564 012a 01F4      		brne .L57
+ 565               	.LBB70:
+ 566               	.LBB71:
+ 567               	.LM143:
+ 568 012c 439A      		sbi 40-32,3
+ 569 012e 0895      		ret
+ 570               	.L57:
+ 571               	.LBE71:
+ 572               	.LBE70:
+ 573               	.LM144:
+ 574 0130 8031      		cpi r24,lo8(16)
+ 575 0132 01F4      		brne .L58
+ 576               	.LBB72:
+ 577               	.LBB73:
+ 578               	.LM145:
+ 579 0134 429A      		sbi 40-32,2
+ 580 0136 0895      		ret
+ 581               	.L58:
+ 582               	.LBE73:
+ 583               	.LBE72:
+ 584               	.LM146:
+ 585 0138 8131      		cpi r24,lo8(17)
+ 586 013a 01F4      		brne .L59
+ 587               	.LBB74:
+ 588               	.LBB75:
+ 589               	.LM147:
+ 590 013c 419A      		sbi 40-32,1
+ 591 013e 0895      		ret
+ 592               	.L59:
+ 593               	.LBE75:
+ 594               	.LBE74:
+ 595               	.LM148:
+ 596 0140 8231      		cpi r24,lo8(18)
+ 597 0142 01F4      		brne .L60
+ 598               	.LBB76:
+ 599               	.LBB77:
+ 600               	.LM149:
+ 601 0144 409A      		sbi 40-32,0
+ 602               	.L60:
+ 603 0146 0895      		ret
+ 604               	.LBE77:
+ 605               	.LBE76:
+ 606               	.LFE26:
+ 608               	.global	ProgRes_Get_Update_Complete_Status
+ 610               	ProgRes_Get_Update_Complete_Status:
+ 611               	.LFB27:
+ 612               	.LM150:
+ 613               	/* prologue: function */
+ 614               	/* frame size = 0 */
+ 615               	.LM151:
+ 616 0148 8091 0000 		lds r24,update_complete
+ 617               	/* epilogue start */
+ 618 014c 0895      		ret
+ 619               	.LFE27:
+ 621               	.global	ProgRes_Set_Update_Complete_Status
+ 623               	ProgRes_Set_Update_Complete_Status:
+ 624               	.LFB28:
+ 625               	.LM152:
+ 626               	/* prologue: function */
+ 627               	/* frame size = 0 */
+ 628               	.LM153:
+ 629 014e 81E0      		ldi r24,lo8(1)
+ 630 0150 8093 0000 		sts update_complete,r24
+ 631               	/* epilogue start */
+ 632               	.LM154:
+ 633 0154 0895      		ret
+ 634               	.LFE28:
+ 636               	.global	ProgRes_Clear_Update_Complete_Status
+ 638               	ProgRes_Clear_Update_Complete_Status:
+ 639               	.LFB29:
+ 640               	.LM155:
+ 641               	/* prologue: function */
+ 642               	/* frame size = 0 */
+ 643               	.LM156:
+ 644 0156 1092 0000 		sts update_complete,__zero_reg__
+ 645               	/* epilogue start */
+ 646               	.LM157:
+ 647 015a 0895      		ret
+ 648               	.LFE29:
+ 650               	.global	ProgRes_Enable_Resistor_Update
+ 652               	ProgRes_Enable_Resistor_Update:
+ 653               	.LFB30:
+ 654               	.LM158:
+ 655               	.LVL1:
+ 656 015c 1F93      		push r17
+ 657               	/* prologue: function */
+ 658               	/* frame size = 0 */
+ 659 015e 182F      		mov r17,r24
+ 660               	.LM159:
+ 661 0160 8091 0000 		lds r24,update_complete
+ 662               	.LVL2:
+ 663 0164 8823      		tst r24
+ 664 0166 01F4      		brne .L69
+ 665               	.LM160:
+ 666 0168 0E94 0000 		call ProgRes_Disable_All
+ 667               	.LM161:
+ 668 016c 812F      		mov r24,r17
+ 669 016e 0E94 0000 		call ProgRes_Enable_Resistor
+ 670               	.LBB78:
+ 671               	.LBB79:
+ 672               	.LM162:
+ 673 0172 81E0      		ldi r24,lo8(1)
+ 674 0174 8093 0000 		sts update_complete,r24
+ 675               	.L69:
+ 676               	/* epilogue start */
+ 677               	.LBE79:
+ 678               	.LBE78:
+ 679               	.LM163:
+ 680 0178 1F91      		pop r17
+ 681               	.LVL3:
+ 682 017a 0895      		ret
+ 683               	.LFE30:
+ 685               	.global	update_complete
+ 686               	.global	update_complete
+ 687               		.section .bss
+ 690               	update_complete:
+ 691 0000 00        		.skip 1,0
+ 908               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 res.c
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:2      *ABS*:0000003f __SREG__
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:3      *ABS*:0000003e __SP_H__
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:4      *ABS*:0000003d __SP_L__
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:5      *ABS*:00000034 __CCP__
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:18     .text:00000000 ProgRes_Init
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:102    .text:0000004a ProgRes_Disable_All
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:150    .text:00000070 ProgRes_Enable_Resistor1
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:164    .text:00000074 ProgRes_Enable_Resistor2
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:178    .text:00000078 ProgRes_Enable_Resistor3
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:192    .text:0000007c ProgRes_Enable_Resistor4
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:206    .text:00000080 ProgRes_Enable_Resistor5
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:220    .text:00000084 ProgRes_Enable_Resistor6
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:234    .text:00000088 ProgRes_Enable_Resistor7
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:248    .text:0000008c ProgRes_Enable_Resistor8
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:262    .text:00000090 ProgRes_Enable_Resistor9
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:276    .text:00000094 ProgRes_Enable_Resistor10
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:290    .text:00000098 ProgRes_Enable_Resistor11
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:304    .text:0000009c ProgRes_Enable_Resistor12
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:318    .text:000000a0 ProgRes_Enable_Resistor13
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:332    .text:000000a4 ProgRes_Enable_Resistor14
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:346    .text:000000a8 ProgRes_Enable_Resistor15
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:360    .text:000000ac ProgRes_Enable_Resistor16
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:374    .text:000000b0 ProgRes_Enable_Resistor17
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:388    .text:000000b4 ProgRes_Enable_Resistor18
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:402    .text:000000b8 ProgRes_Enable_Resistor
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:610    .text:00000148 ProgRes_Get_Update_Complete_Status
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:690    .bss:00000000 update_complete
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:623    .text:0000014e ProgRes_Set_Update_Complete_Status
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:638    .text:00000156 ProgRes_Clear_Update_Complete_Status
+C:\Users\FARIDU~1\AppData\Local\Temp/ccaRT6BW.s:652    .text:0000015c ProgRes_Enable_Resistor_Update
+
+UNDEFINED SYMBOLS
+__do_clear_bss

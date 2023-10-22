@@ -1,0 +1,5717 @@
+
+main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000004  00800100  00001b92  00001c26  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00001b92  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000006c  00800104  00800104  00001c2a  2**0
+                  ALLOC
+  3 .debug_aranges 000000a0  00000000  00000000  00001c2a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 00001174  00000000  00000000  00001cca  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00002df9  00000000  00000000  00002e3e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000892  00000000  00000000  00005c37  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00001cc4  00000000  00000000  000064c9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000008e0  00000000  00000000  00008190  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00001216  00000000  00000000  00008a70  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000d51  00000000  00000000  00009c86  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000048  00000000  00000000  0000a9d7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+       4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+       8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+       c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      18:	0c 94 77 0d 	jmp	0x1aee	; 0x1aee <__vector_6>
+      1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      38:	0c 94 ec 08 	jmp	0x11d8	; 0x11d8 <__vector_14>
+      3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      48:	0c 94 5d 0c 	jmp	0x18ba	; 0x18ba <__vector_18>
+      4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+      64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+      68:	11 24       	eor	r1, r1
+      6a:	1f be       	out	0x3f, r1	; 63
+      6c:	cf ef       	ldi	r28, 0xFF	; 255
+      6e:	d8 e0       	ldi	r29, 0x08	; 8
+      70:	de bf       	out	0x3e, r29	; 62
+      72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+      74:	11 e0       	ldi	r17, 0x01	; 1
+      76:	a0 e0       	ldi	r26, 0x00	; 0
+      78:	b1 e0       	ldi	r27, 0x01	; 1
+      7a:	e2 e9       	ldi	r30, 0x92	; 146
+      7c:	fb e1       	ldi	r31, 0x1B	; 27
+      7e:	02 c0       	rjmp	.+4      	; 0x84 <.do_copy_data_start>
+
+00000080 <.do_copy_data_loop>:
+      80:	05 90       	lpm	r0, Z+
+      82:	0d 92       	st	X+, r0
+
+00000084 <.do_copy_data_start>:
+      84:	a4 30       	cpi	r26, 0x04	; 4
+      86:	b1 07       	cpc	r27, r17
+      88:	d9 f7       	brne	.-10     	; 0x80 <.do_copy_data_loop>
+
+0000008a <__do_clear_bss>:
+      8a:	11 e0       	ldi	r17, 0x01	; 1
+      8c:	a4 e0       	ldi	r26, 0x04	; 4
+      8e:	b1 e0       	ldi	r27, 0x01	; 1
+      90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+      92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+      94:	a0 37       	cpi	r26, 0x70	; 112
+      96:	b1 07       	cpc	r27, r17
+      98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+      9a:	0e 94 53 00 	call	0xa6	; 0xa6 <main>
+      9e:	0c 94 c7 0d 	jmp	0x1b8e	; 0x1b8e <_exit>
+
+000000a2 <__bad_interrupt>:
+      a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <main>:
+#include "lowpower.h"
+#include "res.h"
+
+#define  DELAY 10000
+
+int main(void){
+      a6:	1f 93       	push	r17
+  Sleep_Init();
+      a8:	0e 94 62 0d 	call	0x1ac4	; 0x1ac4 <Sleep_Init>
+  ProgRes_Init();
+      ac:	0e 94 81 0c 	call	0x1902	; 0x1902 <ProgRes_Init>
+  ProgRes_Disable_All();
+      b0:	0e 94 a6 0c 	call	0x194c	; 0x194c <ProgRes_Disable_All>
+      b4:	8f ef       	ldi	r24, 0xFF	; 255
+      b6:	9f ef       	ldi	r25, 0xFF	; 255
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+      b8:	28 ec       	ldi	r18, 0xC8	; 200
+      ba:	30 e0       	ldi	r19, 0x00	; 0
+      bc:	f9 01       	movw	r30, r18
+      be:	31 97       	sbiw	r30, 0x01	; 1
+      c0:	f1 f7       	brne	.-4      	; 0xbe <main+0x18>
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+      c2:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+      c4:	d9 f7       	brne	.-10     	; 0xbc <main+0x16>
+      c6:	10 e0       	ldi	r17, 0x00	; 0
+  _delay_ms(DELAY);
+  
+  uint8_t res_en=0;
+  while(1){
+      
+	  if(WDT_Get_Ticks()%10==0){
+      c8:	0e 94 57 0d 	call	0x1aae	; 0x1aae <WDT_Get_Ticks>
+      cc:	2a e0       	ldi	r18, 0x0A	; 10
+      ce:	30 e0       	ldi	r19, 0x00	; 0
+      d0:	40 e0       	ldi	r20, 0x00	; 0
+      d2:	50 e0       	ldi	r21, 0x00	; 0
+      d4:	0e 94 a5 0d 	call	0x1b4a	; 0x1b4a <__udivmodsi4>
+      d8:	61 15       	cp	r22, r1
+      da:	71 05       	cpc	r23, r1
+      dc:	81 05       	cpc	r24, r1
+      de:	91 05       	cpc	r25, r1
+      e0:	31 f4       	brne	.+12     	; 0xee <main+0x48>
+	    ProgRes_Clear_Update_Complete_Status();
+      e2:	0e 94 2c 0d 	call	0x1a58	; 0x1a58 <ProgRes_Clear_Update_Complete_Status>
+		res_en++;
+      e6:	1f 5f       	subi	r17, 0xFF	; 255
+	    if(res_en>18){
+      e8:	13 31       	cpi	r17, 0x13	; 19
+      ea:	08 f0       	brcs	.+2      	; 0xee <main+0x48>
+      ec:	11 e0       	ldi	r17, 0x01	; 1
+	      res_en=1;
+	    }
+	  }
+	  
+	  ProgRes_Enable_Resistor_Update(res_en);
+      ee:	81 2f       	mov	r24, r17
+      f0:	0e 94 2f 0d 	call	0x1a5e	; 0x1a5e <ProgRes_Enable_Resistor_Update>
+	  Deep_Sleep();
+      f4:	0e 94 3f 0d 	call	0x1a7e	; 0x1a7e <Deep_Sleep>
+      f8:	e7 cf       	rjmp	.-50     	; 0xc8 <main+0x22>
+
+000000fa <Timebase_Struct_Init>:
+
+timebase_t Timebase_type;
+timebase_t *Timebase;
+
+void Timebase_Struct_Init(void){
+  Timebase=&Timebase_type;
+      fa:	8d e3       	ldi	r24, 0x3D	; 61
+      fc:	91 e0       	ldi	r25, 0x01	; 1
+      fe:	90 93 3c 01 	sts	0x013C, r25
+     102:	80 93 3b 01 	sts	0x013B, r24
+  Timebase->Config.TimerType.Value = 0;
+     106:	10 92 3d 01 	sts	0x013D, r1
+  Timebase->Config.TimerType.GeneralTimer = 1;
+     10a:	80 91 3d 01 	lds	r24, 0x013D
+     10e:	84 60       	ori	r24, 0x04	; 4
+     110:	80 93 3d 01 	sts	0x013D, r24
+  Timebase->Config.TimerType.TimerIndex = 0;
+     114:	80 91 3d 01 	lds	r24, 0x013D
+     118:	87 70       	andi	r24, 0x07	; 7
+     11a:	80 93 3d 01 	sts	0x013D, r24
+  Timebase->Config.UpdateRate = 1;
+     11e:	81 e0       	ldi	r24, 0x01	; 1
+     120:	90 e0       	ldi	r25, 0x00	; 0
+     122:	90 93 3f 01 	sts	0x013F, r25
+     126:	80 93 3e 01 	sts	0x013E, r24
+  Timebase->Time.SubSeconds = 0;
+     12a:	10 92 44 01 	sts	0x0144, r1
+     12e:	10 92 45 01 	sts	0x0145, r1
+     132:	10 92 46 01 	sts	0x0146, r1
+     136:	10 92 47 01 	sts	0x0147, r1
+  Timebase->Time.Seconds = 0;
+     13a:	10 92 48 01 	sts	0x0148, r1
+     13e:	10 92 49 01 	sts	0x0149, r1
+     142:	10 92 4a 01 	sts	0x014A, r1
+     146:	10 92 4b 01 	sts	0x014B, r1
+  Timebase->Time.LastSample = 0;
+     14a:	10 92 40 01 	sts	0x0140, r1
+     14e:	10 92 41 01 	sts	0x0141, r1
+     152:	10 92 42 01 	sts	0x0142, r1
+     156:	10 92 43 01 	sts	0x0143, r1
+  
+  #ifdef TIMEBASE_TOKEN_FUNCTIONS
+  Timebase->ActiveTokens = 0;
+     15a:	10 92 4c 01 	sts	0x014C, r1
+  #endif
+
+  #ifdef TIMEBASE_UPCOUNTER
+  for(uint8_t i=0; i < TIMEBASE_UPCOUNTER; i++){
+    Timebase->UpCounter[i].Status.StatusByte = 0;  
+     15e:	10 92 4d 01 	sts	0x014D, r1
+    Timebase->UpCounter[i].EndValue = 0;
+     162:	10 92 4e 01 	sts	0x014E, r1
+     166:	10 92 4f 01 	sts	0x014F, r1
+     16a:	10 92 50 01 	sts	0x0150, r1
+     16e:	10 92 51 01 	sts	0x0151, r1
+    Timebase->UpCounter[i].Target = 0;
+     172:	10 92 52 01 	sts	0x0152, r1
+     176:	10 92 53 01 	sts	0x0153, r1
+     17a:	10 92 54 01 	sts	0x0154, r1
+     17e:	10 92 55 01 	sts	0x0155, r1
+    Timebase->UpCounter[i].Temporary = 0;    
+     182:	10 92 56 01 	sts	0x0156, r1
+     186:	10 92 57 01 	sts	0x0157, r1
+     18a:	10 92 58 01 	sts	0x0158, r1
+     18e:	10 92 59 01 	sts	0x0159, r1
+    Timebase->UpCounter[i].Value = 0;
+     192:	10 92 5a 01 	sts	0x015A, r1
+     196:	10 92 5b 01 	sts	0x015B, r1
+     19a:	10 92 5c 01 	sts	0x015C, r1
+     19e:	10 92 5d 01 	sts	0x015D, r1
+    Timebase->UpCounter[i].PeriodValue = 0;
+     1a2:	10 92 5e 01 	sts	0x015E, r1
+     1a6:	10 92 5f 01 	sts	0x015F, r1
+     1aa:	10 92 60 01 	sts	0x0160, r1
+     1ae:	10 92 61 01 	sts	0x0161, r1
+  }
+  #endif
+
+  #ifdef TIMEBASE_DOWNCOUNTER
+  for(uint8_t i=0; i < TIMEBASE_DOWNCOUNTER; i++){
+    Timebase->DownCounter[i].Status.StatusByte = 0; 
+     1b2:	10 92 62 01 	sts	0x0162, r1
+    Timebase->DownCounter[i].EndValue = 0;
+     1b6:	10 92 63 01 	sts	0x0163, r1
+     1ba:	10 92 64 01 	sts	0x0164, r1
+     1be:	10 92 65 01 	sts	0x0165, r1
+     1c2:	10 92 66 01 	sts	0x0166, r1
+    Timebase->DownCounter[i].Value = 0;
+     1c6:	10 92 67 01 	sts	0x0167, r1
+     1ca:	10 92 68 01 	sts	0x0168, r1
+     1ce:	10 92 69 01 	sts	0x0169, r1
+     1d2:	10 92 6a 01 	sts	0x016A, r1
+    Timebase->DownCounter[i].PeriodValue = 0;
+     1d6:	10 92 6b 01 	sts	0x016B, r1
+     1da:	10 92 6c 01 	sts	0x016C, r1
+     1de:	10 92 6d 01 	sts	0x016D, r1
+     1e2:	10 92 6e 01 	sts	0x016E, r1
+  }
+  #endif
+  Timebase->FunctionUpdatesRequired=0;
+     1e6:	10 92 6f 01 	sts	0x016F, r1
+}
+     1ea:	08 95       	ret
+
+000001ec <Timebase_Timer_Config>:
+
+
+void Timebase_Timer_Config(uint16_t UpdateRateHz){
+     1ec:	9c 01       	movw	r18, r24
+  if(Timebase->Config.TimerType.WatchDogTimer == 1){
+     1ee:	e0 91 3b 01 	lds	r30, 0x013B
+     1f2:	f0 91 3c 01 	lds	r31, 0x013C
+     1f6:	80 81       	ld	r24, Z
+     1f8:	80 ff       	sbrs	r24, 0
+     1fa:	31 c0       	rjmp	.+98     	; 0x25e <Timebase_Timer_Config+0x72>
+    uint8_t Prescaler_val=0;
+    if(UpdateRateHz==1){
+     1fc:	21 30       	cpi	r18, 0x01	; 1
+     1fe:	31 05       	cpc	r19, r1
+     200:	11 f4       	brne	.+4      	; 0x206 <Timebase_Timer_Config+0x1a>
+     202:	96 e0       	ldi	r25, 0x06	; 6
+     204:	19 c0       	rjmp	.+50     	; 0x238 <Timebase_Timer_Config+0x4c>
+      Prescaler_val=0x06;
+    }else if(UpdateRateHz==2){
+     206:	22 30       	cpi	r18, 0x02	; 2
+     208:	31 05       	cpc	r19, r1
+     20a:	11 f4       	brne	.+4      	; 0x210 <Timebase_Timer_Config+0x24>
+     20c:	95 e0       	ldi	r25, 0x05	; 5
+     20e:	14 c0       	rjmp	.+40     	; 0x238 <Timebase_Timer_Config+0x4c>
+      Prescaler_val=0x05;
+    }else if(UpdateRateHz==4){
+     210:	24 30       	cpi	r18, 0x04	; 4
+     212:	31 05       	cpc	r19, r1
+     214:	11 f4       	brne	.+4      	; 0x21a <Timebase_Timer_Config+0x2e>
+     216:	94 e0       	ldi	r25, 0x04	; 4
+     218:	0f c0       	rjmp	.+30     	; 0x238 <Timebase_Timer_Config+0x4c>
+      Prescaler_val=0x04;
+    }else if(UpdateRateHz==8){
+     21a:	28 30       	cpi	r18, 0x08	; 8
+     21c:	31 05       	cpc	r19, r1
+     21e:	11 f4       	brne	.+4      	; 0x224 <Timebase_Timer_Config+0x38>
+     220:	93 e0       	ldi	r25, 0x03	; 3
+     222:	0a c0       	rjmp	.+20     	; 0x238 <Timebase_Timer_Config+0x4c>
+      Prescaler_val=0x03;
+    }else if(UpdateRateHz==16){
+     224:	20 31       	cpi	r18, 0x10	; 16
+     226:	31 05       	cpc	r19, r1
+     228:	11 f4       	brne	.+4      	; 0x22e <Timebase_Timer_Config+0x42>
+     22a:	92 e0       	ldi	r25, 0x02	; 2
+     22c:	05 c0       	rjmp	.+10     	; 0x238 <Timebase_Timer_Config+0x4c>
+     22e:	90 e0       	ldi	r25, 0x00	; 0
+     230:	20 32       	cpi	r18, 0x20	; 32
+     232:	31 05       	cpc	r19, r1
+     234:	09 f4       	brne	.+2      	; 0x238 <Timebase_Timer_Config+0x4c>
+     236:	91 e0       	ldi	r25, 0x01	; 1
+    }else if(UpdateRateHz==64){
+      Prescaler_val=0x00;
+    }else{
+      Prescaler_val=0x00;
+    }
+    cli();
+     238:	f8 94       	cli
+    MCUSR  &=~(1<<WDRF);
+     23a:	84 b7       	in	r24, 0x34	; 52
+     23c:	87 7f       	andi	r24, 0xF7	; 247
+     23e:	84 bf       	out	0x34, r24	; 52
+    WDTCSR |= (1<<WDIF);
+     240:	80 91 60 00 	lds	r24, 0x0060
+     244:	80 68       	ori	r24, 0x80	; 128
+     246:	80 93 60 00 	sts	0x0060, r24
+    WDTCSR |= (1<<WDCE)|(1<<WDE);
+     24a:	80 91 60 00 	lds	r24, 0x0060
+     24e:	88 61       	ori	r24, 0x18	; 24
+     250:	80 93 60 00 	sts	0x0060, r24
+    WDTCSR  = (1<<WDIE)|Prescaler_val;
+     254:	90 64       	ori	r25, 0x40	; 64
+     256:	90 93 60 00 	sts	0x0060, r25
+    sei();
+     25a:	78 94       	sei
+     25c:	15 c0       	rjmp	.+42     	; 0x288 <Timebase_Timer_Config+0x9c>
+  }else if(Timebase->Config.TimerType.RealTimeCounter == 1){
+     25e:	81 fd       	sbrc	r24, 1
+     260:	13 c0       	rjmp	.+38     	; 0x288 <Timebase_Timer_Config+0x9c>
+    //add rtc functions
+  }else if(Timebase->Config.TimerType.GeneralTimer == 1){
+     262:	82 ff       	sbrs	r24, 2
+     264:	11 c0       	rjmp	.+34     	; 0x288 <Timebase_Timer_Config+0x9c>
+    TCCR0A = 0x00;
+     266:	14 bc       	out	0x24, r1	; 36
+    TCCR0B = 0x00;
+     268:	15 bc       	out	0x25, r1	; 37
+    TIMSK0 = 0x00;
+     26a:	10 92 6e 00 	sts	0x006E, r1
+    TIFR0  = 0x00;
+     26e:	15 ba       	out	0x15, r1	; 21
+    OCR0A  = 0x00;
+     270:	17 bc       	out	0x27, r1	; 39
+    OCR0B  = 0x00;
+     272:	18 bc       	out	0x28, r1	; 40
+    TCNT0  = 0x00;
+     274:	16 bc       	out	0x26, r1	; 38
+    OCR0A  = 250 ;
+     276:	8a ef       	ldi	r24, 0xFA	; 250
+     278:	87 bd       	out	0x27, r24	; 39
+    TCCR0A = (1<<WGM01);
+     27a:	92 e0       	ldi	r25, 0x02	; 2
+     27c:	94 bd       	out	0x24, r25	; 36
+    TCCR0B = (1<<CS00)|(1<<CS01);
+     27e:	83 e0       	ldi	r24, 0x03	; 3
+     280:	85 bd       	out	0x25, r24	; 37
+    TIMSK0 = (1<<OCIE0A);
+     282:	90 93 6e 00 	sts	0x006E, r25
+    sei();
+     286:	78 94       	sei
+  }
+  Timebase->Config.UpdateRate=UpdateRateHz;
+     288:	32 83       	std	Z+2, r19	; 0x02
+     28a:	21 83       	std	Z+1, r18	; 0x01
+}
+     28c:	08 95       	ret
+
+0000028e <Timebase_Token_Executing>:
+
+
+//Token Functions
+#ifdef TIMEBASE_TOKEN_FUNCTIONS
+uint8_t Timebase_Token_Executing(void){
+  return Timebase->ActiveTokens;
+     28e:	e0 91 3b 01 	lds	r30, 0x013B
+     292:	f0 91 3c 01 	lds	r31, 0x013C
+     296:	87 85       	ldd	r24, Z+15	; 0x0f
+}
+     298:	08 95       	ret
+
+0000029a <Timebase_Token_Add>:
+
+
+//Token Functions
+#ifdef TIMEBASE_TOKEN_FUNCTIONS
+uint8_t Timebase_Token_Executing(void){
+  return Timebase->ActiveTokens;
+     29a:	e0 91 3b 01 	lds	r30, 0x013B
+     29e:	f0 91 3c 01 	lds	r31, 0x013C
+     2a2:	87 85       	ldd	r24, Z+15	; 0x0f
+}
+
+void Timebase_Token_Add(void){ 
+  if( Timebase_Token_Executing() < 63){
+     2a4:	8f 33       	cpi	r24, 0x3F	; 63
+     2a6:	18 f4       	brcc	.+6      	; 0x2ae <Timebase_Token_Add+0x14>
+    Timebase->ActiveTokens+=1;
+     2a8:	87 85       	ldd	r24, Z+15	; 0x0f
+     2aa:	8f 5f       	subi	r24, 0xFF	; 255
+     2ac:	87 87       	std	Z+15, r24	; 0x0f
+     2ae:	08 95       	ret
+
+000002b0 <Timebase_Token_Remove>:
+
+
+//Token Functions
+#ifdef TIMEBASE_TOKEN_FUNCTIONS
+uint8_t Timebase_Token_Executing(void){
+  return Timebase->ActiveTokens;
+     2b0:	e0 91 3b 01 	lds	r30, 0x013B
+     2b4:	f0 91 3c 01 	lds	r31, 0x013C
+     2b8:	87 85       	ldd	r24, Z+15	; 0x0f
+    Timebase->ActiveTokens+=1;
+  }
+}
+
+void Timebase_Token_Remove(void){
+  if( Timebase_Token_Executing() > 0){
+     2ba:	88 23       	and	r24, r24
+     2bc:	19 f0       	breq	.+6      	; 0x2c4 <Timebase_Token_Remove+0x14>
+    Timebase->ActiveTokens-=1;
+     2be:	87 85       	ldd	r24, Z+15	; 0x0f
+     2c0:	81 50       	subi	r24, 0x01	; 1
+     2c2:	87 87       	std	Z+15, r24	; 0x0f
+     2c4:	08 95       	ret
+
+000002c6 <Timebase_Token_Remove_All>:
+  }
+}
+
+void Timebase_Token_Remove_All(void){
+  Timebase->ActiveTokens=0;
+     2c6:	e0 91 3b 01 	lds	r30, 0x013B
+     2ca:	f0 91 3c 01 	lds	r31, 0x013C
+     2ce:	17 86       	std	Z+15, r1	; 0x0f
+}
+     2d0:	08 95       	ret
+
+000002d2 <Timebase_Timer_Get_SubSeconds>:
+#endif
+
+
+//Timer Functions
+uint32_t Timebase_Timer_Get_SubSeconds(void){
+  return Timebase->Time.SubSeconds;
+     2d2:	e0 91 3b 01 	lds	r30, 0x013B
+     2d6:	f0 91 3c 01 	lds	r31, 0x013C
+     2da:	27 81       	ldd	r18, Z+7	; 0x07
+     2dc:	30 85       	ldd	r19, Z+8	; 0x08
+     2de:	41 85       	ldd	r20, Z+9	; 0x09
+     2e0:	52 85       	ldd	r21, Z+10	; 0x0a
+}
+     2e2:	b9 01       	movw	r22, r18
+     2e4:	ca 01       	movw	r24, r20
+     2e6:	08 95       	ret
+
+000002e8 <Timebase_Timer_Get_Seconds>:
+
+uint32_t Timebase_Timer_Get_Seconds(void){
+  return Timebase->Time.Seconds;
+     2e8:	e0 91 3b 01 	lds	r30, 0x013B
+     2ec:	f0 91 3c 01 	lds	r31, 0x013C
+     2f0:	23 85       	ldd	r18, Z+11	; 0x0b
+     2f2:	34 85       	ldd	r19, Z+12	; 0x0c
+     2f4:	45 85       	ldd	r20, Z+13	; 0x0d
+     2f6:	56 85       	ldd	r21, Z+14	; 0x0e
+}
+     2f8:	b9 01       	movw	r22, r18
+     2fa:	ca 01       	movw	r24, r20
+     2fc:	08 95       	ret
+
+000002fe <Timebase_Timer_Set_SubSeconds>:
+
+void Timebase_Timer_Set_SubSeconds(uint32_t value){
+  Timebase->Time.SubSeconds=value;
+     2fe:	e0 91 3b 01 	lds	r30, 0x013B
+     302:	f0 91 3c 01 	lds	r31, 0x013C
+     306:	67 83       	std	Z+7, r22	; 0x07
+     308:	70 87       	std	Z+8, r23	; 0x08
+     30a:	81 87       	std	Z+9, r24	; 0x09
+     30c:	92 87       	std	Z+10, r25	; 0x0a
+}
+     30e:	08 95       	ret
+
+00000310 <Timebase_Timer_Set_Seconds>:
+
+void Timebase_Timer_Set_Seconds(uint32_t value){
+  Timebase->Time.Seconds=value;
+     310:	e0 91 3b 01 	lds	r30, 0x013B
+     314:	f0 91 3c 01 	lds	r31, 0x013C
+     318:	63 87       	std	Z+11, r22	; 0x0b
+     31a:	74 87       	std	Z+12, r23	; 0x0c
+     31c:	85 87       	std	Z+13, r24	; 0x0d
+     31e:	96 87       	std	Z+14, r25	; 0x0e
+}
+     320:	08 95       	ret
+
+00000322 <Timebase_Timer_Delay_SubSeconds>:
+
+void Timebase_Timer_Delay_SubSeconds(uint16_t value){
+     322:	9c 01       	movw	r18, r24
+
+
+//Token Functions
+#ifdef TIMEBASE_TOKEN_FUNCTIONS
+uint8_t Timebase_Token_Executing(void){
+  return Timebase->ActiveTokens;
+     324:	e0 91 3b 01 	lds	r30, 0x013B
+     328:	f0 91 3c 01 	lds	r31, 0x013C
+     32c:	87 85       	ldd	r24, Z+15	; 0x0f
+}
+
+void Timebase_Token_Add(void){ 
+  if( Timebase_Token_Executing() < 63){
+     32e:	8f 33       	cpi	r24, 0x3F	; 63
+     330:	18 f4       	brcc	.+6      	; 0x338 <Timebase_Timer_Delay_SubSeconds+0x16>
+    Timebase->ActiveTokens+=1;
+     332:	87 85       	ldd	r24, Z+15	; 0x0f
+     334:	8f 5f       	subi	r24, 0xFF	; 255
+     336:	87 87       	std	Z+15, r24	; 0x0f
+#endif
+
+
+//Timer Functions
+uint32_t Timebase_Timer_Get_SubSeconds(void){
+  return Timebase->Time.SubSeconds;
+     338:	87 81       	ldd	r24, Z+7	; 0x07
+     33a:	90 85       	ldd	r25, Z+8	; 0x08
+     33c:	a1 85       	ldd	r26, Z+9	; 0x09
+     33e:	b2 85       	ldd	r27, Z+10	; 0x0a
+void Timebase_Timer_Delay_SubSeconds(uint16_t value){
+  #ifdef TIMEBASE_TOKEN_FUNCTIONS
+  Timebase_Token_Add();
+  #endif
+  
+  uint32_t temp = Timebase_Timer_Get_SubSeconds() + value;
+     340:	40 e0       	ldi	r20, 0x00	; 0
+     342:	50 e0       	ldi	r21, 0x00	; 0
+     344:	28 0f       	add	r18, r24
+     346:	39 1f       	adc	r19, r25
+     348:	4a 1f       	adc	r20, r26
+     34a:	5b 1f       	adc	r21, r27
+#endif
+
+
+//Timer Functions
+uint32_t Timebase_Timer_Get_SubSeconds(void){
+  return Timebase->Time.SubSeconds;
+     34c:	87 81       	ldd	r24, Z+7	; 0x07
+     34e:	90 85       	ldd	r25, Z+8	; 0x08
+     350:	a1 85       	ldd	r26, Z+9	; 0x09
+     352:	b2 85       	ldd	r27, Z+10	; 0x0a
+  #ifdef TIMEBASE_TOKEN_FUNCTIONS
+  Timebase_Token_Add();
+  #endif
+  
+  uint32_t temp = Timebase_Timer_Get_SubSeconds() + value;
+  while(temp > Timebase_Timer_Get_SubSeconds());
+     354:	82 17       	cp	r24, r18
+     356:	93 07       	cpc	r25, r19
+     358:	a4 07       	cpc	r26, r20
+     35a:	b5 07       	cpc	r27, r21
+     35c:	b8 f3       	brcs	.-18     	; 0x34c <Timebase_Timer_Delay_SubSeconds+0x2a>
+
+
+//Token Functions
+#ifdef TIMEBASE_TOKEN_FUNCTIONS
+uint8_t Timebase_Token_Executing(void){
+  return Timebase->ActiveTokens;
+     35e:	87 85       	ldd	r24, Z+15	; 0x0f
+    Timebase->ActiveTokens+=1;
+  }
+}
+
+void Timebase_Token_Remove(void){
+  if( Timebase_Token_Executing() > 0){
+     360:	88 23       	and	r24, r24
+     362:	19 f0       	breq	.+6      	; 0x36a <Timebase_Timer_Delay_SubSeconds+0x48>
+    Timebase->ActiveTokens-=1;
+     364:	87 85       	ldd	r24, Z+15	; 0x0f
+     366:	81 50       	subi	r24, 0x01	; 1
+     368:	87 87       	std	Z+15, r24	; 0x0f
+     36a:	08 95       	ret
+
+0000036c <Timebase_Timer_Delay_Seconds>:
+  #ifdef TIMEBASE_TOKEN_FUNCTIONS
+  Timebase_Token_Remove();
+  #endif
+}
+
+void Timebase_Timer_Delay_Seconds(uint16_t value){
+     36c:	ef 92       	push	r14
+     36e:	ff 92       	push	r15
+     370:	0f 93       	push	r16
+     372:	1f 93       	push	r17
+uint32_t Timebase_Timer_Get_SubSeconds(void){
+  return Timebase->Time.SubSeconds;
+}
+
+uint32_t Timebase_Timer_Get_Seconds(void){
+  return Timebase->Time.Seconds;
+     374:	e0 91 3b 01 	lds	r30, 0x013B
+     378:	f0 91 3c 01 	lds	r31, 0x013C
+     37c:	23 85       	ldd	r18, Z+11	; 0x0b
+     37e:	34 85       	ldd	r19, Z+12	; 0x0c
+     380:	45 85       	ldd	r20, Z+13	; 0x0d
+     382:	56 85       	ldd	r21, Z+14	; 0x0e
+  Timebase_Token_Remove();
+  #endif
+}
+
+void Timebase_Timer_Delay_Seconds(uint16_t value){
+  uint32_t temp = Timebase_Timer_Get_Seconds() + value;
+     384:	7c 01       	movw	r14, r24
+     386:	00 e0       	ldi	r16, 0x00	; 0
+     388:	10 e0       	ldi	r17, 0x00	; 0
+     38a:	e2 0e       	add	r14, r18
+     38c:	f3 1e       	adc	r15, r19
+     38e:	04 1f       	adc	r16, r20
+     390:	15 1f       	adc	r17, r21
+#endif
+
+
+//Timer Functions
+uint32_t Timebase_Timer_Get_SubSeconds(void){
+  return Timebase->Time.SubSeconds;
+     392:	87 81       	ldd	r24, Z+7	; 0x07
+     394:	90 85       	ldd	r25, Z+8	; 0x08
+     396:	a1 85       	ldd	r26, Z+9	; 0x09
+     398:	b2 85       	ldd	r27, Z+10	; 0x0a
+  #endif
+}
+
+void Timebase_Timer_Delay_Seconds(uint16_t value){
+  uint32_t temp = Timebase_Timer_Get_Seconds() + value;
+  while(temp > Timebase_Timer_Get_SubSeconds());
+     39a:	8e 15       	cp	r24, r14
+     39c:	9f 05       	cpc	r25, r15
+     39e:	a0 07       	cpc	r26, r16
+     3a0:	b1 07       	cpc	r27, r17
+     3a2:	b8 f3       	brcs	.-18     	; 0x392 <Timebase_Timer_Delay_Seconds+0x26>
+}
+     3a4:	1f 91       	pop	r17
+     3a6:	0f 91       	pop	r16
+     3a8:	ff 90       	pop	r15
+     3aa:	ef 90       	pop	r14
+     3ac:	08 95       	ret
+
+000003ae <Timebase_UpCounter_Get_Status>:
+
+
+
+//UpCounter Functions
+#ifdef TIMEBASE_UPCOUNTER
+uint8_t Timebase_UpCounter_Get_Status(uint8_t window){
+     3ae:	e0 91 3b 01 	lds	r30, 0x013B
+     3b2:	f0 91 3c 01 	lds	r31, 0x013C
+     3b6:	90 e0       	ldi	r25, 0x00	; 0
+     3b8:	25 e1       	ldi	r18, 0x15	; 21
+     3ba:	30 e0       	ldi	r19, 0x00	; 0
+     3bc:	ac 01       	movw	r20, r24
+     3be:	42 9f       	mul	r20, r18
+     3c0:	c0 01       	movw	r24, r0
+     3c2:	43 9f       	mul	r20, r19
+     3c4:	90 0d       	add	r25, r0
+     3c6:	52 9f       	mul	r21, r18
+     3c8:	90 0d       	add	r25, r0
+     3ca:	11 24       	eor	r1, r1
+     3cc:	e8 0f       	add	r30, r24
+     3ce:	f9 1f       	adc	r31, r25
+     3d0:	80 89       	ldd	r24, Z+16	; 0x10
+     3d2:	86 95       	lsr	r24
+  return Timebase->UpCounter[window].Status.Value;
+}
+     3d4:	8f 70       	andi	r24, 0x0F	; 15
+     3d6:	08 95       	ret
+
+000003d8 <Timebase_UpCounter_Set_Status>:
+
+void Timebase_UpCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->UpCounter[window].Status.Value = value;
+     3d8:	e0 91 3b 01 	lds	r30, 0x013B
+     3dc:	f0 91 3c 01 	lds	r31, 0x013C
+     3e0:	90 e0       	ldi	r25, 0x00	; 0
+     3e2:	25 e1       	ldi	r18, 0x15	; 21
+     3e4:	30 e0       	ldi	r19, 0x00	; 0
+     3e6:	ac 01       	movw	r20, r24
+     3e8:	42 9f       	mul	r20, r18
+     3ea:	c0 01       	movw	r24, r0
+     3ec:	43 9f       	mul	r20, r19
+     3ee:	90 0d       	add	r25, r0
+     3f0:	52 9f       	mul	r21, r18
+     3f2:	90 0d       	add	r25, r0
+     3f4:	11 24       	eor	r1, r1
+     3f6:	e8 0f       	add	r30, r24
+     3f8:	f9 1f       	adc	r31, r25
+     3fa:	6f 70       	andi	r22, 0x0F	; 15
+     3fc:	66 0f       	add	r22, r22
+     3fe:	80 89       	ldd	r24, Z+16	; 0x10
+     400:	81 7e       	andi	r24, 0xE1	; 225
+     402:	86 2b       	or	r24, r22
+     404:	80 8b       	std	Z+16, r24	; 0x10
+}
+     406:	08 95       	ret
+
+00000408 <Timebase_UpCounter_Get_Value>:
+
+uint32_t Timebase_UpCounter_Get_Value(uint8_t window){
+     408:	e0 91 3b 01 	lds	r30, 0x013B
+     40c:	f0 91 3c 01 	lds	r31, 0x013C
+     410:	90 e0       	ldi	r25, 0x00	; 0
+     412:	25 e1       	ldi	r18, 0x15	; 21
+     414:	30 e0       	ldi	r19, 0x00	; 0
+     416:	ac 01       	movw	r20, r24
+     418:	42 9f       	mul	r20, r18
+     41a:	c0 01       	movw	r24, r0
+     41c:	43 9f       	mul	r20, r19
+     41e:	90 0d       	add	r25, r0
+     420:	52 9f       	mul	r21, r18
+     422:	90 0d       	add	r25, r0
+     424:	11 24       	eor	r1, r1
+     426:	e8 0f       	add	r30, r24
+     428:	f9 1f       	adc	r31, r25
+     42a:	df 01       	movw	r26, r30
+     42c:	5d 96       	adiw	r26, 0x1d	; 29
+     42e:	65 8d       	ldd	r22, Z+29	; 0x1d
+     430:	11 96       	adiw	r26, 0x01	; 1
+     432:	7c 91       	ld	r23, X
+     434:	11 97       	sbiw	r26, 0x01	; 1
+  return (uint32_t)Timebase->UpCounter[window].Value;
+}
+     436:	12 96       	adiw	r26, 0x02	; 2
+     438:	8c 91       	ld	r24, X
+     43a:	12 97       	sbiw	r26, 0x02	; 2
+     43c:	13 96       	adiw	r26, 0x03	; 3
+     43e:	9c 91       	ld	r25, X
+     440:	08 95       	ret
+
+00000442 <Timebase_UpCounter_Set_Value>:
+
+void Timebase_UpCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Value = value;
+     442:	e0 91 3b 01 	lds	r30, 0x013B
+     446:	f0 91 3c 01 	lds	r31, 0x013C
+     44a:	90 e0       	ldi	r25, 0x00	; 0
+     44c:	25 e1       	ldi	r18, 0x15	; 21
+     44e:	30 e0       	ldi	r19, 0x00	; 0
+     450:	dc 01       	movw	r26, r24
+     452:	a2 9f       	mul	r26, r18
+     454:	c0 01       	movw	r24, r0
+     456:	a3 9f       	mul	r26, r19
+     458:	90 0d       	add	r25, r0
+     45a:	b2 9f       	mul	r27, r18
+     45c:	90 0d       	add	r25, r0
+     45e:	11 24       	eor	r1, r1
+     460:	e8 0f       	add	r30, r24
+     462:	f9 1f       	adc	r31, r25
+     464:	45 8f       	std	Z+29, r20	; 0x1d
+     466:	56 8f       	std	Z+30, r21	; 0x1e
+     468:	67 8f       	std	Z+31, r22	; 0x1f
+     46a:	70 a3       	std	Z+32, r23	; 0x20
+}
+     46c:	08 95       	ret
+
+0000046e <Timebase_UpCounter_Get_EndValue>:
+
+uint32_t Timebase_UpCounter_Get_EndValue(uint8_t window){
+     46e:	e0 91 3b 01 	lds	r30, 0x013B
+     472:	f0 91 3c 01 	lds	r31, 0x013C
+     476:	90 e0       	ldi	r25, 0x00	; 0
+     478:	25 e1       	ldi	r18, 0x15	; 21
+     47a:	30 e0       	ldi	r19, 0x00	; 0
+     47c:	ac 01       	movw	r20, r24
+     47e:	42 9f       	mul	r20, r18
+     480:	c0 01       	movw	r24, r0
+     482:	43 9f       	mul	r20, r19
+     484:	90 0d       	add	r25, r0
+     486:	52 9f       	mul	r21, r18
+     488:	90 0d       	add	r25, r0
+     48a:	11 24       	eor	r1, r1
+     48c:	e8 0f       	add	r30, r24
+     48e:	f9 1f       	adc	r31, r25
+     490:	df 01       	movw	r26, r30
+     492:	51 96       	adiw	r26, 0x11	; 17
+     494:	61 89       	ldd	r22, Z+17	; 0x11
+     496:	11 96       	adiw	r26, 0x01	; 1
+     498:	7c 91       	ld	r23, X
+     49a:	11 97       	sbiw	r26, 0x01	; 1
+  return (uint32_t)Timebase->UpCounter[window].EndValue;
+}
+     49c:	12 96       	adiw	r26, 0x02	; 2
+     49e:	8c 91       	ld	r24, X
+     4a0:	12 97       	sbiw	r26, 0x02	; 2
+     4a2:	13 96       	adiw	r26, 0x03	; 3
+     4a4:	9c 91       	ld	r25, X
+     4a6:	08 95       	ret
+
+000004a8 <Timebase_UpCounter_Set_EndValue>:
+
+void Timebase_UpCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].EndValue = value;
+     4a8:	e0 91 3b 01 	lds	r30, 0x013B
+     4ac:	f0 91 3c 01 	lds	r31, 0x013C
+     4b0:	90 e0       	ldi	r25, 0x00	; 0
+     4b2:	25 e1       	ldi	r18, 0x15	; 21
+     4b4:	30 e0       	ldi	r19, 0x00	; 0
+     4b6:	dc 01       	movw	r26, r24
+     4b8:	a2 9f       	mul	r26, r18
+     4ba:	c0 01       	movw	r24, r0
+     4bc:	a3 9f       	mul	r26, r19
+     4be:	90 0d       	add	r25, r0
+     4c0:	b2 9f       	mul	r27, r18
+     4c2:	90 0d       	add	r25, r0
+     4c4:	11 24       	eor	r1, r1
+     4c6:	e8 0f       	add	r30, r24
+     4c8:	f9 1f       	adc	r31, r25
+     4ca:	41 8b       	std	Z+17, r20	; 0x11
+     4cc:	52 8b       	std	Z+18, r21	; 0x12
+     4ce:	63 8b       	std	Z+19, r22	; 0x13
+     4d0:	74 8b       	std	Z+20, r23	; 0x14
+}
+     4d2:	08 95       	ret
+
+000004d4 <Timebase_UpCounter_Get_TargetValue>:
+
+uint32_t Timebase_UpCounter_Get_TargetValue(uint8_t window){
+     4d4:	e0 91 3b 01 	lds	r30, 0x013B
+     4d8:	f0 91 3c 01 	lds	r31, 0x013C
+     4dc:	90 e0       	ldi	r25, 0x00	; 0
+     4de:	01 96       	adiw	r24, 0x01	; 1
+     4e0:	25 e1       	ldi	r18, 0x15	; 21
+     4e2:	30 e0       	ldi	r19, 0x00	; 0
+     4e4:	ac 01       	movw	r20, r24
+     4e6:	42 9f       	mul	r20, r18
+     4e8:	c0 01       	movw	r24, r0
+     4ea:	43 9f       	mul	r20, r19
+     4ec:	90 0d       	add	r25, r0
+     4ee:	52 9f       	mul	r21, r18
+     4f0:	90 0d       	add	r25, r0
+     4f2:	11 24       	eor	r1, r1
+     4f4:	e8 0f       	add	r30, r24
+     4f6:	f9 1f       	adc	r31, r25
+     4f8:	60 81       	ld	r22, Z
+     4fa:	71 81       	ldd	r23, Z+1	; 0x01
+  return (uint32_t)Timebase->UpCounter[window].Target;
+}
+     4fc:	82 81       	ldd	r24, Z+2	; 0x02
+     4fe:	93 81       	ldd	r25, Z+3	; 0x03
+     500:	08 95       	ret
+
+00000502 <Timebase_UpCounter_Set_TargetValue>:
+
+void Timebase_UpCounter_Set_TargetValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Target = value;
+     502:	e0 91 3b 01 	lds	r30, 0x013B
+     506:	f0 91 3c 01 	lds	r31, 0x013C
+     50a:	90 e0       	ldi	r25, 0x00	; 0
+     50c:	01 96       	adiw	r24, 0x01	; 1
+     50e:	25 e1       	ldi	r18, 0x15	; 21
+     510:	30 e0       	ldi	r19, 0x00	; 0
+     512:	dc 01       	movw	r26, r24
+     514:	a2 9f       	mul	r26, r18
+     516:	c0 01       	movw	r24, r0
+     518:	a3 9f       	mul	r26, r19
+     51a:	90 0d       	add	r25, r0
+     51c:	b2 9f       	mul	r27, r18
+     51e:	90 0d       	add	r25, r0
+     520:	11 24       	eor	r1, r1
+     522:	e8 0f       	add	r30, r24
+     524:	f9 1f       	adc	r31, r25
+     526:	40 83       	st	Z, r20
+     528:	51 83       	std	Z+1, r21	; 0x01
+     52a:	62 83       	std	Z+2, r22	; 0x02
+     52c:	73 83       	std	Z+3, r23	; 0x03
+}
+     52e:	08 95       	ret
+
+00000530 <Timebase_UpCounter_Get_TemporaryValue>:
+
+uint32_t Timebase_UpCounter_Get_TemporaryValue(uint8_t window){
+     530:	e0 91 3b 01 	lds	r30, 0x013B
+     534:	f0 91 3c 01 	lds	r31, 0x013C
+     538:	90 e0       	ldi	r25, 0x00	; 0
+     53a:	25 e1       	ldi	r18, 0x15	; 21
+     53c:	30 e0       	ldi	r19, 0x00	; 0
+     53e:	ac 01       	movw	r20, r24
+     540:	42 9f       	mul	r20, r18
+     542:	c0 01       	movw	r24, r0
+     544:	43 9f       	mul	r20, r19
+     546:	90 0d       	add	r25, r0
+     548:	52 9f       	mul	r21, r18
+     54a:	90 0d       	add	r25, r0
+     54c:	11 24       	eor	r1, r1
+     54e:	e8 0f       	add	r30, r24
+     550:	f9 1f       	adc	r31, r25
+     552:	df 01       	movw	r26, r30
+     554:	59 96       	adiw	r26, 0x19	; 25
+     556:	61 8d       	ldd	r22, Z+25	; 0x19
+     558:	11 96       	adiw	r26, 0x01	; 1
+     55a:	7c 91       	ld	r23, X
+     55c:	11 97       	sbiw	r26, 0x01	; 1
+  return (uint32_t)Timebase->UpCounter[window].Temporary;
+}
+     55e:	12 96       	adiw	r26, 0x02	; 2
+     560:	8c 91       	ld	r24, X
+     562:	12 97       	sbiw	r26, 0x02	; 2
+     564:	13 96       	adiw	r26, 0x03	; 3
+     566:	9c 91       	ld	r25, X
+     568:	08 95       	ret
+
+0000056a <Timebase_UpCounter_Set_TemporaryValue>:
+
+void Timebase_UpCounter_Set_TemporaryValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Temporary = value;
+     56a:	e0 91 3b 01 	lds	r30, 0x013B
+     56e:	f0 91 3c 01 	lds	r31, 0x013C
+     572:	90 e0       	ldi	r25, 0x00	; 0
+     574:	25 e1       	ldi	r18, 0x15	; 21
+     576:	30 e0       	ldi	r19, 0x00	; 0
+     578:	dc 01       	movw	r26, r24
+     57a:	a2 9f       	mul	r26, r18
+     57c:	c0 01       	movw	r24, r0
+     57e:	a3 9f       	mul	r26, r19
+     580:	90 0d       	add	r25, r0
+     582:	b2 9f       	mul	r27, r18
+     584:	90 0d       	add	r25, r0
+     586:	11 24       	eor	r1, r1
+     588:	e8 0f       	add	r30, r24
+     58a:	f9 1f       	adc	r31, r25
+     58c:	41 8f       	std	Z+25, r20	; 0x19
+     58e:	52 8f       	std	Z+26, r21	; 0x1a
+     590:	63 8f       	std	Z+27, r22	; 0x1b
+     592:	74 8f       	std	Z+28, r23	; 0x1c
+}
+     594:	08 95       	ret
+
+00000596 <Timebase_UpCounter_Get_PeriodValue>:
+
+uint32_t Timebase_UpCounter_Get_PeriodValue(uint8_t window){
+     596:	e0 91 3b 01 	lds	r30, 0x013B
+     59a:	f0 91 3c 01 	lds	r31, 0x013C
+     59e:	90 e0       	ldi	r25, 0x00	; 0
+     5a0:	25 e1       	ldi	r18, 0x15	; 21
+     5a2:	30 e0       	ldi	r19, 0x00	; 0
+     5a4:	ac 01       	movw	r20, r24
+     5a6:	42 9f       	mul	r20, r18
+     5a8:	c0 01       	movw	r24, r0
+     5aa:	43 9f       	mul	r20, r19
+     5ac:	90 0d       	add	r25, r0
+     5ae:	52 9f       	mul	r21, r18
+     5b0:	90 0d       	add	r25, r0
+     5b2:	11 24       	eor	r1, r1
+     5b4:	e8 0f       	add	r30, r24
+     5b6:	f9 1f       	adc	r31, r25
+     5b8:	df 01       	movw	r26, r30
+     5ba:	91 96       	adiw	r26, 0x21	; 33
+     5bc:	61 a1       	ldd	r22, Z+33	; 0x21
+     5be:	11 96       	adiw	r26, 0x01	; 1
+     5c0:	7c 91       	ld	r23, X
+     5c2:	11 97       	sbiw	r26, 0x01	; 1
+  return (uint32_t)Timebase->UpCounter[window].PeriodValue;
+}
+     5c4:	12 96       	adiw	r26, 0x02	; 2
+     5c6:	8c 91       	ld	r24, X
+     5c8:	12 97       	sbiw	r26, 0x02	; 2
+     5ca:	13 96       	adiw	r26, 0x03	; 3
+     5cc:	9c 91       	ld	r25, X
+     5ce:	08 95       	ret
+
+000005d0 <Timebase_UpCounter_Set_PeriodValue>:
+
+void Timebase_UpCounter_Set_PeriodValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].PeriodValue = value;
+     5d0:	e0 91 3b 01 	lds	r30, 0x013B
+     5d4:	f0 91 3c 01 	lds	r31, 0x013C
+     5d8:	90 e0       	ldi	r25, 0x00	; 0
+     5da:	25 e1       	ldi	r18, 0x15	; 21
+     5dc:	30 e0       	ldi	r19, 0x00	; 0
+     5de:	dc 01       	movw	r26, r24
+     5e0:	a2 9f       	mul	r26, r18
+     5e2:	c0 01       	movw	r24, r0
+     5e4:	a3 9f       	mul	r26, r19
+     5e6:	90 0d       	add	r25, r0
+     5e8:	b2 9f       	mul	r27, r18
+     5ea:	90 0d       	add	r25, r0
+     5ec:	11 24       	eor	r1, r1
+     5ee:	e8 0f       	add	r30, r24
+     5f0:	f9 1f       	adc	r31, r25
+     5f2:	41 a3       	std	Z+33, r20	; 0x21
+     5f4:	52 a3       	std	Z+34, r21	; 0x22
+     5f6:	63 a3       	std	Z+35, r22	; 0x23
+     5f8:	74 a3       	std	Z+36, r23	; 0x24
+}
+     5fa:	08 95       	ret
+
+000005fc <Timebase_UpCounter_Get_Period_Flag>:
+
+uint8_t Timebase_UpCounter_Get_Period_Flag(uint8_t window){
+     5fc:	e0 91 3b 01 	lds	r30, 0x013B
+     600:	f0 91 3c 01 	lds	r31, 0x013C
+     604:	90 e0       	ldi	r25, 0x00	; 0
+     606:	25 e1       	ldi	r18, 0x15	; 21
+     608:	30 e0       	ldi	r19, 0x00	; 0
+     60a:	ac 01       	movw	r20, r24
+     60c:	42 9f       	mul	r20, r18
+     60e:	c0 01       	movw	r24, r0
+     610:	43 9f       	mul	r20, r19
+     612:	90 0d       	add	r25, r0
+     614:	52 9f       	mul	r21, r18
+     616:	90 0d       	add	r25, r0
+     618:	11 24       	eor	r1, r1
+     61a:	e8 0f       	add	r30, r24
+     61c:	f9 1f       	adc	r31, r25
+     61e:	80 89       	ldd	r24, Z+16	; 0x10
+  return Timebase->UpCounter[window].Status.PeriodFlag;
+}
+     620:	81 70       	andi	r24, 0x01	; 1
+     622:	08 95       	ret
+
+00000624 <Timebase_UpCounter_Set_Period_Flag>:
+
+void Timebase_UpCounter_Set_Period_Flag(uint8_t window){
+  Timebase->UpCounter[window].Status.PeriodFlag = 1;
+     624:	e0 91 3b 01 	lds	r30, 0x013B
+     628:	f0 91 3c 01 	lds	r31, 0x013C
+     62c:	90 e0       	ldi	r25, 0x00	; 0
+     62e:	25 e1       	ldi	r18, 0x15	; 21
+     630:	30 e0       	ldi	r19, 0x00	; 0
+     632:	ac 01       	movw	r20, r24
+     634:	42 9f       	mul	r20, r18
+     636:	c0 01       	movw	r24, r0
+     638:	43 9f       	mul	r20, r19
+     63a:	90 0d       	add	r25, r0
+     63c:	52 9f       	mul	r21, r18
+     63e:	90 0d       	add	r25, r0
+     640:	11 24       	eor	r1, r1
+     642:	e8 0f       	add	r30, r24
+     644:	f9 1f       	adc	r31, r25
+     646:	80 89       	ldd	r24, Z+16	; 0x10
+     648:	81 60       	ori	r24, 0x01	; 1
+     64a:	80 8b       	std	Z+16, r24	; 0x10
+}
+     64c:	08 95       	ret
+
+0000064e <Timebase_UpCounter_Clear_Period_Flag>:
+
+void Timebase_UpCounter_Clear_Period_Flag(uint8_t window){
+  Timebase->UpCounter[window].Status.PeriodFlag = 0;
+     64e:	e0 91 3b 01 	lds	r30, 0x013B
+     652:	f0 91 3c 01 	lds	r31, 0x013C
+     656:	90 e0       	ldi	r25, 0x00	; 0
+     658:	25 e1       	ldi	r18, 0x15	; 21
+     65a:	30 e0       	ldi	r19, 0x00	; 0
+     65c:	ac 01       	movw	r20, r24
+     65e:	42 9f       	mul	r20, r18
+     660:	c0 01       	movw	r24, r0
+     662:	43 9f       	mul	r20, r19
+     664:	90 0d       	add	r25, r0
+     666:	52 9f       	mul	r21, r18
+     668:	90 0d       	add	r25, r0
+     66a:	11 24       	eor	r1, r1
+     66c:	e8 0f       	add	r30, r24
+     66e:	f9 1f       	adc	r31, r25
+     670:	80 89       	ldd	r24, Z+16	; 0x10
+     672:	8e 7f       	andi	r24, 0xFE	; 254
+     674:	80 8b       	std	Z+16, r24	; 0x10
+}
+     676:	08 95       	ret
+
+00000678 <Timebase_UpCounter_Reset>:
+uint8_t Timebase_UpCounter_Get_Status(uint8_t window){
+  return Timebase->UpCounter[window].Status.Value;
+}
+
+void Timebase_UpCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->UpCounter[window].Status.Value = value;
+     678:	a0 91 3b 01 	lds	r26, 0x013B
+     67c:	b0 91 3c 01 	lds	r27, 0x013C
+     680:	90 e0       	ldi	r25, 0x00	; 0
+     682:	45 e1       	ldi	r20, 0x15	; 21
+     684:	50 e0       	ldi	r21, 0x00	; 0
+     686:	84 9f       	mul	r24, r20
+     688:	f0 01       	movw	r30, r0
+     68a:	85 9f       	mul	r24, r21
+     68c:	f0 0d       	add	r31, r0
+     68e:	94 9f       	mul	r25, r20
+     690:	f0 0d       	add	r31, r0
+     692:	11 24       	eor	r1, r1
+     694:	ea 0f       	add	r30, r26
+     696:	fb 1f       	adc	r31, r27
+     698:	20 89       	ldd	r18, Z+16	; 0x10
+     69a:	21 7e       	andi	r18, 0xE1	; 225
+     69c:	20 8b       	std	Z+16, r18	; 0x10
+uint32_t Timebase_UpCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].Value;
+}
+
+void Timebase_UpCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Value = value;
+     69e:	15 8e       	std	Z+29, r1	; 0x1d
+     6a0:	16 8e       	std	Z+30, r1	; 0x1e
+     6a2:	17 8e       	std	Z+31, r1	; 0x1f
+     6a4:	10 a2       	std	Z+32, r1	; 0x20
+uint32_t Timebase_UpCounter_Get_EndValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].EndValue;
+}
+
+void Timebase_UpCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].EndValue = value;
+     6a6:	11 8a       	std	Z+17, r1	; 0x11
+     6a8:	12 8a       	std	Z+18, r1	; 0x12
+     6aa:	13 8a       	std	Z+19, r1	; 0x13
+     6ac:	14 8a       	std	Z+20, r1	; 0x14
+uint32_t Timebase_UpCounter_Get_TargetValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].Target;
+}
+
+void Timebase_UpCounter_Set_TargetValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Target = value;
+     6ae:	01 96       	adiw	r24, 0x01	; 1
+     6b0:	9c 01       	movw	r18, r24
+     6b2:	24 9f       	mul	r18, r20
+     6b4:	c0 01       	movw	r24, r0
+     6b6:	25 9f       	mul	r18, r21
+     6b8:	90 0d       	add	r25, r0
+     6ba:	34 9f       	mul	r19, r20
+     6bc:	90 0d       	add	r25, r0
+     6be:	11 24       	eor	r1, r1
+     6c0:	a8 0f       	add	r26, r24
+     6c2:	b9 1f       	adc	r27, r25
+     6c4:	1d 92       	st	X+, r1
+     6c6:	1d 92       	st	X+, r1
+     6c8:	1d 92       	st	X+, r1
+     6ca:	1c 92       	st	X, r1
+     6cc:	13 97       	sbiw	r26, 0x03	; 3
+uint32_t Timebase_UpCounter_Get_TemporaryValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].Temporary;
+}
+
+void Timebase_UpCounter_Set_TemporaryValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Temporary = value;
+     6ce:	11 8e       	std	Z+25, r1	; 0x19
+     6d0:	12 8e       	std	Z+26, r1	; 0x1a
+     6d2:	13 8e       	std	Z+27, r1	; 0x1b
+     6d4:	14 8e       	std	Z+28, r1	; 0x1c
+uint32_t Timebase_UpCounter_Get_PeriodValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].PeriodValue;
+}
+
+void Timebase_UpCounter_Set_PeriodValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].PeriodValue = value;
+     6d6:	11 a2       	std	Z+33, r1	; 0x21
+     6d8:	12 a2       	std	Z+34, r1	; 0x22
+     6da:	13 a2       	std	Z+35, r1	; 0x23
+     6dc:	14 a2       	std	Z+36, r1	; 0x24
+void Timebase_UpCounter_Set_Period_Flag(uint8_t window){
+  Timebase->UpCounter[window].Status.PeriodFlag = 1;
+}
+
+void Timebase_UpCounter_Clear_Period_Flag(uint8_t window){
+  Timebase->UpCounter[window].Status.PeriodFlag = 0;
+     6de:	80 89       	ldd	r24, Z+16	; 0x10
+     6e0:	8e 7f       	andi	r24, 0xFE	; 254
+     6e2:	80 8b       	std	Z+16, r24	; 0x10
+  Timebase_UpCounter_Set_EndValue(window, 0);
+  Timebase_UpCounter_Set_TargetValue(window, 0);
+  Timebase_UpCounter_Set_TemporaryValue(window, 0);
+  Timebase_UpCounter_Set_PeriodValue(window, 0);
+  Timebase_UpCounter_Clear_Period_Flag(window);
+} 
+     6e4:	08 95       	ret
+
+000006e6 <Timebase_UpCounter_Clear_All_Flags>:
+
+void Timebase_UpCounter_Clear_All_Flags(uint8_t window){
+  Timebase_UpCounter_Reset( window );
+     6e6:	0e 94 3c 03 	call	0x678	; 0x678 <Timebase_UpCounter_Reset>
+}
+     6ea:	08 95       	ret
+
+000006ec <Timebase_UpCounter_Start>:
+
+
+//UpCounter Functions
+#ifdef TIMEBASE_UPCOUNTER
+uint8_t Timebase_UpCounter_Get_Status(uint8_t window){
+  return Timebase->UpCounter[window].Status.Value;
+     6ec:	e0 91 3b 01 	lds	r30, 0x013B
+     6f0:	f0 91 3c 01 	lds	r31, 0x013C
+     6f4:	90 e0       	ldi	r25, 0x00	; 0
+void Timebase_UpCounter_Clear_All_Flags(uint8_t window){
+  Timebase_UpCounter_Reset( window );
+}
+
+void Timebase_UpCounter_Start(uint8_t window){
+  if(Timebase_UpCounter_Get_Status(window) != 1){
+     6f6:	25 e1       	ldi	r18, 0x15	; 21
+     6f8:	30 e0       	ldi	r19, 0x00	; 0
+     6fa:	ac 01       	movw	r20, r24
+     6fc:	42 9f       	mul	r20, r18
+     6fe:	c0 01       	movw	r24, r0
+     700:	43 9f       	mul	r20, r19
+     702:	90 0d       	add	r25, r0
+     704:	52 9f       	mul	r21, r18
+     706:	90 0d       	add	r25, r0
+     708:	11 24       	eor	r1, r1
+     70a:	e8 0f       	add	r30, r24
+     70c:	f9 1f       	adc	r31, r25
+     70e:	90 89       	ldd	r25, Z+16	; 0x10
+     710:	89 2f       	mov	r24, r25
+     712:	86 95       	lsr	r24
+     714:	8f 70       	andi	r24, 0x0F	; 15
+     716:	81 30       	cpi	r24, 0x01	; 1
+     718:	19 f0       	breq	.+6      	; 0x720 <Timebase_UpCounter_Start+0x34>
+uint8_t Timebase_UpCounter_Get_Status(uint8_t window){
+  return Timebase->UpCounter[window].Status.Value;
+}
+
+void Timebase_UpCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->UpCounter[window].Status.Value = value;
+     71a:	91 7e       	andi	r25, 0xE1	; 225
+     71c:	92 60       	ori	r25, 0x02	; 2
+     71e:	90 8b       	std	Z+16, r25	; 0x10
+     720:	08 95       	ret
+
+00000722 <Timebase_UpCounter_Stop>:
+
+
+//UpCounter Functions
+#ifdef TIMEBASE_UPCOUNTER
+uint8_t Timebase_UpCounter_Get_Status(uint8_t window){
+  return Timebase->UpCounter[window].Status.Value;
+     722:	e0 91 3b 01 	lds	r30, 0x013B
+     726:	f0 91 3c 01 	lds	r31, 0x013C
+     72a:	90 e0       	ldi	r25, 0x00	; 0
+    Timebase_UpCounter_Set_Status(window , 1);    
+  }
+}
+
+void Timebase_UpCounter_Stop(uint8_t window){
+  if(Timebase_UpCounter_Get_Status(window) != 2){
+     72c:	25 e1       	ldi	r18, 0x15	; 21
+     72e:	30 e0       	ldi	r19, 0x00	; 0
+     730:	ac 01       	movw	r20, r24
+     732:	42 9f       	mul	r20, r18
+     734:	c0 01       	movw	r24, r0
+     736:	43 9f       	mul	r20, r19
+     738:	90 0d       	add	r25, r0
+     73a:	52 9f       	mul	r21, r18
+     73c:	90 0d       	add	r25, r0
+     73e:	11 24       	eor	r1, r1
+     740:	e8 0f       	add	r30, r24
+     742:	f9 1f       	adc	r31, r25
+     744:	90 89       	ldd	r25, Z+16	; 0x10
+     746:	89 2f       	mov	r24, r25
+     748:	86 95       	lsr	r24
+     74a:	8f 70       	andi	r24, 0x0F	; 15
+     74c:	82 30       	cpi	r24, 0x02	; 2
+     74e:	19 f0       	breq	.+6      	; 0x756 <Timebase_UpCounter_Stop+0x34>
+uint8_t Timebase_UpCounter_Get_Status(uint8_t window){
+  return Timebase->UpCounter[window].Status.Value;
+}
+
+void Timebase_UpCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->UpCounter[window].Status.Value = value;
+     750:	91 7e       	andi	r25, 0xE1	; 225
+     752:	94 60       	ori	r25, 0x04	; 4
+     754:	90 8b       	std	Z+16, r25	; 0x10
+     756:	08 95       	ret
+
+00000758 <Timebase_UpCounter_Set_Securely>:
+    Timebase_UpCounter_Set_Status(window , 2);
+  }
+}
+
+
+void Timebase_UpCounter_Set_Securely(uint8_t window, uint32_t value){
+     758:	0f 93       	push	r16
+     75a:	1f 93       	push	r17
+     75c:	cf 93       	push	r28
+     75e:	df 93       	push	r29
+
+
+//UpCounter Functions
+#ifdef TIMEBASE_UPCOUNTER
+uint8_t Timebase_UpCounter_Get_Status(uint8_t window){
+  return Timebase->UpCounter[window].Status.Value;
+     760:	a0 91 3b 01 	lds	r26, 0x013B
+     764:	b0 91 3c 01 	lds	r27, 0x013C
+     768:	28 2f       	mov	r18, r24
+     76a:	30 e0       	ldi	r19, 0x00	; 0
+  }
+}
+
+
+void Timebase_UpCounter_Set_Securely(uint8_t window, uint32_t value){
+  if( Timebase_UpCounter_Get_Status( window ) == 0 ){
+     76c:	05 e1       	ldi	r16, 0x15	; 21
+     76e:	10 e0       	ldi	r17, 0x00	; 0
+     770:	20 9f       	mul	r18, r16
+     772:	e0 01       	movw	r28, r0
+     774:	21 9f       	mul	r18, r17
+     776:	d0 0d       	add	r29, r0
+     778:	30 9f       	mul	r19, r16
+     77a:	d0 0d       	add	r29, r0
+     77c:	11 24       	eor	r1, r1
+     77e:	ca 0f       	add	r28, r26
+     780:	db 1f       	adc	r29, r27
+     782:	88 89       	ldd	r24, Y+16	; 0x10
+     784:	86 95       	lsr	r24
+     786:	8f 70       	andi	r24, 0x0F	; 15
+     788:	71 f5       	brne	.+92     	; 0x7e6 <Timebase_UpCounter_Set_Securely+0x8e>
+uint32_t Timebase_UpCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].Value;
+}
+
+void Timebase_UpCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Value = value;
+     78a:	1d 8e       	std	Y+29, r1	; 0x1d
+     78c:	1e 8e       	std	Y+30, r1	; 0x1e
+     78e:	1f 8e       	std	Y+31, r1	; 0x1f
+     790:	18 a2       	std	Y+32, r1	; 0x20
+uint32_t Timebase_UpCounter_Get_TemporaryValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].Temporary;
+}
+
+void Timebase_UpCounter_Set_TemporaryValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Temporary = value;
+     792:	19 8e       	std	Y+25, r1	; 0x19
+     794:	1a 8e       	std	Y+26, r1	; 0x1a
+     796:	1b 8e       	std	Y+27, r1	; 0x1b
+     798:	1c 8e       	std	Y+28, r1	; 0x1c
+uint32_t Timebase_UpCounter_Get_TargetValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].Target;
+}
+
+void Timebase_UpCounter_Set_TargetValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Target = value;
+     79a:	2f 5f       	subi	r18, 0xFF	; 255
+     79c:	3f 4f       	sbci	r19, 0xFF	; 255
+     79e:	20 9f       	mul	r18, r16
+     7a0:	f0 01       	movw	r30, r0
+     7a2:	21 9f       	mul	r18, r17
+     7a4:	f0 0d       	add	r31, r0
+     7a6:	30 9f       	mul	r19, r16
+     7a8:	f0 0d       	add	r31, r0
+     7aa:	11 24       	eor	r1, r1
+     7ac:	ea 0f       	add	r30, r26
+     7ae:	fb 1f       	adc	r31, r27
+     7b0:	40 83       	st	Z, r20
+     7b2:	51 83       	std	Z+1, r21	; 0x01
+     7b4:	62 83       	std	Z+2, r22	; 0x02
+     7b6:	73 83       	std	Z+3, r23	; 0x03
+uint32_t Timebase_Timer_Get_SubSeconds(void){
+  return Timebase->Time.SubSeconds;
+}
+
+uint32_t Timebase_Timer_Get_Seconds(void){
+  return Timebase->Time.Seconds;
+     7b8:	1b 96       	adiw	r26, 0x0b	; 11
+     7ba:	8d 91       	ld	r24, X+
+     7bc:	9d 91       	ld	r25, X+
+     7be:	0d 90       	ld	r0, X+
+     7c0:	bc 91       	ld	r27, X
+     7c2:	a0 2d       	mov	r26, r0
+uint32_t Timebase_UpCounter_Get_EndValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].EndValue;
+}
+
+void Timebase_UpCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].EndValue = value;
+     7c4:	84 0f       	add	r24, r20
+     7c6:	95 1f       	adc	r25, r21
+     7c8:	a6 1f       	adc	r26, r22
+     7ca:	b7 1f       	adc	r27, r23
+     7cc:	89 8b       	std	Y+17, r24	; 0x11
+     7ce:	9a 8b       	std	Y+18, r25	; 0x12
+     7d0:	ab 8b       	std	Y+19, r26	; 0x13
+     7d2:	bc 8b       	std	Y+20, r27	; 0x14
+void Timebase_UpCounter_Clear_All_Flags(uint8_t window){
+  Timebase_UpCounter_Reset( window );
+}
+
+void Timebase_UpCounter_Start(uint8_t window){
+  if(Timebase_UpCounter_Get_Status(window) != 1){
+     7d4:	98 89       	ldd	r25, Y+16	; 0x10
+     7d6:	89 2f       	mov	r24, r25
+     7d8:	86 95       	lsr	r24
+     7da:	8f 70       	andi	r24, 0x0F	; 15
+     7dc:	81 30       	cpi	r24, 0x01	; 1
+     7de:	19 f0       	breq	.+6      	; 0x7e6 <Timebase_UpCounter_Set_Securely+0x8e>
+uint8_t Timebase_UpCounter_Get_Status(uint8_t window){
+  return Timebase->UpCounter[window].Status.Value;
+}
+
+void Timebase_UpCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->UpCounter[window].Status.Value = value;
+     7e0:	91 7e       	andi	r25, 0xE1	; 225
+     7e2:	92 60       	ori	r25, 0x02	; 2
+     7e4:	98 8b       	std	Y+16, r25	; 0x10
+    Timebase_UpCounter_Set_TemporaryValue(window, 0);
+    Timebase_UpCounter_Set_TargetValue(window, value);
+    Timebase_UpCounter_Set_EndValue(window, Timebase_Timer_Get_Seconds() + value);  
+    Timebase_UpCounter_Start(window);
+  }
+}
+     7e6:	df 91       	pop	r29
+     7e8:	cf 91       	pop	r28
+     7ea:	1f 91       	pop	r17
+     7ec:	0f 91       	pop	r16
+     7ee:	08 95       	ret
+
+000007f0 <Timebase_UpCounter_Set_Forcefully>:
+
+void Timebase_UpCounter_Set_Forcefully(uint8_t window, uint32_t value){
+     7f0:	df 92       	push	r13
+     7f2:	ef 92       	push	r14
+     7f4:	ff 92       	push	r15
+     7f6:	0f 93       	push	r16
+     7f8:	1f 93       	push	r17
+     7fa:	d8 2e       	mov	r13, r24
+     7fc:	7a 01       	movw	r14, r20
+     7fe:	8b 01       	movw	r16, r22
+  Timebase_UpCounter_Reset( window );
+     800:	0e 94 3c 03 	call	0x678	; 0x678 <Timebase_UpCounter_Reset>
+  Timebase_UpCounter_Set_Securely( window, value );
+     804:	8d 2d       	mov	r24, r13
+     806:	b8 01       	movw	r22, r16
+     808:	a7 01       	movw	r20, r14
+     80a:	0e 94 ac 03 	call	0x758	; 0x758 <Timebase_UpCounter_Set_Securely>
+} 
+     80e:	1f 91       	pop	r17
+     810:	0f 91       	pop	r16
+     812:	ff 90       	pop	r15
+     814:	ef 90       	pop	r14
+     816:	df 90       	pop	r13
+     818:	08 95       	ret
+
+0000081a <Timebase_UpCounter_Update>:
+
+void Timebase_UpCounter_Update(uint8_t window){
+     81a:	ef 92       	push	r14
+     81c:	ff 92       	push	r15
+     81e:	0f 93       	push	r16
+     820:	1f 93       	push	r17
+     822:	cf 93       	push	r28
+     824:	df 93       	push	r29
+
+
+//UpCounter Functions
+#ifdef TIMEBASE_UPCOUNTER
+uint8_t Timebase_UpCounter_Get_Status(uint8_t window){
+  return Timebase->UpCounter[window].Status.Value;
+     826:	c0 91 3b 01 	lds	r28, 0x013B
+     82a:	d0 91 3c 01 	lds	r29, 0x013C
+     82e:	68 2f       	mov	r22, r24
+     830:	70 e0       	ldi	r23, 0x00	; 0
+     832:	05 e1       	ldi	r16, 0x15	; 21
+     834:	10 e0       	ldi	r17, 0x00	; 0
+     836:	60 9f       	mul	r22, r16
+     838:	f0 01       	movw	r30, r0
+     83a:	61 9f       	mul	r22, r17
+     83c:	f0 0d       	add	r31, r0
+     83e:	70 9f       	mul	r23, r16
+     840:	f0 0d       	add	r31, r0
+     842:	11 24       	eor	r1, r1
+     844:	ec 0f       	add	r30, r28
+     846:	fd 1f       	adc	r31, r29
+     848:	80 89       	ldd	r24, Z+16	; 0x10
+     84a:	86 95       	lsr	r24
+     84c:	8f 70       	andi	r24, 0x0F	; 15
+  Timebase_UpCounter_Reset( window );
+  Timebase_UpCounter_Set_Securely( window, value );
+} 
+
+void Timebase_UpCounter_Update(uint8_t window){
+  if( Timebase_UpCounter_Get_Status( window ) == 1 ){ 
+     84e:	81 30       	cpi	r24, 0x01	; 1
+     850:	09 f0       	breq	.+2      	; 0x854 <Timebase_UpCounter_Update+0x3a>
+     852:	3f c0       	rjmp	.+126    	; 0x8d2 <Timebase_UpCounter_Update+0xb8>
+uint32_t Timebase_Timer_Get_SubSeconds(void){
+  return Timebase->Time.SubSeconds;
+}
+
+uint32_t Timebase_Timer_Get_Seconds(void){
+  return Timebase->Time.Seconds;
+     854:	8b 85       	ldd	r24, Y+11	; 0x0b
+     856:	9c 85       	ldd	r25, Y+12	; 0x0c
+     858:	ad 85       	ldd	r26, Y+13	; 0x0d
+     85a:	be 85       	ldd	r27, Y+14	; 0x0e
+  Timebase_UpCounter_Set_Securely( window, value );
+} 
+
+void Timebase_UpCounter_Update(uint8_t window){
+  if( Timebase_UpCounter_Get_Status( window ) == 1 ){ 
+    Timebase_UpCounter_Set_TemporaryValue(window, Timebase_UpCounter_Get_EndValue(window) - Timebase_Timer_Get_Seconds() );
+     85c:	21 89       	ldd	r18, Z+17	; 0x11
+     85e:	32 89       	ldd	r19, Z+18	; 0x12
+     860:	43 89       	ldd	r20, Z+19	; 0x13
+     862:	54 89       	ldd	r21, Z+20	; 0x14
+     864:	28 1b       	sub	r18, r24
+     866:	39 0b       	sbc	r19, r25
+     868:	4a 0b       	sbc	r20, r26
+     86a:	5b 0b       	sbc	r21, r27
+uint32_t Timebase_UpCounter_Get_TemporaryValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].Temporary;
+}
+
+void Timebase_UpCounter_Set_TemporaryValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Temporary = value;
+     86c:	21 8f       	std	Z+25, r18	; 0x19
+     86e:	32 8f       	std	Z+26, r19	; 0x1a
+     870:	43 8f       	std	Z+27, r20	; 0x1b
+     872:	54 8f       	std	Z+28, r21	; 0x1c
+uint32_t Timebase_UpCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].Value;
+}
+
+void Timebase_UpCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Value = value;
+     874:	6f 5f       	subi	r22, 0xFF	; 255
+     876:	7f 4f       	sbci	r23, 0xFF	; 255
+     878:	60 9f       	mul	r22, r16
+     87a:	c0 01       	movw	r24, r0
+     87c:	61 9f       	mul	r22, r17
+     87e:	90 0d       	add	r25, r0
+     880:	70 9f       	mul	r23, r16
+     882:	90 0d       	add	r25, r0
+     884:	11 24       	eor	r1, r1
+     886:	c8 0f       	add	r28, r24
+     888:	d9 1f       	adc	r29, r25
+     88a:	e8 80       	ld	r14, Y
+     88c:	f9 80       	ldd	r15, Y+1	; 0x01
+     88e:	0a 81       	ldd	r16, Y+2	; 0x02
+     890:	1b 81       	ldd	r17, Y+3	; 0x03
+     892:	d8 01       	movw	r26, r16
+     894:	c7 01       	movw	r24, r14
+     896:	82 1b       	sub	r24, r18
+     898:	93 0b       	sbc	r25, r19
+     89a:	a4 0b       	sbc	r26, r20
+     89c:	b5 0b       	sbc	r27, r21
+     89e:	85 8f       	std	Z+29, r24	; 0x1d
+     8a0:	96 8f       	std	Z+30, r25	; 0x1e
+     8a2:	a7 8f       	std	Z+31, r26	; 0x1f
+     8a4:	b0 a3       	std	Z+32, r27	; 0x20
+
+void Timebase_UpCounter_Update(uint8_t window){
+  if( Timebase_UpCounter_Get_Status( window ) == 1 ){ 
+    Timebase_UpCounter_Set_TemporaryValue(window, Timebase_UpCounter_Get_EndValue(window) - Timebase_Timer_Get_Seconds() );
+    Timebase_UpCounter_Set_Value(window, Timebase_UpCounter_Get_TargetValue(window) - Timebase_UpCounter_Get_TemporaryValue(window) );
+    if(Timebase_UpCounter_Get_TemporaryValue(window) <= 0){
+     8a6:	21 15       	cp	r18, r1
+     8a8:	31 05       	cpc	r19, r1
+     8aa:	41 05       	cpc	r20, r1
+     8ac:	51 05       	cpc	r21, r1
+     8ae:	d1 f5       	brne	.+116    	; 0x924 <__stack+0x25>
+uint32_t Timebase_UpCounter_Get_EndValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].EndValue;
+}
+
+void Timebase_UpCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].EndValue = value;
+     8b0:	11 8a       	std	Z+17, r1	; 0x11
+     8b2:	12 8a       	std	Z+18, r1	; 0x12
+     8b4:	13 8a       	std	Z+19, r1	; 0x13
+     8b6:	14 8a       	std	Z+20, r1	; 0x14
+uint32_t Timebase_UpCounter_Get_TemporaryValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].Temporary;
+}
+
+void Timebase_UpCounter_Set_TemporaryValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Temporary = value;
+     8b8:	11 8e       	std	Z+25, r1	; 0x19
+     8ba:	12 8e       	std	Z+26, r1	; 0x1a
+     8bc:	13 8e       	std	Z+27, r1	; 0x1b
+     8be:	14 8e       	std	Z+28, r1	; 0x1c
+uint32_t Timebase_UpCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].Value;
+}
+
+void Timebase_UpCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Value = value;
+     8c0:	e5 8e       	std	Z+29, r14	; 0x1d
+     8c2:	f6 8e       	std	Z+30, r15	; 0x1e
+     8c4:	07 8f       	std	Z+31, r16	; 0x1f
+     8c6:	10 a3       	std	Z+32, r17	; 0x20
+uint8_t Timebase_UpCounter_Get_Status(uint8_t window){
+  return Timebase->UpCounter[window].Status.Value;
+}
+
+void Timebase_UpCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->UpCounter[window].Status.Value = value;
+     8c8:	80 89       	ldd	r24, Z+16	; 0x10
+     8ca:	81 7e       	andi	r24, 0xE1	; 225
+     8cc:	88 60       	ori	r24, 0x08	; 8
+     8ce:	80 8b       	std	Z+16, r24	; 0x10
+     8d0:	29 c0       	rjmp	.+82     	; 0x924 <__stack+0x25>
+      Timebase_UpCounter_Set_EndValue(window, 0);
+      Timebase_UpCounter_Set_TemporaryValue(window, 0);
+      Timebase_UpCounter_Set_Value(window, Timebase_UpCounter_Get_TargetValue(window));
+      Timebase_UpCounter_Set_Status(window, 4);
+    }
+  } else if (Timebase_UpCounter_Get_Status( window ) == 2){
+     8d2:	82 30       	cpi	r24, 0x02	; 2
+     8d4:	39 f5       	brne	.+78     	; 0x924 <__stack+0x25>
+uint32_t Timebase_Timer_Get_SubSeconds(void){
+  return Timebase->Time.SubSeconds;
+}
+
+uint32_t Timebase_Timer_Get_Seconds(void){
+  return Timebase->Time.Seconds;
+     8d6:	8b 85       	ldd	r24, Y+11	; 0x0b
+     8d8:	9c 85       	ldd	r25, Y+12	; 0x0c
+     8da:	ad 85       	ldd	r26, Y+13	; 0x0d
+     8dc:	be 85       	ldd	r27, Y+14	; 0x0e
+uint32_t Timebase_UpCounter_Get_EndValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].EndValue;
+}
+
+void Timebase_UpCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].EndValue = value;
+     8de:	21 8d       	ldd	r18, Z+25	; 0x19
+     8e0:	32 8d       	ldd	r19, Z+26	; 0x1a
+     8e2:	43 8d       	ldd	r20, Z+27	; 0x1b
+     8e4:	54 8d       	ldd	r21, Z+28	; 0x1c
+     8e6:	82 0f       	add	r24, r18
+     8e8:	93 1f       	adc	r25, r19
+     8ea:	a4 1f       	adc	r26, r20
+     8ec:	b5 1f       	adc	r27, r21
+     8ee:	81 8b       	std	Z+17, r24	; 0x11
+     8f0:	92 8b       	std	Z+18, r25	; 0x12
+     8f2:	a3 8b       	std	Z+19, r26	; 0x13
+     8f4:	b4 8b       	std	Z+20, r27	; 0x14
+uint32_t Timebase_UpCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].Value;
+}
+
+void Timebase_UpCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Value = value;
+     8f6:	6f 5f       	subi	r22, 0xFF	; 255
+     8f8:	7f 4f       	sbci	r23, 0xFF	; 255
+     8fa:	60 9f       	mul	r22, r16
+     8fc:	c0 01       	movw	r24, r0
+     8fe:	61 9f       	mul	r22, r17
+     900:	90 0d       	add	r25, r0
+     902:	70 9f       	mul	r23, r16
+     904:	90 0d       	add	r25, r0
+     906:	11 24       	eor	r1, r1
+     908:	c8 0f       	add	r28, r24
+     90a:	d9 1f       	adc	r29, r25
+     90c:	88 81       	ld	r24, Y
+     90e:	99 81       	ldd	r25, Y+1	; 0x01
+     910:	aa 81       	ldd	r26, Y+2	; 0x02
+     912:	bb 81       	ldd	r27, Y+3	; 0x03
+     914:	82 1b       	sub	r24, r18
+     916:	93 0b       	sbc	r25, r19
+     918:	a4 0b       	sbc	r26, r20
+     91a:	b5 0b       	sbc	r27, r21
+     91c:	85 8f       	std	Z+29, r24	; 0x1d
+     91e:	96 8f       	std	Z+30, r25	; 0x1e
+     920:	a7 8f       	std	Z+31, r26	; 0x1f
+     922:	b0 a3       	std	Z+32, r27	; 0x20
+    }
+  } else if (Timebase_UpCounter_Get_Status( window ) == 2){
+    Timebase_UpCounter_Set_EndValue(window, Timebase_UpCounter_Get_TemporaryValue(window) + Timebase_Timer_Get_Seconds());
+    Timebase_UpCounter_Set_Value(window, Timebase_UpCounter_Get_TargetValue(window) - Timebase_UpCounter_Get_TemporaryValue(window));
+  }
+}
+     924:	df 91       	pop	r29
+     926:	cf 91       	pop	r28
+     928:	1f 91       	pop	r17
+     92a:	0f 91       	pop	r16
+     92c:	ff 90       	pop	r15
+     92e:	ef 90       	pop	r14
+     930:	08 95       	ret
+
+00000932 <Timebase_UpCounter_Expired>:
+
+
+uint8_t Timebase_UpCounter_Expired(uint8_t window){
+     932:	40 e0       	ldi	r20, 0x00	; 0
+     934:	e0 91 3b 01 	lds	r30, 0x013B
+     938:	f0 91 3c 01 	lds	r31, 0x013C
+     93c:	90 e0       	ldi	r25, 0x00	; 0
+     93e:	25 e1       	ldi	r18, 0x15	; 21
+     940:	30 e0       	ldi	r19, 0x00	; 0
+     942:	bc 01       	movw	r22, r24
+     944:	62 9f       	mul	r22, r18
+     946:	c0 01       	movw	r24, r0
+     948:	63 9f       	mul	r22, r19
+     94a:	90 0d       	add	r25, r0
+     94c:	72 9f       	mul	r23, r18
+     94e:	90 0d       	add	r25, r0
+     950:	11 24       	eor	r1, r1
+     952:	e8 0f       	add	r30, r24
+     954:	f9 1f       	adc	r31, r25
+     956:	80 89       	ldd	r24, Z+16	; 0x10
+     958:	86 95       	lsr	r24
+     95a:	8f 70       	andi	r24, 0x0F	; 15
+     95c:	84 30       	cpi	r24, 0x04	; 4
+     95e:	09 f4       	brne	.+2      	; 0x962 <Timebase_UpCounter_Expired+0x30>
+     960:	41 e0       	ldi	r20, 0x01	; 1
+  if(Timebase_UpCounter_Get_Status( window ) == 4){
+    return 1;
+  }else{
+    return 0;
+  }
+}
+     962:	84 2f       	mov	r24, r20
+     964:	08 95       	ret
+
+00000966 <Timebase_UpCounter_Expired_Event>:
+
+uint8_t Timebase_UpCounter_Expired_Event(uint8_t window){
+     966:	48 2f       	mov	r20, r24
+  if(Timebase_UpCounter_Get_Status( window ) == 4){
+     968:	e0 91 3b 01 	lds	r30, 0x013B
+     96c:	f0 91 3c 01 	lds	r31, 0x013C
+     970:	28 2f       	mov	r18, r24
+     972:	30 e0       	ldi	r19, 0x00	; 0
+     974:	85 e1       	ldi	r24, 0x15	; 21
+     976:	90 e0       	ldi	r25, 0x00	; 0
+     978:	bc 01       	movw	r22, r24
+     97a:	26 9f       	mul	r18, r22
+     97c:	c0 01       	movw	r24, r0
+     97e:	27 9f       	mul	r18, r23
+     980:	90 0d       	add	r25, r0
+     982:	36 9f       	mul	r19, r22
+     984:	90 0d       	add	r25, r0
+     986:	11 24       	eor	r1, r1
+     988:	e8 0f       	add	r30, r24
+     98a:	f9 1f       	adc	r31, r25
+     98c:	80 89       	ldd	r24, Z+16	; 0x10
+     98e:	86 95       	lsr	r24
+     990:	8f 70       	andi	r24, 0x0F	; 15
+     992:	84 30       	cpi	r24, 0x04	; 4
+     994:	11 f0       	breq	.+4      	; 0x99a <Timebase_UpCounter_Expired_Event+0x34>
+     996:	80 e0       	ldi	r24, 0x00	; 0
+     998:	08 95       	ret
+  Timebase_UpCounter_Set_PeriodValue(window, 0);
+  Timebase_UpCounter_Clear_Period_Flag(window);
+} 
+
+void Timebase_UpCounter_Clear_All_Flags(uint8_t window){
+  Timebase_UpCounter_Reset( window );
+     99a:	84 2f       	mov	r24, r20
+     99c:	0e 94 3c 03 	call	0x678	; 0x678 <Timebase_UpCounter_Reset>
+     9a0:	81 e0       	ldi	r24, 0x01	; 1
+    Timebase_UpCounter_Clear_All_Flags( window );
+    return 1;
+  }else{
+    return 0;
+  }
+}
+     9a2:	08 95       	ret
+
+000009a4 <Timebase_UpCounter_Set_Period_Value_Securely>:
+void Timebase_UpCounter_Set_PeriodValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].PeriodValue = value;
+}
+
+uint8_t Timebase_UpCounter_Get_Period_Flag(uint8_t window){
+  return Timebase->UpCounter[window].Status.PeriodFlag;
+     9a4:	e0 91 3b 01 	lds	r30, 0x013B
+     9a8:	f0 91 3c 01 	lds	r31, 0x013C
+     9ac:	90 e0       	ldi	r25, 0x00	; 0
+    return 0;
+  }
+}
+
+void Timebase_UpCounter_Set_Period_Value_Securely(uint8_t window, uint32_t value){
+  if(Timebase_UpCounter_Get_Period_Flag( window ) == 0){
+     9ae:	25 e1       	ldi	r18, 0x15	; 21
+     9b0:	30 e0       	ldi	r19, 0x00	; 0
+     9b2:	dc 01       	movw	r26, r24
+     9b4:	a2 9f       	mul	r26, r18
+     9b6:	c0 01       	movw	r24, r0
+     9b8:	a3 9f       	mul	r26, r19
+     9ba:	90 0d       	add	r25, r0
+     9bc:	b2 9f       	mul	r27, r18
+     9be:	90 0d       	add	r25, r0
+     9c0:	11 24       	eor	r1, r1
+     9c2:	e8 0f       	add	r30, r24
+     9c4:	f9 1f       	adc	r31, r25
+     9c6:	80 89       	ldd	r24, Z+16	; 0x10
+     9c8:	80 fd       	sbrc	r24, 0
+     9ca:	0f c0       	rjmp	.+30     	; 0x9ea <Timebase_UpCounter_Set_Period_Value_Securely+0x46>
+uint32_t Timebase_UpCounter_Get_PeriodValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].PeriodValue;
+}
+
+void Timebase_UpCounter_Set_PeriodValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].PeriodValue = value;
+     9cc:	85 8d       	ldd	r24, Z+29	; 0x1d
+     9ce:	96 8d       	ldd	r25, Z+30	; 0x1e
+     9d0:	a7 8d       	ldd	r26, Z+31	; 0x1f
+     9d2:	b0 a1       	ldd	r27, Z+32	; 0x20
+     9d4:	84 0f       	add	r24, r20
+     9d6:	95 1f       	adc	r25, r21
+     9d8:	a6 1f       	adc	r26, r22
+     9da:	b7 1f       	adc	r27, r23
+     9dc:	81 a3       	std	Z+33, r24	; 0x21
+     9de:	92 a3       	std	Z+34, r25	; 0x22
+     9e0:	a3 a3       	std	Z+35, r26	; 0x23
+     9e2:	b4 a3       	std	Z+36, r27	; 0x24
+uint8_t Timebase_UpCounter_Get_Period_Flag(uint8_t window){
+  return Timebase->UpCounter[window].Status.PeriodFlag;
+}
+
+void Timebase_UpCounter_Set_Period_Flag(uint8_t window){
+  Timebase->UpCounter[window].Status.PeriodFlag = 1;
+     9e4:	80 89       	ldd	r24, Z+16	; 0x10
+     9e6:	81 60       	ori	r24, 0x01	; 1
+     9e8:	80 8b       	std	Z+16, r24	; 0x10
+     9ea:	08 95       	ret
+
+000009ec <Timebase_UpCounter_Get_Remaining_Period_Value>:
+void Timebase_UpCounter_Set_TemporaryValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Temporary = value;
+}
+
+uint32_t Timebase_UpCounter_Get_PeriodValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].PeriodValue;
+     9ec:	e0 91 3b 01 	lds	r30, 0x013B
+     9f0:	f0 91 3c 01 	lds	r31, 0x013C
+     9f4:	90 e0       	ldi	r25, 0x00	; 0
+    Timebase_UpCounter_Set_Period_Flag( window);
+  }
+}
+
+uint32_t Timebase_UpCounter_Get_Remaining_Period_Value(uint8_t window){
+  int32_t temp = Timebase_UpCounter_Get_PeriodValue( window ) - Timebase_UpCounter_Get_Value( window );
+     9f6:	25 e1       	ldi	r18, 0x15	; 21
+     9f8:	30 e0       	ldi	r19, 0x00	; 0
+     9fa:	ac 01       	movw	r20, r24
+     9fc:	42 9f       	mul	r20, r18
+     9fe:	c0 01       	movw	r24, r0
+     a00:	43 9f       	mul	r20, r19
+     a02:	90 0d       	add	r25, r0
+     a04:	52 9f       	mul	r21, r18
+     a06:	90 0d       	add	r25, r0
+     a08:	11 24       	eor	r1, r1
+     a0a:	e8 0f       	add	r30, r24
+     a0c:	f9 1f       	adc	r31, r25
+     a0e:	21 a1       	ldd	r18, Z+33	; 0x21
+     a10:	32 a1       	ldd	r19, Z+34	; 0x22
+     a12:	43 a1       	ldd	r20, Z+35	; 0x23
+     a14:	54 a1       	ldd	r21, Z+36	; 0x24
+     a16:	85 8d       	ldd	r24, Z+29	; 0x1d
+     a18:	96 8d       	ldd	r25, Z+30	; 0x1e
+     a1a:	a7 8d       	ldd	r26, Z+31	; 0x1f
+     a1c:	b0 a1       	ldd	r27, Z+32	; 0x20
+     a1e:	28 1b       	sub	r18, r24
+     a20:	39 0b       	sbc	r19, r25
+     a22:	4a 0b       	sbc	r20, r26
+     a24:	5b 0b       	sbc	r21, r27
+     a26:	57 ff       	sbrs	r21, 7
+     a28:	04 c0       	rjmp	.+8      	; 0xa32 <Timebase_UpCounter_Get_Remaining_Period_Value+0x46>
+     a2a:	20 e0       	ldi	r18, 0x00	; 0
+     a2c:	30 e0       	ldi	r19, 0x00	; 0
+     a2e:	40 e0       	ldi	r20, 0x00	; 0
+     a30:	50 e0       	ldi	r21, 0x00	; 0
+  if(temp < 0){
+    temp = 0;
+  }
+  return temp;
+}
+     a32:	b9 01       	movw	r22, r18
+     a34:	ca 01       	movw	r24, r20
+     a36:	08 95       	ret
+
+00000a38 <Timebase_UpCounter_Period_Value_Expired>:
+
+uint8_t Timebase_UpCounter_Period_Value_Expired(uint8_t window){
+     a38:	cf 93       	push	r28
+     a3a:	df 93       	push	r29
+void Timebase_UpCounter_Set_TemporaryValue(uint8_t window, uint32_t value){
+  Timebase->UpCounter[window].Temporary = value;
+}
+
+uint32_t Timebase_UpCounter_Get_PeriodValue(uint8_t window){
+  return (uint32_t)Timebase->UpCounter[window].PeriodValue;
+     a3c:	c0 91 3b 01 	lds	r28, 0x013B
+     a40:	d0 91 3c 01 	lds	r29, 0x013C
+     a44:	68 2f       	mov	r22, r24
+     a46:	70 e0       	ldi	r23, 0x00	; 0
+    Timebase_UpCounter_Set_Period_Flag( window);
+  }
+}
+
+uint32_t Timebase_UpCounter_Get_Remaining_Period_Value(uint8_t window){
+  int32_t temp = Timebase_UpCounter_Get_PeriodValue( window ) - Timebase_UpCounter_Get_Value( window );
+     a48:	85 e1       	ldi	r24, 0x15	; 21
+     a4a:	90 e0       	ldi	r25, 0x00	; 0
+     a4c:	68 9f       	mul	r22, r24
+     a4e:	f0 01       	movw	r30, r0
+     a50:	69 9f       	mul	r22, r25
+     a52:	f0 0d       	add	r31, r0
+     a54:	78 9f       	mul	r23, r24
+     a56:	f0 0d       	add	r31, r0
+     a58:	11 24       	eor	r1, r1
+     a5a:	ec 0f       	add	r30, r28
+     a5c:	fd 1f       	adc	r31, r29
+     a5e:	21 a1       	ldd	r18, Z+33	; 0x21
+     a60:	32 a1       	ldd	r19, Z+34	; 0x22
+     a62:	43 a1       	ldd	r20, Z+35	; 0x23
+     a64:	54 a1       	ldd	r21, Z+36	; 0x24
+     a66:	85 8d       	ldd	r24, Z+29	; 0x1d
+     a68:	96 8d       	ldd	r25, Z+30	; 0x1e
+     a6a:	a7 8d       	ldd	r26, Z+31	; 0x1f
+     a6c:	b0 a1       	ldd	r27, Z+32	; 0x20
+     a6e:	28 1b       	sub	r18, r24
+     a70:	39 0b       	sbc	r19, r25
+     a72:	4a 0b       	sbc	r20, r26
+     a74:	5b 0b       	sbc	r21, r27
+  if(temp < 0){
+     a76:	57 fd       	sbrc	r21, 7
+     a78:	07 c0       	rjmp	.+14     	; 0xa88 <Timebase_UpCounter_Period_Value_Expired+0x50>
+  }
+  return temp;
+}
+
+uint8_t Timebase_UpCounter_Period_Value_Expired(uint8_t window){
+  if( (Timebase_UpCounter_Get_Remaining_Period_Value( window ) == 0) && Timebase_UpCounter_Get_Period_Flag( window )){
+     a7a:	21 15       	cp	r18, r1
+     a7c:	31 05       	cpc	r19, r1
+     a7e:	41 05       	cpc	r20, r1
+     a80:	51 05       	cpc	r21, r1
+     a82:	11 f0       	breq	.+4      	; 0xa88 <Timebase_UpCounter_Period_Value_Expired+0x50>
+     a84:	20 e0       	ldi	r18, 0x00	; 0
+     a86:	12 c0       	rjmp	.+36     	; 0xaac <Timebase_UpCounter_Period_Value_Expired+0x74>
+     a88:	20 e0       	ldi	r18, 0x00	; 0
+     a8a:	85 e1       	ldi	r24, 0x15	; 21
+     a8c:	90 e0       	ldi	r25, 0x00	; 0
+     a8e:	ac 01       	movw	r20, r24
+     a90:	64 9f       	mul	r22, r20
+     a92:	c0 01       	movw	r24, r0
+     a94:	65 9f       	mul	r22, r21
+     a96:	90 0d       	add	r25, r0
+     a98:	74 9f       	mul	r23, r20
+     a9a:	90 0d       	add	r25, r0
+     a9c:	11 24       	eor	r1, r1
+     a9e:	c8 0f       	add	r28, r24
+     aa0:	d9 1f       	adc	r29, r25
+     aa2:	88 89       	ldd	r24, Y+16	; 0x10
+     aa4:	80 ff       	sbrs	r24, 0
+     aa6:	21 e0       	ldi	r18, 0x01	; 1
+     aa8:	81 e0       	ldi	r24, 0x01	; 1
+     aaa:	28 27       	eor	r18, r24
+    return 1;
+  }else{
+    return 0;
+  }
+}
+     aac:	82 2f       	mov	r24, r18
+     aae:	df 91       	pop	r29
+     ab0:	cf 91       	pop	r28
+     ab2:	08 95       	ret
+
+00000ab4 <Timebase_UpCounter_Period_Value_Expired_Event>:
+
+uint8_t Timebase_UpCounter_Period_Value_Expired_Event(uint8_t window){
+     ab4:	1f 93       	push	r17
+     ab6:	18 2f       	mov	r17, r24
+  if(Timebase_UpCounter_Period_Value_Expired( window ) == 1){
+     ab8:	0e 94 1c 05 	call	0xa38	; 0xa38 <Timebase_UpCounter_Period_Value_Expired>
+     abc:	81 30       	cpi	r24, 0x01	; 1
+     abe:	11 f0       	breq	.+4      	; 0xac4 <Timebase_UpCounter_Period_Value_Expired_Event+0x10>
+     ac0:	80 e0       	ldi	r24, 0x00	; 0
+     ac2:	16 c0       	rjmp	.+44     	; 0xaf0 <Timebase_UpCounter_Period_Value_Expired_Event+0x3c>
+void Timebase_UpCounter_Set_Period_Flag(uint8_t window){
+  Timebase->UpCounter[window].Status.PeriodFlag = 1;
+}
+
+void Timebase_UpCounter_Clear_Period_Flag(uint8_t window){
+  Timebase->UpCounter[window].Status.PeriodFlag = 0;
+     ac4:	e0 91 3b 01 	lds	r30, 0x013B
+     ac8:	f0 91 3c 01 	lds	r31, 0x013C
+     acc:	21 2f       	mov	r18, r17
+     ace:	30 e0       	ldi	r19, 0x00	; 0
+     ad0:	85 e1       	ldi	r24, 0x15	; 21
+     ad2:	90 e0       	ldi	r25, 0x00	; 0
+     ad4:	ac 01       	movw	r20, r24
+     ad6:	24 9f       	mul	r18, r20
+     ad8:	c0 01       	movw	r24, r0
+     ada:	25 9f       	mul	r18, r21
+     adc:	90 0d       	add	r25, r0
+     ade:	34 9f       	mul	r19, r20
+     ae0:	90 0d       	add	r25, r0
+     ae2:	11 24       	eor	r1, r1
+     ae4:	e8 0f       	add	r30, r24
+     ae6:	f9 1f       	adc	r31, r25
+     ae8:	80 89       	ldd	r24, Z+16	; 0x10
+     aea:	8e 7f       	andi	r24, 0xFE	; 254
+     aec:	80 8b       	std	Z+16, r24	; 0x10
+     aee:	81 e0       	ldi	r24, 0x01	; 1
+    Timebase_UpCounter_Clear_Period_Flag( window );
+    return 1;
+  }else{
+    return 0;
+  }
+}
+     af0:	1f 91       	pop	r17
+     af2:	08 95       	ret
+
+00000af4 <Timebase_UpCounter_Update_All>:
+
+void Timebase_UpCounter_Update_All(void){
+  for(uint8_t i=0; i<TIMEBASE_UPCOUNTER; i++){
+    Timebase_UpCounter_Update(i);
+     af4:	80 e0       	ldi	r24, 0x00	; 0
+     af6:	0e 94 0d 04 	call	0x81a	; 0x81a <Timebase_UpCounter_Update>
+  }
+}
+     afa:	08 95       	ret
+
+00000afc <Timebase_UpCounter_Reset_All>:
+
+void Timebase_UpCounter_Reset_All(void){
+  for(uint8_t i=0; i<TIMEBASE_UPCOUNTER; i++){
+    Timebase_UpCounter_Reset(i);
+     afc:	80 e0       	ldi	r24, 0x00	; 0
+     afe:	0e 94 3c 03 	call	0x678	; 0x678 <Timebase_UpCounter_Reset>
+  }
+}
+     b02:	08 95       	ret
+
+00000b04 <Timebase_DownCounter_Get_Status>:
+#endif
+
+
+
+#ifdef TIMEBASE_DOWNCOUNTER
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+     b04:	e0 91 3b 01 	lds	r30, 0x013B
+     b08:	f0 91 3c 01 	lds	r31, 0x013C
+     b0c:	90 e0       	ldi	r25, 0x00	; 0
+     b0e:	2d e0       	ldi	r18, 0x0D	; 13
+     b10:	30 e0       	ldi	r19, 0x00	; 0
+     b12:	ac 01       	movw	r20, r24
+     b14:	42 9f       	mul	r20, r18
+     b16:	c0 01       	movw	r24, r0
+     b18:	43 9f       	mul	r20, r19
+     b1a:	90 0d       	add	r25, r0
+     b1c:	52 9f       	mul	r21, r18
+     b1e:	90 0d       	add	r25, r0
+     b20:	11 24       	eor	r1, r1
+     b22:	e8 0f       	add	r30, r24
+     b24:	f9 1f       	adc	r31, r25
+     b26:	85 a1       	ldd	r24, Z+37	; 0x25
+     b28:	86 95       	lsr	r24
+  return Timebase->DownCounter[window].Status.Value;
+}
+     b2a:	8f 70       	andi	r24, 0x0F	; 15
+     b2c:	08 95       	ret
+
+00000b2e <Timebase_DownCounter_Set_Status>:
+
+void Timebase_DownCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->DownCounter[window].Status.Value = value;
+     b2e:	e0 91 3b 01 	lds	r30, 0x013B
+     b32:	f0 91 3c 01 	lds	r31, 0x013C
+     b36:	90 e0       	ldi	r25, 0x00	; 0
+     b38:	2d e0       	ldi	r18, 0x0D	; 13
+     b3a:	30 e0       	ldi	r19, 0x00	; 0
+     b3c:	ac 01       	movw	r20, r24
+     b3e:	42 9f       	mul	r20, r18
+     b40:	c0 01       	movw	r24, r0
+     b42:	43 9f       	mul	r20, r19
+     b44:	90 0d       	add	r25, r0
+     b46:	52 9f       	mul	r21, r18
+     b48:	90 0d       	add	r25, r0
+     b4a:	11 24       	eor	r1, r1
+     b4c:	e8 0f       	add	r30, r24
+     b4e:	f9 1f       	adc	r31, r25
+     b50:	6f 70       	andi	r22, 0x0F	; 15
+     b52:	66 0f       	add	r22, r22
+     b54:	85 a1       	ldd	r24, Z+37	; 0x25
+     b56:	81 7e       	andi	r24, 0xE1	; 225
+     b58:	86 2b       	or	r24, r22
+     b5a:	85 a3       	std	Z+37, r24	; 0x25
+}
+     b5c:	08 95       	ret
+
+00000b5e <Timebase_DownCounter_Get_Value>:
+
+uint32_t Timebase_DownCounter_Get_Value(uint8_t window){
+     b5e:	e0 91 3b 01 	lds	r30, 0x013B
+     b62:	f0 91 3c 01 	lds	r31, 0x013C
+     b66:	90 e0       	ldi	r25, 0x00	; 0
+     b68:	2d e0       	ldi	r18, 0x0D	; 13
+     b6a:	30 e0       	ldi	r19, 0x00	; 0
+     b6c:	ac 01       	movw	r20, r24
+     b6e:	42 9f       	mul	r20, r18
+     b70:	c0 01       	movw	r24, r0
+     b72:	43 9f       	mul	r20, r19
+     b74:	90 0d       	add	r25, r0
+     b76:	52 9f       	mul	r21, r18
+     b78:	90 0d       	add	r25, r0
+     b7a:	11 24       	eor	r1, r1
+     b7c:	e8 0f       	add	r30, r24
+     b7e:	f9 1f       	adc	r31, r25
+     b80:	df 01       	movw	r26, r30
+     b82:	9a 96       	adiw	r26, 0x2a	; 42
+     b84:	62 a5       	ldd	r22, Z+42	; 0x2a
+     b86:	11 96       	adiw	r26, 0x01	; 1
+     b88:	7c 91       	ld	r23, X
+     b8a:	11 97       	sbiw	r26, 0x01	; 1
+  return (uint32_t)Timebase->DownCounter[window].Value;
+}
+     b8c:	12 96       	adiw	r26, 0x02	; 2
+     b8e:	8c 91       	ld	r24, X
+     b90:	12 97       	sbiw	r26, 0x02	; 2
+     b92:	13 96       	adiw	r26, 0x03	; 3
+     b94:	9c 91       	ld	r25, X
+     b96:	08 95       	ret
+
+00000b98 <Timebase_DownCounter_Set_Value>:
+
+void Timebase_DownCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].Value = value;
+     b98:	e0 91 3b 01 	lds	r30, 0x013B
+     b9c:	f0 91 3c 01 	lds	r31, 0x013C
+     ba0:	90 e0       	ldi	r25, 0x00	; 0
+     ba2:	2d e0       	ldi	r18, 0x0D	; 13
+     ba4:	30 e0       	ldi	r19, 0x00	; 0
+     ba6:	dc 01       	movw	r26, r24
+     ba8:	a2 9f       	mul	r26, r18
+     baa:	c0 01       	movw	r24, r0
+     bac:	a3 9f       	mul	r26, r19
+     bae:	90 0d       	add	r25, r0
+     bb0:	b2 9f       	mul	r27, r18
+     bb2:	90 0d       	add	r25, r0
+     bb4:	11 24       	eor	r1, r1
+     bb6:	e8 0f       	add	r30, r24
+     bb8:	f9 1f       	adc	r31, r25
+     bba:	42 a7       	std	Z+42, r20	; 0x2a
+     bbc:	53 a7       	std	Z+43, r21	; 0x2b
+     bbe:	64 a7       	std	Z+44, r22	; 0x2c
+     bc0:	75 a7       	std	Z+45, r23	; 0x2d
+}
+     bc2:	08 95       	ret
+
+00000bc4 <Timebase_DownCounter_Get_EndValue>:
+
+uint32_t Timebase_DownCounter_Get_EndValue(uint8_t window){
+     bc4:	e0 91 3b 01 	lds	r30, 0x013B
+     bc8:	f0 91 3c 01 	lds	r31, 0x013C
+     bcc:	90 e0       	ldi	r25, 0x00	; 0
+     bce:	2d e0       	ldi	r18, 0x0D	; 13
+     bd0:	30 e0       	ldi	r19, 0x00	; 0
+     bd2:	ac 01       	movw	r20, r24
+     bd4:	42 9f       	mul	r20, r18
+     bd6:	c0 01       	movw	r24, r0
+     bd8:	43 9f       	mul	r20, r19
+     bda:	90 0d       	add	r25, r0
+     bdc:	52 9f       	mul	r21, r18
+     bde:	90 0d       	add	r25, r0
+     be0:	11 24       	eor	r1, r1
+     be2:	e8 0f       	add	r30, r24
+     be4:	f9 1f       	adc	r31, r25
+     be6:	df 01       	movw	r26, r30
+     be8:	96 96       	adiw	r26, 0x26	; 38
+     bea:	66 a1       	ldd	r22, Z+38	; 0x26
+     bec:	11 96       	adiw	r26, 0x01	; 1
+     bee:	7c 91       	ld	r23, X
+     bf0:	11 97       	sbiw	r26, 0x01	; 1
+  return (uint32_t)Timebase->DownCounter[window].EndValue;
+}
+     bf2:	12 96       	adiw	r26, 0x02	; 2
+     bf4:	8c 91       	ld	r24, X
+     bf6:	12 97       	sbiw	r26, 0x02	; 2
+     bf8:	13 96       	adiw	r26, 0x03	; 3
+     bfa:	9c 91       	ld	r25, X
+     bfc:	08 95       	ret
+
+00000bfe <Timebase_DownCounter_Set_EndValue>:
+
+void Timebase_DownCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].EndValue = value;
+     bfe:	e0 91 3b 01 	lds	r30, 0x013B
+     c02:	f0 91 3c 01 	lds	r31, 0x013C
+     c06:	90 e0       	ldi	r25, 0x00	; 0
+     c08:	2d e0       	ldi	r18, 0x0D	; 13
+     c0a:	30 e0       	ldi	r19, 0x00	; 0
+     c0c:	dc 01       	movw	r26, r24
+     c0e:	a2 9f       	mul	r26, r18
+     c10:	c0 01       	movw	r24, r0
+     c12:	a3 9f       	mul	r26, r19
+     c14:	90 0d       	add	r25, r0
+     c16:	b2 9f       	mul	r27, r18
+     c18:	90 0d       	add	r25, r0
+     c1a:	11 24       	eor	r1, r1
+     c1c:	e8 0f       	add	r30, r24
+     c1e:	f9 1f       	adc	r31, r25
+     c20:	46 a3       	std	Z+38, r20	; 0x26
+     c22:	57 a3       	std	Z+39, r21	; 0x27
+     c24:	60 a7       	std	Z+40, r22	; 0x28
+     c26:	71 a7       	std	Z+41, r23	; 0x29
+}
+     c28:	08 95       	ret
+
+00000c2a <Timebase_DownCounter_Get_PeriodValue>:
+
+
+uint32_t Timebase_DownCounter_Get_PeriodValue(uint8_t window){
+     c2a:	e0 91 3b 01 	lds	r30, 0x013B
+     c2e:	f0 91 3c 01 	lds	r31, 0x013C
+     c32:	90 e0       	ldi	r25, 0x00	; 0
+     c34:	2d e0       	ldi	r18, 0x0D	; 13
+     c36:	30 e0       	ldi	r19, 0x00	; 0
+     c38:	ac 01       	movw	r20, r24
+     c3a:	42 9f       	mul	r20, r18
+     c3c:	c0 01       	movw	r24, r0
+     c3e:	43 9f       	mul	r20, r19
+     c40:	90 0d       	add	r25, r0
+     c42:	52 9f       	mul	r21, r18
+     c44:	90 0d       	add	r25, r0
+     c46:	11 24       	eor	r1, r1
+     c48:	e8 0f       	add	r30, r24
+     c4a:	f9 1f       	adc	r31, r25
+     c4c:	df 01       	movw	r26, r30
+     c4e:	9e 96       	adiw	r26, 0x2e	; 46
+     c50:	66 a5       	ldd	r22, Z+46	; 0x2e
+     c52:	11 96       	adiw	r26, 0x01	; 1
+     c54:	7c 91       	ld	r23, X
+     c56:	11 97       	sbiw	r26, 0x01	; 1
+  return (uint32_t)Timebase->DownCounter[window].PeriodValue;
+}
+     c58:	12 96       	adiw	r26, 0x02	; 2
+     c5a:	8c 91       	ld	r24, X
+     c5c:	12 97       	sbiw	r26, 0x02	; 2
+     c5e:	13 96       	adiw	r26, 0x03	; 3
+     c60:	9c 91       	ld	r25, X
+     c62:	08 95       	ret
+
+00000c64 <Timebase_DownCounter_Set_PeriodValue>:
+
+void Timebase_DownCounter_Set_PeriodValue(uint8_t window, uint32_t value){
+  if(value < 0){
+    Timebase->DownCounter[window].PeriodValue = 0;
+  }else{
+    Timebase->DownCounter[window].PeriodValue = value;
+     c64:	e0 91 3b 01 	lds	r30, 0x013B
+     c68:	f0 91 3c 01 	lds	r31, 0x013C
+     c6c:	90 e0       	ldi	r25, 0x00	; 0
+     c6e:	2d e0       	ldi	r18, 0x0D	; 13
+     c70:	30 e0       	ldi	r19, 0x00	; 0
+     c72:	dc 01       	movw	r26, r24
+     c74:	a2 9f       	mul	r26, r18
+     c76:	c0 01       	movw	r24, r0
+     c78:	a3 9f       	mul	r26, r19
+     c7a:	90 0d       	add	r25, r0
+     c7c:	b2 9f       	mul	r27, r18
+     c7e:	90 0d       	add	r25, r0
+     c80:	11 24       	eor	r1, r1
+     c82:	e8 0f       	add	r30, r24
+     c84:	f9 1f       	adc	r31, r25
+     c86:	46 a7       	std	Z+46, r20	; 0x2e
+     c88:	57 a7       	std	Z+47, r21	; 0x2f
+     c8a:	60 ab       	std	Z+48, r22	; 0x30
+     c8c:	71 ab       	std	Z+49, r23	; 0x31
+  }
+  
+}
+     c8e:	08 95       	ret
+
+00000c90 <Timebase_DownCounter_Get_Period_Flag>:
+
+uint8_t Timebase_DownCounter_Get_Period_Flag(uint8_t window){
+     c90:	e0 91 3b 01 	lds	r30, 0x013B
+     c94:	f0 91 3c 01 	lds	r31, 0x013C
+     c98:	90 e0       	ldi	r25, 0x00	; 0
+     c9a:	2d e0       	ldi	r18, 0x0D	; 13
+     c9c:	30 e0       	ldi	r19, 0x00	; 0
+     c9e:	ac 01       	movw	r20, r24
+     ca0:	42 9f       	mul	r20, r18
+     ca2:	c0 01       	movw	r24, r0
+     ca4:	43 9f       	mul	r20, r19
+     ca6:	90 0d       	add	r25, r0
+     ca8:	52 9f       	mul	r21, r18
+     caa:	90 0d       	add	r25, r0
+     cac:	11 24       	eor	r1, r1
+     cae:	e8 0f       	add	r30, r24
+     cb0:	f9 1f       	adc	r31, r25
+     cb2:	85 a1       	ldd	r24, Z+37	; 0x25
+  return (uint8_t)Timebase->DownCounter[window].Status.PeriodFlag;
+}
+     cb4:	81 70       	andi	r24, 0x01	; 1
+     cb6:	08 95       	ret
+
+00000cb8 <Timebase_DownCounter_Set_Period_Flag>:
+
+void Timebase_DownCounter_Set_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 1;
+     cb8:	e0 91 3b 01 	lds	r30, 0x013B
+     cbc:	f0 91 3c 01 	lds	r31, 0x013C
+     cc0:	90 e0       	ldi	r25, 0x00	; 0
+     cc2:	2d e0       	ldi	r18, 0x0D	; 13
+     cc4:	30 e0       	ldi	r19, 0x00	; 0
+     cc6:	ac 01       	movw	r20, r24
+     cc8:	42 9f       	mul	r20, r18
+     cca:	c0 01       	movw	r24, r0
+     ccc:	43 9f       	mul	r20, r19
+     cce:	90 0d       	add	r25, r0
+     cd0:	52 9f       	mul	r21, r18
+     cd2:	90 0d       	add	r25, r0
+     cd4:	11 24       	eor	r1, r1
+     cd6:	e8 0f       	add	r30, r24
+     cd8:	f9 1f       	adc	r31, r25
+     cda:	85 a1       	ldd	r24, Z+37	; 0x25
+     cdc:	81 60       	ori	r24, 0x01	; 1
+     cde:	85 a3       	std	Z+37, r24	; 0x25
+}
+     ce0:	08 95       	ret
+
+00000ce2 <Timebase_DownCounter_Clear_Period_Flag>:
+
+void Timebase_DownCounter_Clear_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 0;
+     ce2:	e0 91 3b 01 	lds	r30, 0x013B
+     ce6:	f0 91 3c 01 	lds	r31, 0x013C
+     cea:	90 e0       	ldi	r25, 0x00	; 0
+     cec:	2d e0       	ldi	r18, 0x0D	; 13
+     cee:	30 e0       	ldi	r19, 0x00	; 0
+     cf0:	ac 01       	movw	r20, r24
+     cf2:	42 9f       	mul	r20, r18
+     cf4:	c0 01       	movw	r24, r0
+     cf6:	43 9f       	mul	r20, r19
+     cf8:	90 0d       	add	r25, r0
+     cfa:	52 9f       	mul	r21, r18
+     cfc:	90 0d       	add	r25, r0
+     cfe:	11 24       	eor	r1, r1
+     d00:	e8 0f       	add	r30, r24
+     d02:	f9 1f       	adc	r31, r25
+     d04:	85 a1       	ldd	r24, Z+37	; 0x25
+     d06:	8e 7f       	andi	r24, 0xFE	; 254
+     d08:	85 a3       	std	Z+37, r24	; 0x25
+}
+     d0a:	08 95       	ret
+
+00000d0c <Timebase_DownCounter_Reset>:
+uint32_t Timebase_DownCounter_Get_EndValue(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].EndValue;
+}
+
+void Timebase_DownCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].EndValue = value;
+     d0c:	e0 91 3b 01 	lds	r30, 0x013B
+     d10:	f0 91 3c 01 	lds	r31, 0x013C
+     d14:	90 e0       	ldi	r25, 0x00	; 0
+     d16:	2d e0       	ldi	r18, 0x0D	; 13
+     d18:	30 e0       	ldi	r19, 0x00	; 0
+     d1a:	ac 01       	movw	r20, r24
+     d1c:	42 9f       	mul	r20, r18
+     d1e:	c0 01       	movw	r24, r0
+     d20:	43 9f       	mul	r20, r19
+     d22:	90 0d       	add	r25, r0
+     d24:	52 9f       	mul	r21, r18
+     d26:	90 0d       	add	r25, r0
+     d28:	11 24       	eor	r1, r1
+     d2a:	e8 0f       	add	r30, r24
+     d2c:	f9 1f       	adc	r31, r25
+     d2e:	16 a2       	std	Z+38, r1	; 0x26
+     d30:	17 a2       	std	Z+39, r1	; 0x27
+     d32:	10 a6       	std	Z+40, r1	; 0x28
+     d34:	11 a6       	std	Z+41, r1	; 0x29
+uint32_t Timebase_DownCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].Value;
+}
+
+void Timebase_DownCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].Value = value;
+     d36:	12 a6       	std	Z+42, r1	; 0x2a
+     d38:	13 a6       	std	Z+43, r1	; 0x2b
+     d3a:	14 a6       	std	Z+44, r1	; 0x2c
+     d3c:	15 a6       	std	Z+45, r1	; 0x2d
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+}
+
+void Timebase_DownCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->DownCounter[window].Status.Value = value;
+     d3e:	85 a1       	ldd	r24, Z+37	; 0x25
+void Timebase_DownCounter_Set_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 1;
+}
+
+void Timebase_DownCounter_Clear_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 0;
+     d40:	80 7e       	andi	r24, 0xE0	; 224
+     d42:	85 a3       	std	Z+37, r24	; 0x25
+void Timebase_DownCounter_Reset(uint8_t window){
+  Timebase_DownCounter_Set_EndValue(window, 0);
+  Timebase_DownCounter_Set_Value(window, 0);
+  Timebase_DownCounter_Set_Status(window, 0);
+  Timebase_DownCounter_Clear_Period_Flag(window);
+} 
+     d44:	08 95       	ret
+
+00000d46 <Timebase_DownCounter_Clear_All_Flags>:
+uint32_t Timebase_DownCounter_Get_EndValue(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].EndValue;
+}
+
+void Timebase_DownCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].EndValue = value;
+     d46:	e0 91 3b 01 	lds	r30, 0x013B
+     d4a:	f0 91 3c 01 	lds	r31, 0x013C
+     d4e:	90 e0       	ldi	r25, 0x00	; 0
+     d50:	2d e0       	ldi	r18, 0x0D	; 13
+     d52:	30 e0       	ldi	r19, 0x00	; 0
+     d54:	ac 01       	movw	r20, r24
+     d56:	42 9f       	mul	r20, r18
+     d58:	c0 01       	movw	r24, r0
+     d5a:	43 9f       	mul	r20, r19
+     d5c:	90 0d       	add	r25, r0
+     d5e:	52 9f       	mul	r21, r18
+     d60:	90 0d       	add	r25, r0
+     d62:	11 24       	eor	r1, r1
+     d64:	e8 0f       	add	r30, r24
+     d66:	f9 1f       	adc	r31, r25
+     d68:	16 a2       	std	Z+38, r1	; 0x26
+     d6a:	17 a2       	std	Z+39, r1	; 0x27
+     d6c:	10 a6       	std	Z+40, r1	; 0x28
+     d6e:	11 a6       	std	Z+41, r1	; 0x29
+uint32_t Timebase_DownCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].Value;
+}
+
+void Timebase_DownCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].Value = value;
+     d70:	12 a6       	std	Z+42, r1	; 0x2a
+     d72:	13 a6       	std	Z+43, r1	; 0x2b
+     d74:	14 a6       	std	Z+44, r1	; 0x2c
+     d76:	15 a6       	std	Z+45, r1	; 0x2d
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+}
+
+void Timebase_DownCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->DownCounter[window].Status.Value = value;
+     d78:	85 a1       	ldd	r24, Z+37	; 0x25
+void Timebase_DownCounter_Set_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 1;
+}
+
+void Timebase_DownCounter_Clear_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 0;
+     d7a:	80 7e       	andi	r24, 0xE0	; 224
+     d7c:	85 a3       	std	Z+37, r24	; 0x25
+  Timebase_DownCounter_Clear_Period_Flag(window);
+} 
+
+void Timebase_DownCounter_Clear_All_Flags(uint8_t window){
+  Timebase_DownCounter_Reset( window );
+}
+     d7e:	08 95       	ret
+
+00000d80 <Timebase_DownCounter_Start>:
+
+
+
+#ifdef TIMEBASE_DOWNCOUNTER
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+     d80:	e0 91 3b 01 	lds	r30, 0x013B
+     d84:	f0 91 3c 01 	lds	r31, 0x013C
+     d88:	90 e0       	ldi	r25, 0x00	; 0
+void Timebase_DownCounter_Clear_All_Flags(uint8_t window){
+  Timebase_DownCounter_Reset( window );
+}
+
+void Timebase_DownCounter_Start(uint8_t window){
+  if(Timebase_DownCounter_Get_Status(window) != 1){
+     d8a:	2d e0       	ldi	r18, 0x0D	; 13
+     d8c:	30 e0       	ldi	r19, 0x00	; 0
+     d8e:	ac 01       	movw	r20, r24
+     d90:	42 9f       	mul	r20, r18
+     d92:	c0 01       	movw	r24, r0
+     d94:	43 9f       	mul	r20, r19
+     d96:	90 0d       	add	r25, r0
+     d98:	52 9f       	mul	r21, r18
+     d9a:	90 0d       	add	r25, r0
+     d9c:	11 24       	eor	r1, r1
+     d9e:	e8 0f       	add	r30, r24
+     da0:	f9 1f       	adc	r31, r25
+     da2:	95 a1       	ldd	r25, Z+37	; 0x25
+     da4:	89 2f       	mov	r24, r25
+     da6:	86 95       	lsr	r24
+     da8:	8f 70       	andi	r24, 0x0F	; 15
+     daa:	81 30       	cpi	r24, 0x01	; 1
+     dac:	19 f0       	breq	.+6      	; 0xdb4 <Timebase_DownCounter_Start+0x34>
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+}
+
+void Timebase_DownCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->DownCounter[window].Status.Value = value;
+     dae:	91 7e       	andi	r25, 0xE1	; 225
+     db0:	92 60       	ori	r25, 0x02	; 2
+     db2:	95 a3       	std	Z+37, r25	; 0x25
+     db4:	08 95       	ret
+
+00000db6 <Timebase_DownCounter_Stop>:
+
+
+
+#ifdef TIMEBASE_DOWNCOUNTER
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+     db6:	e0 91 3b 01 	lds	r30, 0x013B
+     dba:	f0 91 3c 01 	lds	r31, 0x013C
+     dbe:	90 e0       	ldi	r25, 0x00	; 0
+    Timebase_DownCounter_Set_Status(window, 1); 
+  }
+}
+
+void Timebase_DownCounter_Stop(uint8_t window){
+  if(Timebase_DownCounter_Get_Status(window) != 2){
+     dc0:	2d e0       	ldi	r18, 0x0D	; 13
+     dc2:	30 e0       	ldi	r19, 0x00	; 0
+     dc4:	ac 01       	movw	r20, r24
+     dc6:	42 9f       	mul	r20, r18
+     dc8:	c0 01       	movw	r24, r0
+     dca:	43 9f       	mul	r20, r19
+     dcc:	90 0d       	add	r25, r0
+     dce:	52 9f       	mul	r21, r18
+     dd0:	90 0d       	add	r25, r0
+     dd2:	11 24       	eor	r1, r1
+     dd4:	e8 0f       	add	r30, r24
+     dd6:	f9 1f       	adc	r31, r25
+     dd8:	95 a1       	ldd	r25, Z+37	; 0x25
+     dda:	89 2f       	mov	r24, r25
+     ddc:	86 95       	lsr	r24
+     dde:	8f 70       	andi	r24, 0x0F	; 15
+     de0:	82 30       	cpi	r24, 0x02	; 2
+     de2:	19 f0       	breq	.+6      	; 0xdea <Timebase_DownCounter_Stop+0x34>
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+}
+
+void Timebase_DownCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->DownCounter[window].Status.Value = value;
+     de4:	91 7e       	andi	r25, 0xE1	; 225
+     de6:	94 60       	ori	r25, 0x04	; 4
+     de8:	95 a3       	std	Z+37, r25	; 0x25
+     dea:	08 95       	ret
+
+00000dec <Timebase_DownCounter_Set_Securely>:
+
+
+
+#ifdef TIMEBASE_DOWNCOUNTER
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+     dec:	a0 91 3b 01 	lds	r26, 0x013B
+     df0:	b0 91 3c 01 	lds	r27, 0x013C
+     df4:	90 e0       	ldi	r25, 0x00	; 0
+  }
+}
+
+
+void Timebase_DownCounter_Set_Securely(uint8_t window, uint32_t value){
+  if( Timebase_DownCounter_Get_Status( window ) == 0 ){
+     df6:	2d e0       	ldi	r18, 0x0D	; 13
+     df8:	30 e0       	ldi	r19, 0x00	; 0
+     dfa:	82 9f       	mul	r24, r18
+     dfc:	f0 01       	movw	r30, r0
+     dfe:	83 9f       	mul	r24, r19
+     e00:	f0 0d       	add	r31, r0
+     e02:	92 9f       	mul	r25, r18
+     e04:	f0 0d       	add	r31, r0
+     e06:	11 24       	eor	r1, r1
+     e08:	ea 0f       	add	r30, r26
+     e0a:	fb 1f       	adc	r31, r27
+     e0c:	85 a1       	ldd	r24, Z+37	; 0x25
+     e0e:	86 95       	lsr	r24
+     e10:	8f 70       	andi	r24, 0x0F	; 15
+     e12:	d9 f4       	brne	.+54     	; 0xe4a <Timebase_DownCounter_Set_Securely+0x5e>
+uint32_t Timebase_DownCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].Value;
+}
+
+void Timebase_DownCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].Value = value;
+     e14:	42 a7       	std	Z+42, r20	; 0x2a
+     e16:	53 a7       	std	Z+43, r21	; 0x2b
+     e18:	64 a7       	std	Z+44, r22	; 0x2c
+     e1a:	75 a7       	std	Z+45, r23	; 0x2d
+uint32_t Timebase_Timer_Get_SubSeconds(void){
+  return Timebase->Time.SubSeconds;
+}
+
+uint32_t Timebase_Timer_Get_Seconds(void){
+  return Timebase->Time.Seconds;
+     e1c:	1b 96       	adiw	r26, 0x0b	; 11
+     e1e:	8d 91       	ld	r24, X+
+     e20:	9d 91       	ld	r25, X+
+     e22:	0d 90       	ld	r0, X+
+     e24:	bc 91       	ld	r27, X
+     e26:	a0 2d       	mov	r26, r0
+uint32_t Timebase_DownCounter_Get_EndValue(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].EndValue;
+}
+
+void Timebase_DownCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].EndValue = value;
+     e28:	84 0f       	add	r24, r20
+     e2a:	95 1f       	adc	r25, r21
+     e2c:	a6 1f       	adc	r26, r22
+     e2e:	b7 1f       	adc	r27, r23
+     e30:	86 a3       	std	Z+38, r24	; 0x26
+     e32:	97 a3       	std	Z+39, r25	; 0x27
+     e34:	a0 a7       	std	Z+40, r26	; 0x28
+     e36:	b1 a7       	std	Z+41, r27	; 0x29
+void Timebase_DownCounter_Clear_All_Flags(uint8_t window){
+  Timebase_DownCounter_Reset( window );
+}
+
+void Timebase_DownCounter_Start(uint8_t window){
+  if(Timebase_DownCounter_Get_Status(window) != 1){
+     e38:	95 a1       	ldd	r25, Z+37	; 0x25
+     e3a:	89 2f       	mov	r24, r25
+     e3c:	86 95       	lsr	r24
+     e3e:	8f 70       	andi	r24, 0x0F	; 15
+     e40:	81 30       	cpi	r24, 0x01	; 1
+     e42:	19 f0       	breq	.+6      	; 0xe4a <Timebase_DownCounter_Set_Securely+0x5e>
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+}
+
+void Timebase_DownCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->DownCounter[window].Status.Value = value;
+     e44:	91 7e       	andi	r25, 0xE1	; 225
+     e46:	92 60       	ori	r25, 0x02	; 2
+     e48:	95 a3       	std	Z+37, r25	; 0x25
+     e4a:	08 95       	ret
+
+00000e4c <Timebase_DownCounter_Set_Forcefully>:
+    Timebase_DownCounter_Set_EndValue(window, Timebase_Timer_Get_Seconds() + value);
+    Timebase_DownCounter_Start(window);
+  }
+}
+
+void Timebase_DownCounter_Set_Forcefully(uint8_t window, uint32_t value){
+     e4c:	cf 93       	push	r28
+     e4e:	df 93       	push	r29
+uint32_t Timebase_DownCounter_Get_EndValue(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].EndValue;
+}
+
+void Timebase_DownCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].EndValue = value;
+     e50:	e0 91 3b 01 	lds	r30, 0x013B
+     e54:	f0 91 3c 01 	lds	r31, 0x013C
+     e58:	a8 2f       	mov	r26, r24
+     e5a:	b0 e0       	ldi	r27, 0x00	; 0
+     e5c:	2d e0       	ldi	r18, 0x0D	; 13
+     e5e:	30 e0       	ldi	r19, 0x00	; 0
+     e60:	e9 01       	movw	r28, r18
+     e62:	ac 9f       	mul	r26, r28
+     e64:	90 01       	movw	r18, r0
+     e66:	ad 9f       	mul	r26, r29
+     e68:	30 0d       	add	r19, r0
+     e6a:	bc 9f       	mul	r27, r28
+     e6c:	30 0d       	add	r19, r0
+     e6e:	11 24       	eor	r1, r1
+     e70:	e2 0f       	add	r30, r18
+     e72:	f3 1f       	adc	r31, r19
+     e74:	16 a2       	std	Z+38, r1	; 0x26
+     e76:	17 a2       	std	Z+39, r1	; 0x27
+     e78:	10 a6       	std	Z+40, r1	; 0x28
+     e7a:	11 a6       	std	Z+41, r1	; 0x29
+uint32_t Timebase_DownCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].Value;
+}
+
+void Timebase_DownCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].Value = value;
+     e7c:	12 a6       	std	Z+42, r1	; 0x2a
+     e7e:	13 a6       	std	Z+43, r1	; 0x2b
+     e80:	14 a6       	std	Z+44, r1	; 0x2c
+     e82:	15 a6       	std	Z+45, r1	; 0x2d
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+}
+
+void Timebase_DownCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->DownCounter[window].Status.Value = value;
+     e84:	95 a1       	ldd	r25, Z+37	; 0x25
+void Timebase_DownCounter_Set_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 1;
+}
+
+void Timebase_DownCounter_Clear_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 0;
+     e86:	90 7e       	andi	r25, 0xE0	; 224
+     e88:	95 a3       	std	Z+37, r25	; 0x25
+  }
+}
+
+void Timebase_DownCounter_Set_Forcefully(uint8_t window, uint32_t value){
+  Timebase_DownCounter_Reset( window );
+  Timebase_DownCounter_Set_Securely( window, value );
+     e8a:	0e 94 f6 06 	call	0xdec	; 0xdec <Timebase_DownCounter_Set_Securely>
+} 
+     e8e:	df 91       	pop	r29
+     e90:	cf 91       	pop	r28
+     e92:	08 95       	ret
+
+00000e94 <Timebase_DownCounter_Update>:
+
+
+
+#ifdef TIMEBASE_DOWNCOUNTER
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+     e94:	a0 91 3b 01 	lds	r26, 0x013B
+     e98:	b0 91 3c 01 	lds	r27, 0x013C
+     e9c:	90 e0       	ldi	r25, 0x00	; 0
+     e9e:	2d e0       	ldi	r18, 0x0D	; 13
+     ea0:	30 e0       	ldi	r19, 0x00	; 0
+     ea2:	82 9f       	mul	r24, r18
+     ea4:	f0 01       	movw	r30, r0
+     ea6:	83 9f       	mul	r24, r19
+     ea8:	f0 0d       	add	r31, r0
+     eaa:	92 9f       	mul	r25, r18
+     eac:	f0 0d       	add	r31, r0
+     eae:	11 24       	eor	r1, r1
+     eb0:	ea 0f       	add	r30, r26
+     eb2:	fb 1f       	adc	r31, r27
+     eb4:	85 a1       	ldd	r24, Z+37	; 0x25
+     eb6:	86 95       	lsr	r24
+     eb8:	8f 70       	andi	r24, 0x0F	; 15
+  Timebase_DownCounter_Reset( window );
+  Timebase_DownCounter_Set_Securely( window, value );
+} 
+
+void Timebase_DownCounter_Update(uint8_t window){
+  if( Timebase_DownCounter_Get_Status( window ) == 1 ){ 
+     eba:	81 30       	cpi	r24, 0x01	; 1
+     ebc:	19 f5       	brne	.+70     	; 0xf04 <Timebase_DownCounter_Update+0x70>
+uint32_t Timebase_Timer_Get_SubSeconds(void){
+  return Timebase->Time.SubSeconds;
+}
+
+uint32_t Timebase_Timer_Get_Seconds(void){
+  return Timebase->Time.Seconds;
+     ebe:	1b 96       	adiw	r26, 0x0b	; 11
+     ec0:	2d 91       	ld	r18, X+
+     ec2:	3d 91       	ld	r19, X+
+     ec4:	4d 91       	ld	r20, X+
+     ec6:	5c 91       	ld	r21, X
+     ec8:	1e 97       	sbiw	r26, 0x0e	; 14
+uint32_t Timebase_DownCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].Value;
+}
+
+void Timebase_DownCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].Value = value;
+     eca:	86 a1       	ldd	r24, Z+38	; 0x26
+     ecc:	97 a1       	ldd	r25, Z+39	; 0x27
+     ece:	a0 a5       	ldd	r26, Z+40	; 0x28
+     ed0:	b1 a5       	ldd	r27, Z+41	; 0x29
+     ed2:	82 1b       	sub	r24, r18
+     ed4:	93 0b       	sbc	r25, r19
+     ed6:	a4 0b       	sbc	r26, r20
+     ed8:	b5 0b       	sbc	r27, r21
+     eda:	82 a7       	std	Z+42, r24	; 0x2a
+     edc:	93 a7       	std	Z+43, r25	; 0x2b
+     ede:	a4 a7       	std	Z+44, r26	; 0x2c
+     ee0:	b5 a7       	std	Z+45, r27	; 0x2d
+} 
+
+void Timebase_DownCounter_Update(uint8_t window){
+  if( Timebase_DownCounter_Get_Status( window ) == 1 ){ 
+    Timebase_DownCounter_Set_Value(window, Timebase_DownCounter_Get_EndValue(window) - Timebase_Timer_Get_Seconds());
+    if(Timebase_DownCounter_Get_Value(window) <= 0){
+     ee2:	00 97       	sbiw	r24, 0x00	; 0
+     ee4:	a1 05       	cpc	r26, r1
+     ee6:	b1 05       	cpc	r27, r1
+     ee8:	09 f5       	brne	.+66     	; 0xf2c <Timebase_DownCounter_Update+0x98>
+uint32_t Timebase_DownCounter_Get_EndValue(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].EndValue;
+}
+
+void Timebase_DownCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].EndValue = value;
+     eea:	16 a2       	std	Z+38, r1	; 0x26
+     eec:	17 a2       	std	Z+39, r1	; 0x27
+     eee:	10 a6       	std	Z+40, r1	; 0x28
+     ef0:	11 a6       	std	Z+41, r1	; 0x29
+uint32_t Timebase_DownCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].Value;
+}
+
+void Timebase_DownCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].Value = value;
+     ef2:	12 a6       	std	Z+42, r1	; 0x2a
+     ef4:	13 a6       	std	Z+43, r1	; 0x2b
+     ef6:	14 a6       	std	Z+44, r1	; 0x2c
+     ef8:	15 a6       	std	Z+45, r1	; 0x2d
+void Timebase_DownCounter_Set_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 1;
+}
+
+void Timebase_DownCounter_Clear_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 0;
+     efa:	85 a1       	ldd	r24, Z+37	; 0x25
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+}
+
+void Timebase_DownCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->DownCounter[window].Status.Value = value;
+     efc:	80 7e       	andi	r24, 0xE0	; 224
+     efe:	88 60       	ori	r24, 0x08	; 8
+     f00:	85 a3       	std	Z+37, r24	; 0x25
+     f02:	08 95       	ret
+    Timebase_DownCounter_Set_Value(window, Timebase_DownCounter_Get_EndValue(window) - Timebase_Timer_Get_Seconds());
+    if(Timebase_DownCounter_Get_Value(window) <= 0){
+      Timebase_DownCounter_Reset(window);
+      Timebase_DownCounter_Set_Status(window, 4);
+    }
+  } else if (Timebase_DownCounter_Get_Status( window ) == 2){ 
+     f04:	82 30       	cpi	r24, 0x02	; 2
+     f06:	91 f4       	brne	.+36     	; 0xf2c <Timebase_DownCounter_Update+0x98>
+uint32_t Timebase_Timer_Get_SubSeconds(void){
+  return Timebase->Time.SubSeconds;
+}
+
+uint32_t Timebase_Timer_Get_Seconds(void){
+  return Timebase->Time.Seconds;
+     f08:	1b 96       	adiw	r26, 0x0b	; 11
+     f0a:	2d 91       	ld	r18, X+
+     f0c:	3d 91       	ld	r19, X+
+     f0e:	4d 91       	ld	r20, X+
+     f10:	5c 91       	ld	r21, X
+     f12:	1e 97       	sbiw	r26, 0x0e	; 14
+uint32_t Timebase_DownCounter_Get_EndValue(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].EndValue;
+}
+
+void Timebase_DownCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].EndValue = value;
+     f14:	82 a5       	ldd	r24, Z+42	; 0x2a
+     f16:	93 a5       	ldd	r25, Z+43	; 0x2b
+     f18:	a4 a5       	ldd	r26, Z+44	; 0x2c
+     f1a:	b5 a5       	ldd	r27, Z+45	; 0x2d
+     f1c:	82 0f       	add	r24, r18
+     f1e:	93 1f       	adc	r25, r19
+     f20:	a4 1f       	adc	r26, r20
+     f22:	b5 1f       	adc	r27, r21
+     f24:	86 a3       	std	Z+38, r24	; 0x26
+     f26:	97 a3       	std	Z+39, r25	; 0x27
+     f28:	a0 a7       	std	Z+40, r26	; 0x28
+     f2a:	b1 a7       	std	Z+41, r27	; 0x29
+     f2c:	08 95       	ret
+
+00000f2e <Timebase_DownCounter_Expired>:
+  } else if (Timebase_DownCounter_Get_Status( window ) == 2){ 
+    Timebase_DownCounter_Set_EndValue(window, Timebase_DownCounter_Get_Value(window) + Timebase_Timer_Get_Seconds());
+  }
+}
+
+uint8_t Timebase_DownCounter_Expired(uint8_t window){
+     f2e:	40 e0       	ldi	r20, 0x00	; 0
+     f30:	e0 91 3b 01 	lds	r30, 0x013B
+     f34:	f0 91 3c 01 	lds	r31, 0x013C
+     f38:	90 e0       	ldi	r25, 0x00	; 0
+     f3a:	2d e0       	ldi	r18, 0x0D	; 13
+     f3c:	30 e0       	ldi	r19, 0x00	; 0
+     f3e:	bc 01       	movw	r22, r24
+     f40:	62 9f       	mul	r22, r18
+     f42:	c0 01       	movw	r24, r0
+     f44:	63 9f       	mul	r22, r19
+     f46:	90 0d       	add	r25, r0
+     f48:	72 9f       	mul	r23, r18
+     f4a:	90 0d       	add	r25, r0
+     f4c:	11 24       	eor	r1, r1
+     f4e:	e8 0f       	add	r30, r24
+     f50:	f9 1f       	adc	r31, r25
+     f52:	85 a1       	ldd	r24, Z+37	; 0x25
+     f54:	86 95       	lsr	r24
+     f56:	8f 70       	andi	r24, 0x0F	; 15
+     f58:	84 30       	cpi	r24, 0x04	; 4
+     f5a:	09 f4       	brne	.+2      	; 0xf5e <Timebase_DownCounter_Expired+0x30>
+     f5c:	41 e0       	ldi	r20, 0x01	; 1
+  if(Timebase_DownCounter_Get_Status( window ) == 4){
+    return 1;
+  }else{
+    return 0;
+  }
+}
+     f5e:	84 2f       	mov	r24, r20
+     f60:	08 95       	ret
+
+00000f62 <Timebase_DownCounter_Expired_Event>:
+
+
+
+#ifdef TIMEBASE_DOWNCOUNTER
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+     f62:	e0 91 3b 01 	lds	r30, 0x013B
+     f66:	f0 91 3c 01 	lds	r31, 0x013C
+     f6a:	90 e0       	ldi	r25, 0x00	; 0
+    return 0;
+  }
+}
+
+uint8_t Timebase_DownCounter_Expired_Event(uint8_t window){
+  if(Timebase_DownCounter_Get_Status( window ) == 4){
+     f6c:	2d e0       	ldi	r18, 0x0D	; 13
+     f6e:	30 e0       	ldi	r19, 0x00	; 0
+     f70:	ac 01       	movw	r20, r24
+     f72:	42 9f       	mul	r20, r18
+     f74:	c0 01       	movw	r24, r0
+     f76:	43 9f       	mul	r20, r19
+     f78:	90 0d       	add	r25, r0
+     f7a:	52 9f       	mul	r21, r18
+     f7c:	90 0d       	add	r25, r0
+     f7e:	11 24       	eor	r1, r1
+     f80:	e8 0f       	add	r30, r24
+     f82:	f9 1f       	adc	r31, r25
+     f84:	85 a1       	ldd	r24, Z+37	; 0x25
+     f86:	86 95       	lsr	r24
+     f88:	8f 70       	andi	r24, 0x0F	; 15
+     f8a:	84 30       	cpi	r24, 0x04	; 4
+     f8c:	11 f0       	breq	.+4      	; 0xf92 <Timebase_DownCounter_Expired_Event+0x30>
+     f8e:	80 e0       	ldi	r24, 0x00	; 0
+     f90:	08 95       	ret
+uint32_t Timebase_DownCounter_Get_EndValue(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].EndValue;
+}
+
+void Timebase_DownCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].EndValue = value;
+     f92:	16 a2       	std	Z+38, r1	; 0x26
+     f94:	17 a2       	std	Z+39, r1	; 0x27
+     f96:	10 a6       	std	Z+40, r1	; 0x28
+     f98:	11 a6       	std	Z+41, r1	; 0x29
+uint32_t Timebase_DownCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].Value;
+}
+
+void Timebase_DownCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].Value = value;
+     f9a:	12 a6       	std	Z+42, r1	; 0x2a
+     f9c:	13 a6       	std	Z+43, r1	; 0x2b
+     f9e:	14 a6       	std	Z+44, r1	; 0x2c
+     fa0:	15 a6       	std	Z+45, r1	; 0x2d
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+}
+
+void Timebase_DownCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->DownCounter[window].Status.Value = value;
+     fa2:	85 a1       	ldd	r24, Z+37	; 0x25
+void Timebase_DownCounter_Set_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 1;
+}
+
+void Timebase_DownCounter_Clear_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 0;
+     fa4:	80 7e       	andi	r24, 0xE0	; 224
+     fa6:	85 a3       	std	Z+37, r24	; 0x25
+     fa8:	81 e0       	ldi	r24, 0x01	; 1
+    Timebase_DownCounter_Clear_All_Flags( window );
+    return 1;
+  }else{
+    return 0;
+  }
+}
+     faa:	08 95       	ret
+
+00000fac <Timebase_DownCounter_Set_Period_Value_Securely>:
+  }
+  
+}
+
+uint8_t Timebase_DownCounter_Get_Period_Flag(uint8_t window){
+  return (uint8_t)Timebase->DownCounter[window].Status.PeriodFlag;
+     fac:	e0 91 3b 01 	lds	r30, 0x013B
+     fb0:	f0 91 3c 01 	lds	r31, 0x013C
+     fb4:	90 e0       	ldi	r25, 0x00	; 0
+  }
+}
+
+
+void Timebase_DownCounter_Set_Period_Value_Securely(uint8_t window, uint32_t value){
+  if(Timebase_DownCounter_Get_Period_Flag( window ) == 0){
+     fb6:	2d e0       	ldi	r18, 0x0D	; 13
+     fb8:	30 e0       	ldi	r19, 0x00	; 0
+     fba:	dc 01       	movw	r26, r24
+     fbc:	a2 9f       	mul	r26, r18
+     fbe:	c0 01       	movw	r24, r0
+     fc0:	a3 9f       	mul	r26, r19
+     fc2:	90 0d       	add	r25, r0
+     fc4:	b2 9f       	mul	r27, r18
+     fc6:	90 0d       	add	r25, r0
+     fc8:	11 24       	eor	r1, r1
+     fca:	e8 0f       	add	r30, r24
+     fcc:	f9 1f       	adc	r31, r25
+     fce:	85 a1       	ldd	r24, Z+37	; 0x25
+     fd0:	80 fd       	sbrc	r24, 0
+     fd2:	0f c0       	rjmp	.+30     	; 0xff2 <Timebase_DownCounter_Set_Period_Value_Securely+0x46>
+
+void Timebase_DownCounter_Set_PeriodValue(uint8_t window, uint32_t value){
+  if(value < 0){
+    Timebase->DownCounter[window].PeriodValue = 0;
+  }else{
+    Timebase->DownCounter[window].PeriodValue = value;
+     fd4:	82 a5       	ldd	r24, Z+42	; 0x2a
+     fd6:	93 a5       	ldd	r25, Z+43	; 0x2b
+     fd8:	a4 a5       	ldd	r26, Z+44	; 0x2c
+     fda:	b5 a5       	ldd	r27, Z+45	; 0x2d
+     fdc:	84 1b       	sub	r24, r20
+     fde:	95 0b       	sbc	r25, r21
+     fe0:	a6 0b       	sbc	r26, r22
+     fe2:	b7 0b       	sbc	r27, r23
+     fe4:	86 a7       	std	Z+46, r24	; 0x2e
+     fe6:	97 a7       	std	Z+47, r25	; 0x2f
+     fe8:	a0 ab       	std	Z+48, r26	; 0x30
+     fea:	b1 ab       	std	Z+49, r27	; 0x31
+uint8_t Timebase_DownCounter_Get_Period_Flag(uint8_t window){
+  return (uint8_t)Timebase->DownCounter[window].Status.PeriodFlag;
+}
+
+void Timebase_DownCounter_Set_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 1;
+     fec:	85 a1       	ldd	r24, Z+37	; 0x25
+     fee:	81 60       	ori	r24, 0x01	; 1
+     ff0:	85 a3       	std	Z+37, r24	; 0x25
+     ff2:	08 95       	ret
+
+00000ff4 <Timebase_DownCounter_Get_Remaining_Period_Value>:
+void Timebase_DownCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->DownCounter[window].Status.Value = value;
+}
+
+uint32_t Timebase_DownCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].Value;
+     ff4:	e0 91 3b 01 	lds	r30, 0x013B
+     ff8:	f0 91 3c 01 	lds	r31, 0x013C
+     ffc:	90 e0       	ldi	r25, 0x00	; 0
+    Timebase_DownCounter_Set_Period_Flag(window);
+  }
+}
+
+uint32_t Timebase_DownCounter_Get_Remaining_Period_Value(uint8_t window){
+  int32_t temp = Timebase_DownCounter_Get_Value(window) - Timebase_DownCounter_Get_PeriodValue(window) ;
+     ffe:	2d e0       	ldi	r18, 0x0D	; 13
+    1000:	30 e0       	ldi	r19, 0x00	; 0
+    1002:	ac 01       	movw	r20, r24
+    1004:	42 9f       	mul	r20, r18
+    1006:	c0 01       	movw	r24, r0
+    1008:	43 9f       	mul	r20, r19
+    100a:	90 0d       	add	r25, r0
+    100c:	52 9f       	mul	r21, r18
+    100e:	90 0d       	add	r25, r0
+    1010:	11 24       	eor	r1, r1
+    1012:	e8 0f       	add	r30, r24
+    1014:	f9 1f       	adc	r31, r25
+    1016:	22 a5       	ldd	r18, Z+42	; 0x2a
+    1018:	33 a5       	ldd	r19, Z+43	; 0x2b
+    101a:	44 a5       	ldd	r20, Z+44	; 0x2c
+    101c:	55 a5       	ldd	r21, Z+45	; 0x2d
+    101e:	86 a5       	ldd	r24, Z+46	; 0x2e
+    1020:	97 a5       	ldd	r25, Z+47	; 0x2f
+    1022:	a0 a9       	ldd	r26, Z+48	; 0x30
+    1024:	b1 a9       	ldd	r27, Z+49	; 0x31
+    1026:	28 1b       	sub	r18, r24
+    1028:	39 0b       	sbc	r19, r25
+    102a:	4a 0b       	sbc	r20, r26
+    102c:	5b 0b       	sbc	r21, r27
+    102e:	57 ff       	sbrs	r21, 7
+    1030:	04 c0       	rjmp	.+8      	; 0x103a <Timebase_DownCounter_Get_Remaining_Period_Value+0x46>
+    1032:	20 e0       	ldi	r18, 0x00	; 0
+    1034:	30 e0       	ldi	r19, 0x00	; 0
+    1036:	40 e0       	ldi	r20, 0x00	; 0
+    1038:	50 e0       	ldi	r21, 0x00	; 0
+  if(temp < 0){
+    temp = 0;
+  }
+  return temp;
+}
+    103a:	b9 01       	movw	r22, r18
+    103c:	ca 01       	movw	r24, r20
+    103e:	08 95       	ret
+
+00001040 <Timebase_DownCounter_Period_Value_Expired>:
+
+uint8_t Timebase_DownCounter_Period_Value_Expired(uint8_t window){
+    1040:	cf 93       	push	r28
+    1042:	df 93       	push	r29
+void Timebase_DownCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->DownCounter[window].Status.Value = value;
+}
+
+uint32_t Timebase_DownCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].Value;
+    1044:	c0 91 3b 01 	lds	r28, 0x013B
+    1048:	d0 91 3c 01 	lds	r29, 0x013C
+    104c:	68 2f       	mov	r22, r24
+    104e:	70 e0       	ldi	r23, 0x00	; 0
+    Timebase_DownCounter_Set_Period_Flag(window);
+  }
+}
+
+uint32_t Timebase_DownCounter_Get_Remaining_Period_Value(uint8_t window){
+  int32_t temp = Timebase_DownCounter_Get_Value(window) - Timebase_DownCounter_Get_PeriodValue(window) ;
+    1050:	8d e0       	ldi	r24, 0x0D	; 13
+    1052:	90 e0       	ldi	r25, 0x00	; 0
+    1054:	68 9f       	mul	r22, r24
+    1056:	f0 01       	movw	r30, r0
+    1058:	69 9f       	mul	r22, r25
+    105a:	f0 0d       	add	r31, r0
+    105c:	78 9f       	mul	r23, r24
+    105e:	f0 0d       	add	r31, r0
+    1060:	11 24       	eor	r1, r1
+    1062:	ec 0f       	add	r30, r28
+    1064:	fd 1f       	adc	r31, r29
+    1066:	22 a5       	ldd	r18, Z+42	; 0x2a
+    1068:	33 a5       	ldd	r19, Z+43	; 0x2b
+    106a:	44 a5       	ldd	r20, Z+44	; 0x2c
+    106c:	55 a5       	ldd	r21, Z+45	; 0x2d
+    106e:	86 a5       	ldd	r24, Z+46	; 0x2e
+    1070:	97 a5       	ldd	r25, Z+47	; 0x2f
+    1072:	a0 a9       	ldd	r26, Z+48	; 0x30
+    1074:	b1 a9       	ldd	r27, Z+49	; 0x31
+    1076:	28 1b       	sub	r18, r24
+    1078:	39 0b       	sbc	r19, r25
+    107a:	4a 0b       	sbc	r20, r26
+    107c:	5b 0b       	sbc	r21, r27
+  if(temp < 0){
+    107e:	57 fd       	sbrc	r21, 7
+    1080:	07 c0       	rjmp	.+14     	; 0x1090 <Timebase_DownCounter_Period_Value_Expired+0x50>
+  }
+  return temp;
+}
+
+uint8_t Timebase_DownCounter_Period_Value_Expired(uint8_t window){
+  if( (Timebase_DownCounter_Get_Remaining_Period_Value( window ) == 0) && Timebase_DownCounter_Get_Period_Flag( window )){
+    1082:	21 15       	cp	r18, r1
+    1084:	31 05       	cpc	r19, r1
+    1086:	41 05       	cpc	r20, r1
+    1088:	51 05       	cpc	r21, r1
+    108a:	11 f0       	breq	.+4      	; 0x1090 <Timebase_DownCounter_Period_Value_Expired+0x50>
+    108c:	20 e0       	ldi	r18, 0x00	; 0
+    108e:	12 c0       	rjmp	.+36     	; 0x10b4 <Timebase_DownCounter_Period_Value_Expired+0x74>
+    1090:	20 e0       	ldi	r18, 0x00	; 0
+    1092:	8d e0       	ldi	r24, 0x0D	; 13
+    1094:	90 e0       	ldi	r25, 0x00	; 0
+    1096:	ac 01       	movw	r20, r24
+    1098:	64 9f       	mul	r22, r20
+    109a:	c0 01       	movw	r24, r0
+    109c:	65 9f       	mul	r22, r21
+    109e:	90 0d       	add	r25, r0
+    10a0:	74 9f       	mul	r23, r20
+    10a2:	90 0d       	add	r25, r0
+    10a4:	11 24       	eor	r1, r1
+    10a6:	c8 0f       	add	r28, r24
+    10a8:	d9 1f       	adc	r29, r25
+    10aa:	8d a1       	ldd	r24, Y+37	; 0x25
+    10ac:	80 ff       	sbrs	r24, 0
+    10ae:	21 e0       	ldi	r18, 0x01	; 1
+    10b0:	81 e0       	ldi	r24, 0x01	; 1
+    10b2:	28 27       	eor	r18, r24
+    return 1;
+  }else{
+    return 0;
+  }
+}
+    10b4:	82 2f       	mov	r24, r18
+    10b6:	df 91       	pop	r29
+    10b8:	cf 91       	pop	r28
+    10ba:	08 95       	ret
+
+000010bc <Timebase_DownCounter_Period_Value_Expired_Event>:
+
+uint8_t Timebase_DownCounter_Period_Value_Expired_Event(uint8_t window){
+    10bc:	1f 93       	push	r17
+    10be:	18 2f       	mov	r17, r24
+  if(Timebase_DownCounter_Period_Value_Expired( window ) == 1){
+    10c0:	0e 94 20 08 	call	0x1040	; 0x1040 <Timebase_DownCounter_Period_Value_Expired>
+    10c4:	81 30       	cpi	r24, 0x01	; 1
+    10c6:	11 f0       	breq	.+4      	; 0x10cc <Timebase_DownCounter_Period_Value_Expired_Event+0x10>
+    10c8:	80 e0       	ldi	r24, 0x00	; 0
+    10ca:	16 c0       	rjmp	.+44     	; 0x10f8 <Timebase_DownCounter_Period_Value_Expired_Event+0x3c>
+void Timebase_DownCounter_Set_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 1;
+}
+
+void Timebase_DownCounter_Clear_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 0;
+    10cc:	e0 91 3b 01 	lds	r30, 0x013B
+    10d0:	f0 91 3c 01 	lds	r31, 0x013C
+    10d4:	21 2f       	mov	r18, r17
+    10d6:	30 e0       	ldi	r19, 0x00	; 0
+    10d8:	8d e0       	ldi	r24, 0x0D	; 13
+    10da:	90 e0       	ldi	r25, 0x00	; 0
+    10dc:	ac 01       	movw	r20, r24
+    10de:	24 9f       	mul	r18, r20
+    10e0:	c0 01       	movw	r24, r0
+    10e2:	25 9f       	mul	r18, r21
+    10e4:	90 0d       	add	r25, r0
+    10e6:	34 9f       	mul	r19, r20
+    10e8:	90 0d       	add	r25, r0
+    10ea:	11 24       	eor	r1, r1
+    10ec:	e8 0f       	add	r30, r24
+    10ee:	f9 1f       	adc	r31, r25
+    10f0:	85 a1       	ldd	r24, Z+37	; 0x25
+    10f2:	8e 7f       	andi	r24, 0xFE	; 254
+    10f4:	85 a3       	std	Z+37, r24	; 0x25
+    10f6:	81 e0       	ldi	r24, 0x01	; 1
+    Timebase_DownCounter_Clear_Period_Flag( window );
+    return 1;
+  }else{
+    return 0;
+  }
+}
+    10f8:	1f 91       	pop	r17
+    10fa:	08 95       	ret
+
+000010fc <Timebase_DownCounter_Update_All>:
+
+
+void Timebase_DownCounter_Update_All(void){
+  for(uint8_t i=0; i<TIMEBASE_DOWNCOUNTER; i++){
+    Timebase_DownCounter_Update(i);
+    10fc:	80 e0       	ldi	r24, 0x00	; 0
+    10fe:	0e 94 4a 07 	call	0xe94	; 0xe94 <Timebase_DownCounter_Update>
+  }
+}
+    1102:	08 95       	ret
+
+00001104 <Timebase_DownCounter_Reset_All>:
+uint32_t Timebase_DownCounter_Get_EndValue(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].EndValue;
+}
+
+void Timebase_DownCounter_Set_EndValue(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].EndValue = value;
+    1104:	e0 91 3b 01 	lds	r30, 0x013B
+    1108:	f0 91 3c 01 	lds	r31, 0x013C
+    110c:	16 a2       	std	Z+38, r1	; 0x26
+    110e:	17 a2       	std	Z+39, r1	; 0x27
+    1110:	10 a6       	std	Z+40, r1	; 0x28
+    1112:	11 a6       	std	Z+41, r1	; 0x29
+uint32_t Timebase_DownCounter_Get_Value(uint8_t window){
+  return (uint32_t)Timebase->DownCounter[window].Value;
+}
+
+void Timebase_DownCounter_Set_Value(uint8_t window, uint32_t value){
+  Timebase->DownCounter[window].Value = value;
+    1114:	12 a6       	std	Z+42, r1	; 0x2a
+    1116:	13 a6       	std	Z+43, r1	; 0x2b
+    1118:	14 a6       	std	Z+44, r1	; 0x2c
+    111a:	15 a6       	std	Z+45, r1	; 0x2d
+uint8_t Timebase_DownCounter_Get_Status(uint8_t window){
+  return Timebase->DownCounter[window].Status.Value;
+}
+
+void Timebase_DownCounter_Set_Status(uint8_t window, uint8_t value){
+  Timebase->DownCounter[window].Status.Value = value;
+    111c:	85 a1       	ldd	r24, Z+37	; 0x25
+void Timebase_DownCounter_Set_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 1;
+}
+
+void Timebase_DownCounter_Clear_Period_Flag(uint8_t window){
+  Timebase->DownCounter[window].Status.PeriodFlag = 0;
+    111e:	80 7e       	andi	r24, 0xE0	; 224
+    1120:	85 a3       	std	Z+37, r24	; 0x25
+
+void Timebase_DownCounter_Reset_All(void){
+  for(uint8_t i=0; i<TIMEBASE_DOWNCOUNTER; i++){
+    Timebase_DownCounter_Reset(i);
+  }
+}
+    1122:	08 95       	ret
+
+00001124 <Timebase_Reset>:
+
+
+
+void Timebase_Reset(void){
+  #ifdef TIMEBASE_UPCOUNTER
+  Timebase_UpCounter_Reset_All();
+    1124:	0e 94 7e 05 	call	0xafc	; 0xafc <Timebase_UpCounter_Reset_All>
+  #endif
+  #ifdef TIMEBASE_DOWNCOUNTER
+  Timebase_DownCounter_Reset_All();
+    1128:	0e 94 82 08 	call	0x1104	; 0x1104 <Timebase_DownCounter_Reset_All>
+  #endif
+}
+    112c:	08 95       	ret
+
+0000112e <Timebase_Init>:
+
+void Timebase_Init(uint16_t UpdateRateHz){
+    112e:	0f 93       	push	r16
+    1130:	1f 93       	push	r17
+    1132:	8c 01       	movw	r16, r24
+  Timebase_Struct_Init();
+    1134:	0e 94 7d 00 	call	0xfa	; 0xfa <Timebase_Struct_Init>
+  Timebase_Timer_Config(UpdateRateHz);
+    1138:	c8 01       	movw	r24, r16
+    113a:	0e 94 f6 00 	call	0x1ec	; 0x1ec <Timebase_Timer_Config>
+  Timebase_Reset();
+    113e:	0e 94 92 08 	call	0x1124	; 0x1124 <Timebase_Reset>
+}
+    1142:	1f 91       	pop	r17
+    1144:	0f 91       	pop	r16
+    1146:	08 95       	ret
+
+00001148 <Timebase_Main_Loop_Executables>:
+
+void Timebase_Main_Loop_Executables(void){
+  if(Timebase->FunctionUpdatesRequired){
+    1148:	e0 91 3b 01 	lds	r30, 0x013B
+    114c:	f0 91 3c 01 	lds	r31, 0x013C
+    1150:	82 a9       	ldd	r24, Z+50	; 0x32
+    1152:	88 23       	and	r24, r24
+    1154:	49 f0       	breq	.+18     	; 0x1168 <Timebase_Main_Loop_Executables+0x20>
+    #ifdef TIMEBASE_UPCOUNTER
+    Timebase_UpCounter_Update_All();
+    1156:	0e 94 7a 05 	call	0xaf4	; 0xaf4 <Timebase_UpCounter_Update_All>
+    #endif
+    #ifdef TIMEBASE_DOWNCOUNTER
+    Timebase_DownCounter_Update_All();
+    115a:	0e 94 7e 08 	call	0x10fc	; 0x10fc <Timebase_DownCounter_Update_All>
+    #endif
+	Timebase->FunctionUpdatesRequired=0;
+    115e:	e0 91 3b 01 	lds	r30, 0x013B
+    1162:	f0 91 3c 01 	lds	r31, 0x013C
+    1166:	12 aa       	std	Z+50, r1	; 0x32
+    1168:	08 95       	ret
+
+0000116a <Timebase_ISR_Executables>:
+  }
+}
+
+void Timebase_ISR_Executables(void){
+    116a:	cf 93       	push	r28
+    116c:	df 93       	push	r29
+  Timebase->Time.SubSeconds++;
+    116e:	c0 91 3b 01 	lds	r28, 0x013B
+    1172:	d0 91 3c 01 	lds	r29, 0x013C
+    1176:	8f 81       	ldd	r24, Y+7	; 0x07
+    1178:	98 85       	ldd	r25, Y+8	; 0x08
+    117a:	a9 85       	ldd	r26, Y+9	; 0x09
+    117c:	ba 85       	ldd	r27, Y+10	; 0x0a
+    117e:	01 96       	adiw	r24, 0x01	; 1
+    1180:	a1 1d       	adc	r26, r1
+    1182:	b1 1d       	adc	r27, r1
+    1184:	8f 83       	std	Y+7, r24	; 0x07
+    1186:	98 87       	std	Y+8, r25	; 0x08
+    1188:	a9 87       	std	Y+9, r26	; 0x09
+    118a:	ba 87       	std	Y+10, r27	; 0x0a
+  if((Timebase->Time.SubSeconds % Timebase->Config.UpdateRate) == 0){
+    118c:	6f 81       	ldd	r22, Y+7	; 0x07
+    118e:	78 85       	ldd	r23, Y+8	; 0x08
+    1190:	89 85       	ldd	r24, Y+9	; 0x09
+    1192:	9a 85       	ldd	r25, Y+10	; 0x0a
+    1194:	29 81       	ldd	r18, Y+1	; 0x01
+    1196:	3a 81       	ldd	r19, Y+2	; 0x02
+    1198:	40 e0       	ldi	r20, 0x00	; 0
+    119a:	50 e0       	ldi	r21, 0x00	; 0
+    119c:	0e 94 a5 0d 	call	0x1b4a	; 0x1b4a <__udivmodsi4>
+    11a0:	61 15       	cp	r22, r1
+    11a2:	71 05       	cpc	r23, r1
+    11a4:	81 05       	cpc	r24, r1
+    11a6:	91 05       	cpc	r25, r1
+    11a8:	a1 f4       	brne	.+40     	; 0x11d2 <Timebase_ISR_Executables+0x68>
+    Timebase->Time.Seconds++;
+    11aa:	8b 85       	ldd	r24, Y+11	; 0x0b
+    11ac:	9c 85       	ldd	r25, Y+12	; 0x0c
+    11ae:	ad 85       	ldd	r26, Y+13	; 0x0d
+    11b0:	be 85       	ldd	r27, Y+14	; 0x0e
+    11b2:	01 96       	adiw	r24, 0x01	; 1
+    11b4:	a1 1d       	adc	r26, r1
+    11b6:	b1 1d       	adc	r27, r1
+    11b8:	8b 87       	std	Y+11, r24	; 0x0b
+    11ba:	9c 87       	std	Y+12, r25	; 0x0c
+    11bc:	ad 87       	std	Y+13, r26	; 0x0d
+    11be:	be 87       	std	Y+14, r27	; 0x0e
+	Timebase->FunctionUpdatesRequired=1;
+    11c0:	81 e0       	ldi	r24, 0x01	; 1
+    11c2:	8a ab       	std	Y+50, r24	; 0x32
+
+
+//Token Functions
+#ifdef TIMEBASE_TOKEN_FUNCTIONS
+uint8_t Timebase_Token_Executing(void){
+  return Timebase->ActiveTokens;
+    11c4:	8f 85       	ldd	r24, Y+15	; 0x0f
+  Timebase->Time.SubSeconds++;
+  if((Timebase->Time.SubSeconds % Timebase->Config.UpdateRate) == 0){
+    Timebase->Time.Seconds++;
+	Timebase->FunctionUpdatesRequired=1;
+	#ifdef TIMEBASE_TOKEN_FUNCTIONS
+    if(Timebase_Token_Executing() == 0){
+    11c6:	88 23       	and	r24, r24
+    11c8:	21 f4       	brne	.+8      	; 0x11d2 <Timebase_ISR_Executables+0x68>
+      Timebase->Time.SubSeconds = 0;
+    11ca:	1f 82       	std	Y+7, r1	; 0x07
+    11cc:	18 86       	std	Y+8, r1	; 0x08
+    11ce:	19 86       	std	Y+9, r1	; 0x09
+    11d0:	1a 86       	std	Y+10, r1	; 0x0a
+    }
+	#endif
+  }
+}
+    11d2:	df 91       	pop	r29
+    11d4:	cf 91       	pop	r28
+    11d6:	08 95       	ret
+
+000011d8 <__vector_14>:
+
+ISR(TIMER0_COMPA_vect){
+    11d8:	1f 92       	push	r1
+    11da:	0f 92       	push	r0
+    11dc:	0f b6       	in	r0, 0x3f	; 63
+    11de:	0f 92       	push	r0
+    11e0:	11 24       	eor	r1, r1
+    11e2:	2f 93       	push	r18
+    11e4:	3f 93       	push	r19
+    11e6:	4f 93       	push	r20
+    11e8:	5f 93       	push	r21
+    11ea:	6f 93       	push	r22
+    11ec:	7f 93       	push	r23
+    11ee:	8f 93       	push	r24
+    11f0:	9f 93       	push	r25
+    11f2:	af 93       	push	r26
+    11f4:	bf 93       	push	r27
+    11f6:	ef 93       	push	r30
+    11f8:	ff 93       	push	r31
+  Timebase_ISR_Executables();
+    11fa:	0e 94 b5 08 	call	0x116a	; 0x116a <Timebase_ISR_Executables>
+    11fe:	ff 91       	pop	r31
+    1200:	ef 91       	pop	r30
+    1202:	bf 91       	pop	r27
+    1204:	af 91       	pop	r26
+    1206:	9f 91       	pop	r25
+    1208:	8f 91       	pop	r24
+    120a:	7f 91       	pop	r23
+    120c:	6f 91       	pop	r22
+    120e:	5f 91       	pop	r21
+    1210:	4f 91       	pop	r20
+    1212:	3f 91       	pop	r19
+    1214:	2f 91       	pop	r18
+    1216:	0f 90       	pop	r0
+    1218:	0f be       	out	0x3f, r0	; 63
+    121a:	0f 90       	pop	r0
+    121c:	1f 90       	pop	r1
+    121e:	18 95       	reti
+
+00001220 <UART_Config_GPIO>:
+
+
+
+void UART_Config_GPIO(void){
+	
+}
+    1220:	08 95       	ret
+
+00001222 <UART_Config_Clock>:
+
+void UART_Config_Clock(void){
+  
+}
+    1222:	08 95       	ret
+
+00001224 <UART_Config_BAUD_Rate>:
+
+void UART_Config_BAUD_Rate(uint32_t baud_rate){
+    1224:	9b 01       	movw	r18, r22
+    1226:	ac 01       	movw	r20, r24
+  #ifdef UART_DOUBLE_SPEED
+  uint32_t UBRR_VAL = ((F_CPU/8)/baud_rate)-1 ;
+    1228:	60 e4       	ldi	r22, 0x40	; 64
+    122a:	72 e4       	ldi	r23, 0x42	; 66
+    122c:	8f e0       	ldi	r24, 0x0F	; 15
+    122e:	90 e0       	ldi	r25, 0x00	; 0
+    1230:	0e 94 a5 0d 	call	0x1b4a	; 0x1b4a <__udivmodsi4>
+    1234:	21 50       	subi	r18, 0x01	; 1
+    1236:	30 40       	sbci	r19, 0x00	; 0
+    1238:	40 40       	sbci	r20, 0x00	; 0
+    123a:	50 40       	sbci	r21, 0x00	; 0
+  UCSR0A|=(1<<U2X0);  
+    123c:	e0 ec       	ldi	r30, 0xC0	; 192
+    123e:	f0 e0       	ldi	r31, 0x00	; 0
+    1240:	80 81       	ld	r24, Z
+    1242:	82 60       	ori	r24, 0x02	; 2
+    1244:	80 83       	st	Z, r24
+  #else
+  UCSR0A&=~(1<<U2X0);  
+  uint32_t UBRR_VAL = ((F_CPU/16)/baud_rate)-1 ;
+  #endif
+  UBRR0H = (UBRR_VAL >> 8) & 0xFF;
+    1246:	bb 27       	eor	r27, r27
+    1248:	a5 2f       	mov	r26, r21
+    124a:	94 2f       	mov	r25, r20
+    124c:	83 2f       	mov	r24, r19
+    124e:	80 93 c5 00 	sts	0x00C5, r24
+  UBRR0L = UBRR_VAL & 0xFF ;
+    1252:	20 93 c4 00 	sts	0x00C4, r18
+}
+    1256:	08 95       	ret
+
+00001258 <UART_Config_Transmitter>:
+
+
+void UART_Config_Transmitter(void){
+  UCSR0B|=(1<<TXEN0);
+    1258:	e1 ec       	ldi	r30, 0xC1	; 193
+    125a:	f0 e0       	ldi	r31, 0x00	; 0
+    125c:	80 81       	ld	r24, Z
+    125e:	88 60       	ori	r24, 0x08	; 8
+    1260:	80 83       	st	Z, r24
+  UCSR0C=(1<<UCSZ00)| (1<<UCSZ01);
+    1262:	86 e0       	ldi	r24, 0x06	; 6
+    1264:	80 93 c2 00 	sts	0x00C2, r24
+}
+    1268:	08 95       	ret
+
+0000126a <UART_Config_Receiver>:
+
+
+void UART_Config_Receiver(void){
+  UCSR0B|=(1<<RXEN0);
+    126a:	e1 ec       	ldi	r30, 0xC1	; 193
+    126c:	f0 e0       	ldi	r31, 0x00	; 0
+    126e:	80 81       	ld	r24, Z
+    1270:	80 61       	ori	r24, 0x10	; 16
+    1272:	80 83       	st	Z, r24
+  UCSR0C=(1<<UCSZ00)| (1<<UCSZ01);
+    1274:	86 e0       	ldi	r24, 0x06	; 6
+    1276:	80 93 c2 00 	sts	0x00C2, r24
+}
+    127a:	08 95       	ret
+
+0000127c <UART_Config_Receiver_Interrupt>:
+
+void UART_Config_Receiver_Interrupt(void){
+  UCSR0B|=(1<<RXCIE0);
+    127c:	e1 ec       	ldi	r30, 0xC1	; 193
+    127e:	f0 e0       	ldi	r31, 0x00	; 0
+    1280:	80 81       	ld	r24, Z
+    1282:	80 68       	ori	r24, 0x80	; 128
+    1284:	80 83       	st	Z, r24
+  sei();
+    1286:	78 94       	sei
+}
+    1288:	08 95       	ret
+
+0000128a <UART_Transmit_Byte>:
+
+void UART_Transmit_Byte(uint8_t val){
+    128a:	98 2f       	mov	r25, r24
+  while(!(UCSR0A & (1<<UDRE0)));
+    128c:	80 91 c0 00 	lds	r24, 0x00C0
+    1290:	85 ff       	sbrs	r24, 5
+    1292:	fc cf       	rjmp	.-8      	; 0x128c <UART_Transmit_Byte+0x2>
+  UDR0=val;
+    1294:	90 93 c6 00 	sts	0x00C6, r25
+}
+    1298:	08 95       	ret
+
+0000129a <UART_Receive_Byte>:
+
+uint8_t UART_Receive_Byte(void){
+    129a:	df 93       	push	r29
+    129c:	cf 93       	push	r28
+    129e:	0f 92       	push	r0
+    12a0:	cd b7       	in	r28, 0x3d	; 61
+    12a2:	de b7       	in	r29, 0x3e	; 62
+  volatile uint8_t val=0;
+    12a4:	19 82       	std	Y+1, r1	; 0x01
+  if( UCSR0A & (1<<FE0) ){
+    12a6:	80 91 c0 00 	lds	r24, 0x00C0
+    12aa:	84 ff       	sbrs	r24, 4
+    12ac:	05 c0       	rjmp	.+10     	; 0x12b8 <UART_Receive_Byte+0x1e>
+    val=UDR0;
+    12ae:	80 91 c6 00 	lds	r24, 0x00C6
+    12b2:	89 83       	std	Y+1, r24	; 0x01
+    UART.Error=0x01;
+    12b4:	81 e0       	ldi	r24, 0x01	; 1
+    12b6:	08 c0       	rjmp	.+16     	; 0x12c8 <UART_Receive_Byte+0x2e>
+  }else if(UCSR0A & (1<<DOR0) ){
+    12b8:	80 91 c0 00 	lds	r24, 0x00C0
+    12bc:	83 ff       	sbrs	r24, 3
+    12be:	07 c0       	rjmp	.+14     	; 0x12ce <UART_Receive_Byte+0x34>
+    val=UDR0;
+    12c0:	80 91 c6 00 	lds	r24, 0x00C6
+    12c4:	89 83       	std	Y+1, r24	; 0x01
+    UART.Error=0x02;
+    12c6:	82 e0       	ldi	r24, 0x02	; 2
+    12c8:	80 93 04 01 	sts	0x0104, r24
+    12cc:	05 c0       	rjmp	.+10     	; 0x12d8 <UART_Receive_Byte+0x3e>
+  }else{
+    val=UDR0;
+    12ce:	80 91 c6 00 	lds	r24, 0x00C6
+    12d2:	89 83       	std	Y+1, r24	; 0x01
+    UART.Error=0x00;
+    12d4:	10 92 04 01 	sts	0x0104, r1
+  }
+  return val;
+    12d8:	89 81       	ldd	r24, Y+1	; 0x01
+}
+    12da:	0f 90       	pop	r0
+    12dc:	cf 91       	pop	r28
+    12de:	df 91       	pop	r29
+    12e0:	08 95       	ret
+
+000012e2 <UART_Struct_Init>:
+}
+#endif
+
+
+void UART_Struct_Init(void){
+  UART.Error=0;
+    12e2:	10 92 04 01 	sts	0x0104, r1
+    12e6:	e5 e0       	ldi	r30, 0x05	; 5
+    12e8:	f1 e0       	ldi	r31, 0x01	; 1
+  for(uint8_t i=0;i<8;i++){
+    UART.Digits[i]=0;
+    12ea:	11 92       	st	Z+, r1
+#endif
+
+
+void UART_Struct_Init(void){
+  UART.Error=0;
+  for(uint8_t i=0;i<8;i++){
+    12ec:	81 e0       	ldi	r24, 0x01	; 1
+    12ee:	ed 30       	cpi	r30, 0x0D	; 13
+    12f0:	f8 07       	cpc	r31, r24
+    12f2:	d9 f7       	brne	.-10     	; 0x12ea <UART_Struct_Init+0x8>
+    UART.Digits[i]=0;
+  }
+  UART.InputNumberDigits=0;
+    12f4:	10 82       	st	Z, r1
+    
+  #ifdef UART_ENABLE_RX_INT
+  UART.BufferSize=UART_BUFFER_SIZE;
+    12f6:	80 e2       	ldi	r24, 0x20	; 32
+    12f8:	90 e0       	ldi	r25, 0x00	; 0
+    12fa:	92 a3       	std	Z+34, r25	; 0x22
+    12fc:	81 a3       	std	Z+33, r24	; 0x21
+  UART.BufferIndex=0;
+    12fe:	14 a2       	std	Z+36, r1	; 0x24
+    1300:	13 a2       	std	Z+35, r1	; 0x23
+    1302:	20 e0       	ldi	r18, 0x00	; 0
+    1304:	04 c0       	rjmp	.+8      	; 0x130e <UART_Struct_Init+0x2c>
+  for(uint8_t i=0;i<UART.BufferSize;i++){
+    UART.Buffer[i]=0;
+    1306:	ec 5f       	subi	r30, 0xFC	; 252
+    1308:	fe 4f       	sbci	r31, 0xFE	; 254
+    130a:	12 86       	std	Z+10, r1	; 0x0a
+  UART.InputNumberDigits=0;
+    
+  #ifdef UART_ENABLE_RX_INT
+  UART.BufferSize=UART_BUFFER_SIZE;
+  UART.BufferIndex=0;
+  for(uint8_t i=0;i<UART.BufferSize;i++){
+    130c:	2f 5f       	subi	r18, 0xFF	; 255
+    130e:	80 91 2e 01 	lds	r24, 0x012E
+    1312:	90 91 2f 01 	lds	r25, 0x012F
+    1316:	e2 2f       	mov	r30, r18
+    1318:	f0 e0       	ldi	r31, 0x00	; 0
+    131a:	e8 17       	cp	r30, r24
+    131c:	f9 07       	cpc	r31, r25
+    131e:	98 f3       	brcs	.-26     	; 0x1306 <UART_Struct_Init+0x24>
+    UART.Buffer[i]=0;
+  }
+  #endif
+    
+  #ifdef UART_CIRCULAR_BUFFER_READ  
+  UART.AvailableBytes=0;
+    1320:	10 92 33 01 	sts	0x0133, r1
+    1324:	10 92 32 01 	sts	0x0132, r1
+  UART.ReadIndex=0;
+    1328:	10 92 35 01 	sts	0x0135, r1
+    132c:	10 92 34 01 	sts	0x0134, r1
+  #endif
+
+  #ifdef UART_LAST_RECEIVED_TIMESTAMP  
+  UART.LastRecivedTimeStamp=0;
+  #endif
+}
+    1330:	08 95       	ret
+
+00001332 <UART_Transmit_Byte_Hex>:
+
+
+#ifdef UART_AUXILIARY_PRINT_FUNCTIONS
+void UART_Transmit_Byte_Hex(uint32_t val){
+    1332:	1f 93       	push	r17
+    1334:	cf 93       	push	r28
+    1336:	df 93       	push	r29
+    1338:	ab 01       	movw	r20, r22
+    133a:	bc 01       	movw	r22, r24
+  uint16_t hex_digit, index=0, loop_counter=0;
+  if(val <= 0xFF){
+    133c:	4f 3f       	cpi	r20, 0xFF	; 255
+    133e:	51 05       	cpc	r21, r1
+    1340:	61 05       	cpc	r22, r1
+    1342:	71 05       	cpc	r23, r1
+    1344:	09 f0       	breq	.+2      	; 0x1348 <UART_Transmit_Byte_Hex+0x16>
+    1346:	28 f4       	brcc	.+10     	; 0x1352 <UART_Transmit_Byte_Hex+0x20>
+    1348:	e8 e0       	ldi	r30, 0x08	; 8
+    134a:	f0 e0       	ldi	r31, 0x00	; 0
+    134c:	c2 e0       	ldi	r28, 0x02	; 2
+    134e:	d0 e0       	ldi	r29, 0x00	; 0
+    1350:	11 c0       	rjmp	.+34     	; 0x1374 <UART_Transmit_Byte_Hex+0x42>
+    index=8;
+    loop_counter=2;
+  }else if(val <= 0xFFFF){
+    1352:	40 30       	cpi	r20, 0x00	; 0
+    1354:	80 e0       	ldi	r24, 0x00	; 0
+    1356:	58 07       	cpc	r21, r24
+    1358:	81 e0       	ldi	r24, 0x01	; 1
+    135a:	68 07       	cpc	r22, r24
+    135c:	80 e0       	ldi	r24, 0x00	; 0
+    135e:	78 07       	cpc	r23, r24
+    1360:	28 f0       	brcs	.+10     	; 0x136c <UART_Transmit_Byte_Hex+0x3a>
+    1362:	e0 e2       	ldi	r30, 0x20	; 32
+    1364:	f0 e0       	ldi	r31, 0x00	; 0
+    1366:	c8 e0       	ldi	r28, 0x08	; 8
+    1368:	d0 e0       	ldi	r29, 0x00	; 0
+    136a:	04 c0       	rjmp	.+8      	; 0x1374 <UART_Transmit_Byte_Hex+0x42>
+    136c:	e0 e1       	ldi	r30, 0x10	; 16
+    136e:	f0 e0       	ldi	r31, 0x00	; 0
+    1370:	c4 e0       	ldi	r28, 0x04	; 4
+    1372:	d0 e0       	ldi	r29, 0x00	; 0
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    1374:	80 91 c0 00 	lds	r24, 0x00C0
+    1378:	85 ff       	sbrs	r24, 5
+    137a:	fc cf       	rjmp	.-8      	; 0x1374 <UART_Transmit_Byte_Hex+0x42>
+  UDR0=val;
+    137c:	80 e3       	ldi	r24, 0x30	; 48
+    137e:	80 93 c6 00 	sts	0x00C6, r24
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    1382:	80 91 c0 00 	lds	r24, 0x00C0
+    1386:	85 ff       	sbrs	r24, 5
+    1388:	fc cf       	rjmp	.-8      	; 0x1382 <UART_Transmit_Byte_Hex+0x50>
+  UDR0=val;
+    138a:	88 e7       	ldi	r24, 0x78	; 120
+    138c:	80 93 c6 00 	sts	0x00C6, r24
+    1390:	10 e0       	ldi	r17, 0x00	; 0
+    1392:	1f c0       	rjmp	.+62     	; 0x13d2 <UART_Transmit_Byte_Hex+0xa0>
+    loop_counter=8;
+  }
+  UART_Transmit_Byte('0');
+  UART_Transmit_Byte('x');
+	for(uint8_t i=0;i<loop_counter;i++){
+	  index-=4;
+    1394:	34 97       	sbiw	r30, 0x04	; 4
+	  hex_digit=(uint8_t)((val>>index) & 0x0F);
+    1396:	db 01       	movw	r26, r22
+    1398:	ca 01       	movw	r24, r20
+    139a:	0e 2e       	mov	r0, r30
+    139c:	04 c0       	rjmp	.+8      	; 0x13a6 <UART_Transmit_Byte_Hex+0x74>
+    139e:	b6 95       	lsr	r27
+    13a0:	a7 95       	ror	r26
+    13a2:	97 95       	ror	r25
+    13a4:	87 95       	ror	r24
+    13a6:	0a 94       	dec	r0
+    13a8:	d2 f7       	brpl	.-12     	; 0x139e <UART_Transmit_Byte_Hex+0x6c>
+    13aa:	90 e0       	ldi	r25, 0x00	; 0
+    13ac:	8f 70       	andi	r24, 0x0F	; 15
+    13ae:	90 70       	andi	r25, 0x00	; 0
+	  if(hex_digit>9){
+    13b0:	8a 30       	cpi	r24, 0x0A	; 10
+    13b2:	91 05       	cpc	r25, r1
+    13b4:	20 f0       	brcs	.+8      	; 0x13be <UART_Transmit_Byte_Hex+0x8c>
+	    hex_digit+=55;
+    13b6:	9c 01       	movw	r18, r24
+    13b8:	29 5c       	subi	r18, 0xC9	; 201
+    13ba:	3f 4f       	sbci	r19, 0xFF	; 255
+    13bc:	03 c0       	rjmp	.+6      	; 0x13c4 <UART_Transmit_Byte_Hex+0x92>
+	  }else {
+	    hex_digit+=48;
+    13be:	9c 01       	movw	r18, r24
+    13c0:	20 5d       	subi	r18, 0xD0	; 208
+    13c2:	3f 4f       	sbci	r19, 0xFF	; 255
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    13c4:	80 91 c0 00 	lds	r24, 0x00C0
+    13c8:	85 ff       	sbrs	r24, 5
+    13ca:	fc cf       	rjmp	.-8      	; 0x13c4 <UART_Transmit_Byte_Hex+0x92>
+  UDR0=val;
+    13cc:	20 93 c6 00 	sts	0x00C6, r18
+    index=32;
+    loop_counter=8;
+  }
+  UART_Transmit_Byte('0');
+  UART_Transmit_Byte('x');
+	for(uint8_t i=0;i<loop_counter;i++){
+    13d0:	1f 5f       	subi	r17, 0xFF	; 255
+    13d2:	81 2f       	mov	r24, r17
+    13d4:	90 e0       	ldi	r25, 0x00	; 0
+    13d6:	8c 17       	cp	r24, r28
+    13d8:	9d 07       	cpc	r25, r29
+    13da:	e0 f2       	brcs	.-72     	; 0x1394 <UART_Transmit_Byte_Hex+0x62>
+	  }else {
+	    hex_digit+=48;
+	  }
+	  UART_Transmit_Byte((uint8_t)hex_digit);
+	}
+}
+    13dc:	df 91       	pop	r29
+    13de:	cf 91       	pop	r28
+    13e0:	1f 91       	pop	r17
+    13e2:	08 95       	ret
+
+000013e4 <UART_Transmit_Byte_Bin>:
+#endif
+
+
+#ifdef UART_AUXILIARY_PRINT_FUNCTIONS
+void UART_Transmit_Byte_Bin(uint32_t val){
+    13e4:	cf 92       	push	r12
+    13e6:	df 92       	push	r13
+    13e8:	ef 92       	push	r14
+    13ea:	ff 92       	push	r15
+    13ec:	0f 93       	push	r16
+    13ee:	1f 93       	push	r17
+    13f0:	cf 93       	push	r28
+    13f2:	df 93       	push	r29
+    13f4:	ab 01       	movw	r20, r22
+    13f6:	bc 01       	movw	r22, r24
+  uint8_t loop_counter=0;
+  if(val <= 0xFF){
+    13f8:	4f 3f       	cpi	r20, 0xFF	; 255
+    13fa:	51 05       	cpc	r21, r1
+    13fc:	61 05       	cpc	r22, r1
+    13fe:	71 05       	cpc	r23, r1
+    1400:	09 f0       	breq	.+2      	; 0x1404 <UART_Transmit_Byte_Bin+0x20>
+    1402:	10 f4       	brcc	.+4      	; 0x1408 <UART_Transmit_Byte_Bin+0x24>
+    1404:	97 e0       	ldi	r25, 0x07	; 7
+    1406:	0b c0       	rjmp	.+22     	; 0x141e <UART_Transmit_Byte_Bin+0x3a>
+    loop_counter=7;
+  }else if(val <= 0xFFFF){
+    1408:	40 30       	cpi	r20, 0x00	; 0
+    140a:	80 e0       	ldi	r24, 0x00	; 0
+    140c:	58 07       	cpc	r21, r24
+    140e:	81 e0       	ldi	r24, 0x01	; 1
+    1410:	68 07       	cpc	r22, r24
+    1412:	80 e0       	ldi	r24, 0x00	; 0
+    1414:	78 07       	cpc	r23, r24
+    1416:	10 f0       	brcs	.+4      	; 0x141c <UART_Transmit_Byte_Bin+0x38>
+    1418:	9f e1       	ldi	r25, 0x1F	; 31
+    141a:	01 c0       	rjmp	.+2      	; 0x141e <UART_Transmit_Byte_Bin+0x3a>
+    141c:	9f e0       	ldi	r25, 0x0F	; 15
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    141e:	80 91 c0 00 	lds	r24, 0x00C0
+    1422:	85 ff       	sbrs	r24, 5
+    1424:	fc cf       	rjmp	.-8      	; 0x141e <UART_Transmit_Byte_Bin+0x3a>
+  UDR0=val;
+    1426:	80 e3       	ldi	r24, 0x30	; 48
+    1428:	80 93 c6 00 	sts	0x00C6, r24
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    142c:	80 91 c0 00 	lds	r24, 0x00C0
+    1430:	85 ff       	sbrs	r24, 5
+    1432:	fc cf       	rjmp	.-8      	; 0x142c <UART_Transmit_Byte_Bin+0x48>
+  UDR0=val;
+    1434:	82 e6       	ldi	r24, 0x62	; 98
+    1436:	80 93 c6 00 	sts	0x00C6, r24
+    143a:	20 e0       	ldi	r18, 0x00	; 0
+    143c:	30 e0       	ldi	r19, 0x00	; 0
+}
+#endif
+
+
+#ifdef UART_AUXILIARY_PRINT_FUNCTIONS
+void UART_Transmit_Byte_Bin(uint32_t val){
+    143e:	e9 2f       	mov	r30, r25
+    1440:	f0 e0       	ldi	r31, 0x00	; 0
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+  UDR0=val;
+    1442:	00 e3       	ldi	r16, 0x30	; 48
+    loop_counter=31;
+  }
+  
+  UART_Transmit_Byte('0');
+  UART_Transmit_Byte('b');
+  for(int i=loop_counter; i>=0; i--){
+    1444:	11 e3       	ldi	r17, 0x31	; 49
+    1446:	ef 01       	movw	r28, r30
+    1448:	21 96       	adiw	r28, 0x01	; 1
+    if( (val>>i) & 1){
+    144a:	cf 01       	movw	r24, r30
+    144c:	82 1b       	sub	r24, r18
+    144e:	93 0b       	sbc	r25, r19
+    1450:	6a 01       	movw	r12, r20
+    1452:	7b 01       	movw	r14, r22
+    1454:	04 c0       	rjmp	.+8      	; 0x145e <UART_Transmit_Byte_Bin+0x7a>
+    1456:	f6 94       	lsr	r15
+    1458:	e7 94       	ror	r14
+    145a:	d7 94       	ror	r13
+    145c:	c7 94       	ror	r12
+    145e:	8a 95       	dec	r24
+    1460:	d2 f7       	brpl	.-12     	; 0x1456 <UART_Transmit_Byte_Bin+0x72>
+    1462:	d7 01       	movw	r26, r14
+    1464:	c6 01       	movw	r24, r12
+    1466:	81 70       	andi	r24, 0x01	; 1
+    1468:	90 70       	andi	r25, 0x00	; 0
+    146a:	89 2b       	or	r24, r25
+    146c:	39 f0       	breq	.+14     	; 0x147c <UART_Transmit_Byte_Bin+0x98>
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    146e:	80 91 c0 00 	lds	r24, 0x00C0
+    1472:	85 ff       	sbrs	r24, 5
+    1474:	fc cf       	rjmp	.-8      	; 0x146e <UART_Transmit_Byte_Bin+0x8a>
+  UDR0=val;
+    1476:	10 93 c6 00 	sts	0x00C6, r17
+    147a:	06 c0       	rjmp	.+12     	; 0x1488 <UART_Transmit_Byte_Bin+0xa4>
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    147c:	80 91 c0 00 	lds	r24, 0x00C0
+    1480:	85 ff       	sbrs	r24, 5
+    1482:	fc cf       	rjmp	.-8      	; 0x147c <UART_Transmit_Byte_Bin+0x98>
+  UDR0=val;
+    1484:	00 93 c6 00 	sts	0x00C6, r16
+    1488:	2f 5f       	subi	r18, 0xFF	; 255
+    148a:	3f 4f       	sbci	r19, 0xFF	; 255
+    loop_counter=31;
+  }
+  
+  UART_Transmit_Byte('0');
+  UART_Transmit_Byte('b');
+  for(int i=loop_counter; i>=0; i--){
+    148c:	2c 17       	cp	r18, r28
+    148e:	3d 07       	cpc	r19, r29
+    1490:	e1 f6       	brne	.-72     	; 0x144a <UART_Transmit_Byte_Bin+0x66>
+      UART_Transmit_Byte( 49 );   
+    }else{
+      UART_Transmit_Byte( 48 );         
+    }
+  }
+}
+    1492:	df 91       	pop	r29
+    1494:	cf 91       	pop	r28
+    1496:	1f 91       	pop	r17
+    1498:	0f 91       	pop	r16
+    149a:	ff 90       	pop	r15
+    149c:	ef 90       	pop	r14
+    149e:	df 90       	pop	r13
+    14a0:	cf 90       	pop	r12
+    14a2:	08 95       	ret
+
+000014a4 <UART_Transmit_New_Line>:
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    14a4:	80 91 c0 00 	lds	r24, 0x00C0
+    14a8:	85 ff       	sbrs	r24, 5
+    14aa:	fc cf       	rjmp	.-8      	; 0x14a4 <UART_Transmit_New_Line>
+  UDR0=val;
+    14ac:	8d e0       	ldi	r24, 0x0D	; 13
+    14ae:	80 93 c6 00 	sts	0x00C6, r24
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    14b2:	80 91 c0 00 	lds	r24, 0x00C0
+    14b6:	85 ff       	sbrs	r24, 5
+    14b8:	fc cf       	rjmp	.-8      	; 0x14b2 <UART_Transmit_New_Line+0xe>
+  UDR0=val;
+    14ba:	8a e0       	ldi	r24, 0x0A	; 10
+    14bc:	80 93 c6 00 	sts	0x00C6, r24
+
+
+void UART_Transmit_New_Line(void){
+  UART_Transmit_Byte('\r');
+  UART_Transmit_Byte('\n');
+}
+    14c0:	08 95       	ret
+
+000014c2 <UART_Transmit_Space>:
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    14c2:	80 91 c0 00 	lds	r24, 0x00C0
+    14c6:	85 ff       	sbrs	r24, 5
+    14c8:	fc cf       	rjmp	.-8      	; 0x14c2 <UART_Transmit_Space>
+  UDR0=val;
+    14ca:	80 e2       	ldi	r24, 0x20	; 32
+    14cc:	80 93 c6 00 	sts	0x00C6, r24
+  UART_Transmit_Byte('\n');
+}
+
+void UART_Transmit_Space(void){
+  UART_Transmit_Byte(' ');
+}
+    14d0:	08 95       	ret
+
+000014d2 <UART_Transmit_Text>:
+
+void UART_Transmit_Text(char *str){
+    14d2:	ac 01       	movw	r20, r24
+    14d4:	20 e0       	ldi	r18, 0x00	; 0
+    14d6:	07 c0       	rjmp	.+14     	; 0x14e6 <UART_Transmit_Text+0x14>
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    14d8:	80 91 c0 00 	lds	r24, 0x00C0
+    14dc:	85 ff       	sbrs	r24, 5
+    14de:	fc cf       	rjmp	.-8      	; 0x14d8 <UART_Transmit_Text+0x6>
+  UDR0=val;
+    14e0:	e0 93 c6 00 	sts	0x00C6, r30
+
+void UART_Transmit_Text(char *str){
+    uint8_t i=0;
+    while(str[i]!='\0'){
+        UART_Transmit_Byte(str[i]);
+        i++;
+    14e4:	2f 5f       	subi	r18, 0xFF	; 255
+  UART_Transmit_Byte(' ');
+}
+
+void UART_Transmit_Text(char *str){
+    uint8_t i=0;
+    while(str[i]!='\0'){
+    14e6:	fa 01       	movw	r30, r20
+    14e8:	e2 0f       	add	r30, r18
+    14ea:	f1 1d       	adc	r31, r1
+    14ec:	e0 81       	ld	r30, Z
+    14ee:	ee 23       	and	r30, r30
+    14f0:	99 f7       	brne	.-26     	; 0x14d8 <UART_Transmit_Text+0x6>
+        UART_Transmit_Byte(str[i]);
+        i++;
+    }
+}
+    14f2:	08 95       	ret
+
+000014f4 <UART_Transmit_Text_NL>:
+
+void UART_Transmit_Text_NL(char *str){
+  UART_Transmit_Text(str);
+    14f4:	0e 94 69 0a 	call	0x14d2	; 0x14d2 <UART_Transmit_Text>
+  UART_Transmit_New_Line();
+    14f8:	0e 94 52 0a 	call	0x14a4	; 0x14a4 <UART_Transmit_New_Line>
+}
+    14fc:	08 95       	ret
+
+000014fe <UART_Determine_Digit_Numbers>:
+
+void UART_Determine_Digit_Numbers(uint32_t num){
+    14fe:	bf 92       	push	r11
+    1500:	cf 92       	push	r12
+    1502:	df 92       	push	r13
+    1504:	ef 92       	push	r14
+    1506:	ff 92       	push	r15
+    1508:	0f 93       	push	r16
+    150a:	1f 93       	push	r17
+    150c:	6b 01       	movw	r12, r22
+    150e:	7c 01       	movw	r14, r24
+  uint8_t i=0;
+  if(num==0){
+    1510:	61 15       	cp	r22, r1
+    1512:	71 05       	cpc	r23, r1
+    1514:	81 05       	cpc	r24, r1
+    1516:	91 05       	cpc	r25, r1
+    1518:	31 f4       	brne	.+12     	; 0x1526 <UART_Determine_Digit_Numbers+0x28>
+    UART.Digits[0]=0;
+    151a:	10 92 05 01 	sts	0x0105, r1
+    UART.InputNumberDigits=1;
+    151e:	81 e0       	ldi	r24, 0x01	; 1
+    1520:	80 93 0d 01 	sts	0x010D, r24
+    1524:	23 c0       	rjmp	.+70     	; 0x156c <UART_Determine_Digit_Numbers+0x6e>
+    1526:	bb 24       	eor	r11, r11
+  }else{
+    while(num!=0){
+      UART.Digits[i]=num%10;
+    1528:	0b 2d       	mov	r16, r11
+    152a:	10 e0       	ldi	r17, 0x00	; 0
+    152c:	0c 5f       	subi	r16, 0xFC	; 252
+    152e:	1e 4f       	sbci	r17, 0xFE	; 254
+    1530:	c7 01       	movw	r24, r14
+    1532:	b6 01       	movw	r22, r12
+    1534:	2a e0       	ldi	r18, 0x0A	; 10
+    1536:	30 e0       	ldi	r19, 0x00	; 0
+    1538:	40 e0       	ldi	r20, 0x00	; 0
+    153a:	50 e0       	ldi	r21, 0x00	; 0
+    153c:	0e 94 a5 0d 	call	0x1b4a	; 0x1b4a <__udivmodsi4>
+    1540:	f8 01       	movw	r30, r16
+    1542:	61 83       	std	Z+1, r22	; 0x01
+      num/=10;
+    1544:	c7 01       	movw	r24, r14
+    1546:	b6 01       	movw	r22, r12
+    1548:	2a e0       	ldi	r18, 0x0A	; 10
+    154a:	30 e0       	ldi	r19, 0x00	; 0
+    154c:	40 e0       	ldi	r20, 0x00	; 0
+    154e:	50 e0       	ldi	r21, 0x00	; 0
+    1550:	0e 94 a5 0d 	call	0x1b4a	; 0x1b4a <__udivmodsi4>
+    1554:	c9 01       	movw	r24, r18
+    1556:	da 01       	movw	r26, r20
+    1558:	6c 01       	movw	r12, r24
+    155a:	7d 01       	movw	r14, r26
+      i++;
+    155c:	b3 94       	inc	r11
+  uint8_t i=0;
+  if(num==0){
+    UART.Digits[0]=0;
+    UART.InputNumberDigits=1;
+  }else{
+    while(num!=0){
+    155e:	c1 14       	cp	r12, r1
+    1560:	d1 04       	cpc	r13, r1
+    1562:	e1 04       	cpc	r14, r1
+    1564:	f1 04       	cpc	r15, r1
+    1566:	01 f7       	brne	.-64     	; 0x1528 <UART_Determine_Digit_Numbers+0x2a>
+      UART.Digits[i]=num%10;
+      num/=10;
+      i++;
+    }
+	UART.InputNumberDigits=i;
+    1568:	b0 92 0d 01 	sts	0x010D, r11
+  }
+}
+    156c:	1f 91       	pop	r17
+    156e:	0f 91       	pop	r16
+    1570:	ff 90       	pop	r15
+    1572:	ef 90       	pop	r14
+    1574:	df 90       	pop	r13
+    1576:	cf 90       	pop	r12
+    1578:	bf 90       	pop	r11
+    157a:	08 95       	ret
+
+0000157c <UART_Transmit_Number_Digits>:
+
+void UART_Transmit_Number_Digits(void){
+  for(uint8_t i=UART.InputNumberDigits; i>0; i--){
+    157c:	e0 91 0d 01 	lds	r30, 0x010D
+    1580:	0f c0       	rjmp	.+30     	; 0x15a0 <UART_Transmit_Number_Digits+0x24>
+    uint8_t temp=i;
+    temp-=1;
+    1582:	2e 2f       	mov	r18, r30
+    1584:	21 50       	subi	r18, 0x01	; 1
+    temp=UART.Digits[temp];
+    1586:	e2 2f       	mov	r30, r18
+    1588:	f0 e0       	ldi	r31, 0x00	; 0
+    158a:	ec 5f       	subi	r30, 0xFC	; 252
+    158c:	fe 4f       	sbci	r31, 0xFE	; 254
+    158e:	91 81       	ldd	r25, Z+1	; 0x01
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    1590:	80 91 c0 00 	lds	r24, 0x00C0
+    1594:	85 ff       	sbrs	r24, 5
+    1596:	fc cf       	rjmp	.-8      	; 0x1590 <UART_Transmit_Number_Digits+0x14>
+void UART_Transmit_Number_Digits(void){
+  for(uint8_t i=UART.InputNumberDigits; i>0; i--){
+    uint8_t temp=i;
+    temp-=1;
+    temp=UART.Digits[temp];
+    temp+=48;
+    1598:	90 5d       	subi	r25, 0xD0	; 208
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+  UDR0=val;
+    159a:	90 93 c6 00 	sts	0x00C6, r25
+    159e:	e2 2f       	mov	r30, r18
+	UART.InputNumberDigits=i;
+  }
+}
+
+void UART_Transmit_Number_Digits(void){
+  for(uint8_t i=UART.InputNumberDigits; i>0; i--){
+    15a0:	ee 23       	and	r30, r30
+    15a2:	79 f7       	brne	.-34     	; 0x1582 <UART_Transmit_Number_Digits+0x6>
+    temp-=1;
+    temp=UART.Digits[temp];
+    temp+=48;
+    UART_Transmit_Byte(temp);
+  }
+}
+    15a4:	08 95       	ret
+
+000015a6 <UART_Transmit_Number>:
+
+void UART_Transmit_Number(int32_t num){
+    15a6:	9b 01       	movw	r18, r22
+    15a8:	ac 01       	movw	r20, r24
+  if(num<0){UART_Transmit_Byte('-');num=-num;}
+    15aa:	97 ff       	sbrs	r25, 7
+    15ac:	0e c0       	rjmp	.+28     	; 0x15ca <UART_Transmit_Number+0x24>
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    15ae:	80 91 c0 00 	lds	r24, 0x00C0
+    15b2:	85 ff       	sbrs	r24, 5
+    15b4:	fc cf       	rjmp	.-8      	; 0x15ae <UART_Transmit_Number+0x8>
+  UDR0=val;
+    15b6:	8d e2       	ldi	r24, 0x2D	; 45
+    15b8:	80 93 c6 00 	sts	0x00C6, r24
+    UART_Transmit_Byte(temp);
+  }
+}
+
+void UART_Transmit_Number(int32_t num){
+  if(num<0){UART_Transmit_Byte('-');num=-num;}
+    15bc:	50 95       	com	r21
+    15be:	40 95       	com	r20
+    15c0:	30 95       	com	r19
+    15c2:	21 95       	neg	r18
+    15c4:	3f 4f       	sbci	r19, 0xFF	; 255
+    15c6:	4f 4f       	sbci	r20, 0xFF	; 255
+    15c8:	5f 4f       	sbci	r21, 0xFF	; 255
+  UART_Determine_Digit_Numbers((uint32_t)num);
+    15ca:	ca 01       	movw	r24, r20
+    15cc:	b9 01       	movw	r22, r18
+    15ce:	0e 94 7f 0a 	call	0x14fe	; 0x14fe <UART_Determine_Digit_Numbers>
+  UART_Transmit_Number_Digits();
+    15d2:	0e 94 be 0a 	call	0x157c	; 0x157c <UART_Transmit_Number_Digits>
+}
+    15d6:	08 95       	ret
+
+000015d8 <UART_Transmit_Number_NL>:
+
+void UART_Transmit_Number_NL(int32_t num){
+  UART_Transmit_Number(num);
+    15d8:	0e 94 d3 0a 	call	0x15a6	; 0x15a6 <UART_Transmit_Number>
+  UART_Transmit_New_Line();
+    15dc:	0e 94 52 0a 	call	0x14a4	; 0x14a4 <UART_Transmit_New_Line>
+}
+    15e0:	08 95       	ret
+
+000015e2 <UART_Transmit_Number_SP>:
+
+void UART_Transmit_Number_SP(int32_t num){
+  UART_Transmit_Number(num);
+    15e2:	0e 94 d3 0a 	call	0x15a6	; 0x15a6 <UART_Transmit_Number>
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    15e6:	80 91 c0 00 	lds	r24, 0x00C0
+    15ea:	85 ff       	sbrs	r24, 5
+    15ec:	fc cf       	rjmp	.-8      	; 0x15e6 <UART_Transmit_Number_SP+0x4>
+  UDR0=val;
+    15ee:	80 e2       	ldi	r24, 0x20	; 32
+    15f0:	80 93 c6 00 	sts	0x00C6, r24
+}
+
+void UART_Transmit_Number_SP(int32_t num){
+  UART_Transmit_Number(num);
+  UART_Transmit_Space();
+}
+    15f4:	08 95       	ret
+
+000015f6 <UART_Transmit_Fixed_Digit_Number>:
+
+
+#ifdef UART_DEBUG_DATA_PRINT_FUNCTIONS
+void UART_Transmit_Fixed_Digit_Number(int32_t num, uint8_t digits){
+    15f6:	ff 92       	push	r15
+    15f8:	0f 93       	push	r16
+    15fa:	1f 93       	push	r17
+    15fc:	8b 01       	movw	r16, r22
+    15fe:	9c 01       	movw	r18, r24
+    1600:	f4 2e       	mov	r15, r20
+  if(num<0){UART_Transmit_Byte('-');num=-num;}
+    1602:	97 ff       	sbrs	r25, 7
+    1604:	0e c0       	rjmp	.+28     	; 0x1622 <UART_Transmit_Fixed_Digit_Number+0x2c>
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    1606:	80 91 c0 00 	lds	r24, 0x00C0
+    160a:	85 ff       	sbrs	r24, 5
+    160c:	fc cf       	rjmp	.-8      	; 0x1606 <UART_Transmit_Fixed_Digit_Number+0x10>
+  UDR0=val;
+    160e:	8d e2       	ldi	r24, 0x2D	; 45
+    1610:	80 93 c6 00 	sts	0x00C6, r24
+}
+
+
+#ifdef UART_DEBUG_DATA_PRINT_FUNCTIONS
+void UART_Transmit_Fixed_Digit_Number(int32_t num, uint8_t digits){
+  if(num<0){UART_Transmit_Byte('-');num=-num;}
+    1614:	30 95       	com	r19
+    1616:	20 95       	com	r18
+    1618:	10 95       	com	r17
+    161a:	01 95       	neg	r16
+    161c:	1f 4f       	sbci	r17, 0xFF	; 255
+    161e:	2f 4f       	sbci	r18, 0xFF	; 255
+    1620:	3f 4f       	sbci	r19, 0xFF	; 255
+  UART_Determine_Digit_Numbers((uint32_t)num);
+    1622:	c9 01       	movw	r24, r18
+    1624:	b8 01       	movw	r22, r16
+    1626:	0e 94 7f 0a 	call	0x14fe	; 0x14fe <UART_Determine_Digit_Numbers>
+  for(int i=0;i<(digits-UART.InputNumberDigits);i++){
+    162a:	4f 2d       	mov	r20, r15
+    162c:	50 e0       	ldi	r21, 0x00	; 0
+    162e:	80 91 0d 01 	lds	r24, 0x010D
+    1632:	48 1b       	sub	r20, r24
+    1634:	51 09       	sbc	r21, r1
+    1636:	20 e0       	ldi	r18, 0x00	; 0
+    1638:	30 e0       	ldi	r19, 0x00	; 0
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+  UDR0=val;
+    163a:	90 e3       	ldi	r25, 0x30	; 48
+    163c:	08 c0       	rjmp	.+16     	; 0x164e <UART_Transmit_Fixed_Digit_Number+0x58>
+  UCSR0B|=(1<<RXCIE0);
+  sei();
+}
+
+void UART_Transmit_Byte(uint8_t val){
+  while(!(UCSR0A & (1<<UDRE0)));
+    163e:	80 91 c0 00 	lds	r24, 0x00C0
+    1642:	85 ff       	sbrs	r24, 5
+    1644:	fc cf       	rjmp	.-8      	; 0x163e <UART_Transmit_Fixed_Digit_Number+0x48>
+  UDR0=val;
+    1646:	90 93 c6 00 	sts	0x00C6, r25
+
+#ifdef UART_DEBUG_DATA_PRINT_FUNCTIONS
+void UART_Transmit_Fixed_Digit_Number(int32_t num, uint8_t digits){
+  if(num<0){UART_Transmit_Byte('-');num=-num;}
+  UART_Determine_Digit_Numbers((uint32_t)num);
+  for(int i=0;i<(digits-UART.InputNumberDigits);i++){
+    164a:	2f 5f       	subi	r18, 0xFF	; 255
+    164c:	3f 4f       	sbci	r19, 0xFF	; 255
+    164e:	24 17       	cp	r18, r20
+    1650:	35 07       	cpc	r19, r21
+    1652:	ac f3       	brlt	.-22     	; 0x163e <UART_Transmit_Fixed_Digit_Number+0x48>
+    UART_Transmit_Byte(48);
+  }
+  UART_Transmit_Number_Digits();
+    1654:	0e 94 be 0a 	call	0x157c	; 0x157c <UART_Transmit_Number_Digits>
+}
+    1658:	1f 91       	pop	r17
+    165a:	0f 91       	pop	r16
+    165c:	ff 90       	pop	r15
+    165e:	08 95       	ret
+
+00001660 <UART_Print_Debug_Data>:
+#endif
+
+
+#ifdef UART_DEBUG_DATA_PRINT_FUNCTIONS
+void UART_Print_Debug_Data(int *data_in){
+    1660:	ef 92       	push	r14
+    1662:	ff 92       	push	r15
+    1664:	0f 93       	push	r16
+    1666:	1f 93       	push	r17
+    1668:	cf 93       	push	r28
+    166a:	df 93       	push	r29
+    166c:	7c 01       	movw	r14, r24
+    166e:	8c 01       	movw	r16, r24
+    1670:	c1 e0       	ldi	r28, 0x01	; 1
+    1672:	d0 e0       	ldi	r29, 0x00	; 0
+    1674:	0f c0       	rjmp	.+30     	; 0x1694 <UART_Print_Debug_Data+0x34>
+  for(int i=1;i<=data_in[0];i++){
+    UART_Transmit_Fixed_Digit_Number(data_in[i], 4);
+    1676:	f8 01       	movw	r30, r16
+    1678:	60 81       	ld	r22, Z
+    167a:	71 81       	ldd	r23, Z+1	; 0x01
+    167c:	88 27       	eor	r24, r24
+    167e:	77 fd       	sbrc	r23, 7
+    1680:	80 95       	com	r24
+    1682:	98 2f       	mov	r25, r24
+    1684:	44 e0       	ldi	r20, 0x04	; 4
+    1686:	0e 94 fb 0a 	call	0x15f6	; 0x15f6 <UART_Transmit_Fixed_Digit_Number>
+    UART_Transmit_Text("  ");
+    168a:	80 e0       	ldi	r24, 0x00	; 0
+    168c:	91 e0       	ldi	r25, 0x01	; 1
+    168e:	0e 94 69 0a 	call	0x14d2	; 0x14d2 <UART_Transmit_Text>
+#endif
+
+
+#ifdef UART_DEBUG_DATA_PRINT_FUNCTIONS
+void UART_Print_Debug_Data(int *data_in){
+  for(int i=1;i<=data_in[0];i++){
+    1692:	21 96       	adiw	r28, 0x01	; 1
+    1694:	0e 5f       	subi	r16, 0xFE	; 254
+    1696:	1f 4f       	sbci	r17, 0xFF	; 255
+    1698:	f7 01       	movw	r30, r14
+    169a:	80 81       	ld	r24, Z
+    169c:	91 81       	ldd	r25, Z+1	; 0x01
+    169e:	8c 17       	cp	r24, r28
+    16a0:	9d 07       	cpc	r25, r29
+    16a2:	4c f7       	brge	.-46     	; 0x1676 <UART_Print_Debug_Data+0x16>
+    UART_Transmit_Fixed_Digit_Number(data_in[i], 4);
+    UART_Transmit_Text("  ");
+  }
+}
+    16a4:	df 91       	pop	r29
+    16a6:	cf 91       	pop	r28
+    16a8:	1f 91       	pop	r17
+    16aa:	0f 91       	pop	r16
+    16ac:	ff 90       	pop	r15
+    16ae:	ef 90       	pop	r14
+    16b0:	08 95       	ret
+
+000016b2 <UART_Read_From_Buffer>:
+#endif
+
+
+#ifdef UART_CIRCULAR_BUFFER_READ
+uint8_t UART_Read_From_Buffer(uint16_t index){
+  return UART.Buffer[index];
+    16b2:	fc 01       	movw	r30, r24
+    16b4:	ec 5f       	subi	r30, 0xFC	; 252
+    16b6:	fe 4f       	sbci	r31, 0xFE	; 254
+    16b8:	82 85       	ldd	r24, Z+10	; 0x0a
+}
+    16ba:	08 95       	ret
+
+000016bc <UART_Current_Buffer_Index>:
+#endif
+
+
+#ifdef UART_CIRCULAR_BUFFER_READ
+uint16_t UART_Current_Buffer_Index(void){
+  return UART.BufferIndex;
+    16bc:	20 91 30 01 	lds	r18, 0x0130
+    16c0:	30 91 31 01 	lds	r19, 0x0131
+}
+    16c4:	c9 01       	movw	r24, r18
+    16c6:	08 95       	ret
+
+000016c8 <UART_Current_Read_Index>:
+#endif
+
+
+#ifdef UART_CIRCULAR_BUFFER_READ
+uint16_t UART_Current_Read_Index(void){
+  return UART.ReadIndex;
+    16c8:	20 91 34 01 	lds	r18, 0x0134
+    16cc:	30 91 35 01 	lds	r19, 0x0135
+}
+    16d0:	c9 01       	movw	r24, r18
+    16d2:	08 95       	ret
+
+000016d4 <UART_Bytes_Available_To_Read>:
+#endif
+
+
+#ifdef UART_CIRCULAR_BUFFER_READ
+uint16_t UART_Bytes_Available_To_Read(void){
+  return UART.AvailableBytes;
+    16d4:	20 91 32 01 	lds	r18, 0x0132
+    16d8:	30 91 33 01 	lds	r19, 0x0133
+}
+    16dc:	c9 01       	movw	r24, r18
+    16de:	08 95       	ret
+
+000016e0 <UART_Read>:
+#endif
+
+
+#ifdef UART_CIRCULAR_BUFFER_READ
+uint8_t UART_Read(void){
+  uint8_t current_byte=UART.Buffer[UART.ReadIndex];
+    16e0:	e0 91 34 01 	lds	r30, 0x0134
+    16e4:	f0 91 35 01 	lds	r31, 0x0135
+    16e8:	ec 5f       	subi	r30, 0xFC	; 252
+    16ea:	fe 4f       	sbci	r31, 0xFE	; 254
+    16ec:	42 85       	ldd	r20, Z+10	; 0x0a
+  UART.ReadIndex++;
+    16ee:	80 91 34 01 	lds	r24, 0x0134
+    16f2:	90 91 35 01 	lds	r25, 0x0135
+    16f6:	01 96       	adiw	r24, 0x01	; 1
+    16f8:	90 93 35 01 	sts	0x0135, r25
+    16fc:	80 93 34 01 	sts	0x0134, r24
+  if(UART.ReadIndex>=UART.BufferSize){
+    1700:	20 91 34 01 	lds	r18, 0x0134
+    1704:	30 91 35 01 	lds	r19, 0x0135
+    1708:	80 91 2e 01 	lds	r24, 0x012E
+    170c:	90 91 2f 01 	lds	r25, 0x012F
+    1710:	28 17       	cp	r18, r24
+    1712:	39 07       	cpc	r19, r25
+    1714:	20 f0       	brcs	.+8      	; 0x171e <UART_Read+0x3e>
+    UART.ReadIndex=0;
+    1716:	10 92 35 01 	sts	0x0135, r1
+    171a:	10 92 34 01 	sts	0x0134, r1
+  }
+  if(UART.AvailableBytes>0){
+    171e:	80 91 32 01 	lds	r24, 0x0132
+    1722:	90 91 33 01 	lds	r25, 0x0133
+    1726:	89 2b       	or	r24, r25
+    1728:	49 f0       	breq	.+18     	; 0x173c <UART_Read+0x5c>
+    UART.AvailableBytes--;
+    172a:	80 91 32 01 	lds	r24, 0x0132
+    172e:	90 91 33 01 	lds	r25, 0x0133
+    1732:	01 97       	sbiw	r24, 0x01	; 1
+    1734:	90 93 33 01 	sts	0x0133, r25
+    1738:	80 93 32 01 	sts	0x0132, r24
+  }
+  return current_byte;
+}
+    173c:	84 2f       	mov	r24, r20
+    173e:	08 95       	ret
+
+00001740 <UART_Last_Received_Byte>:
+#endif
+
+
+#ifdef UART_CIRCULAR_BUFFER_READ
+uint16_t UART_Current_Buffer_Index(void){
+  return UART.BufferIndex;
+    1740:	80 91 30 01 	lds	r24, 0x0130
+    1744:	90 91 31 01 	lds	r25, 0x0131
+  return current_byte;
+}
+#endif
+
+uint8_t UART_Last_Received_Byte(void){
+  if( UART_Current_Buffer_Index() == 0 ){
+    1748:	89 2b       	or	r24, r25
+    174a:	41 f4       	brne	.+16     	; 0x175c <UART_Last_Received_Byte+0x1c>
+    return UART_Read_From_Buffer(UART.BufferSize-1);
+    174c:	e0 91 2e 01 	lds	r30, 0x012E
+    1750:	f0 91 2f 01 	lds	r31, 0x012F
+#endif
+
+
+#ifdef UART_CIRCULAR_BUFFER_READ
+uint8_t UART_Read_From_Buffer(uint16_t index){
+  return UART.Buffer[index];
+    1754:	ed 5f       	subi	r30, 0xFD	; 253
+    1756:	fe 4f       	sbci	r31, 0xFE	; 254
+    1758:	82 85       	ldd	r24, Z+10	; 0x0a
+    175a:	08 95       	ret
+#endif
+
+
+#ifdef UART_CIRCULAR_BUFFER_READ
+uint16_t UART_Current_Buffer_Index(void){
+  return UART.BufferIndex;
+    175c:	e0 91 30 01 	lds	r30, 0x0130
+    1760:	f0 91 31 01 	lds	r31, 0x0131
+#endif
+
+
+#ifdef UART_CIRCULAR_BUFFER_READ
+uint8_t UART_Read_From_Buffer(uint16_t index){
+  return UART.Buffer[index];
+    1764:	ed 5f       	subi	r30, 0xFD	; 253
+    1766:	fe 4f       	sbci	r31, 0xFE	; 254
+    1768:	82 85       	ldd	r24, Z+10	; 0x0a
+  if( UART_Current_Buffer_Index() == 0 ){
+    return UART_Read_From_Buffer(UART.BufferSize-1);
+  }else{
+    return UART_Read_From_Buffer(UART_Current_Buffer_Index()-1);
+  }
+}
+    176a:	08 95       	ret
+
+0000176c <UART_Flush_Buffer>:
+
+void UART_Flush_Buffer(void){
+  #ifdef UART_ENABLE_RX_INT
+  UART.Error=0x00;
+    176c:	10 92 04 01 	sts	0x0104, r1
+    1770:	20 e0       	ldi	r18, 0x00	; 0
+    1772:	30 e0       	ldi	r19, 0x00	; 0
+    1774:	06 c0       	rjmp	.+12     	; 0x1782 <UART_Flush_Buffer+0x16>
+  for(uint16_t i=0;i<UART.BufferSize;i++){
+    UART.Buffer[i]=0x00;
+    1776:	f9 01       	movw	r30, r18
+    1778:	ec 5f       	subi	r30, 0xFC	; 252
+    177a:	fe 4f       	sbci	r31, 0xFE	; 254
+    177c:	12 86       	std	Z+10, r1	; 0x0a
+}
+
+void UART_Flush_Buffer(void){
+  #ifdef UART_ENABLE_RX_INT
+  UART.Error=0x00;
+  for(uint16_t i=0;i<UART.BufferSize;i++){
+    177e:	2f 5f       	subi	r18, 0xFF	; 255
+    1780:	3f 4f       	sbci	r19, 0xFF	; 255
+    1782:	80 91 2e 01 	lds	r24, 0x012E
+    1786:	90 91 2f 01 	lds	r25, 0x012F
+    178a:	28 17       	cp	r18, r24
+    178c:	39 07       	cpc	r19, r25
+    178e:	98 f3       	brcs	.-26     	; 0x1776 <UART_Flush_Buffer+0xa>
+    UART.Buffer[i]=0x00;
+  }
+  UART.BufferIndex=0;
+    1790:	10 92 31 01 	sts	0x0131, r1
+    1794:	10 92 30 01 	sts	0x0130, r1
+    
+  #ifdef UART_CIRCULAR_BUFFER_READ   
+  UART.ReadIndex=0;    
+    1798:	10 92 35 01 	sts	0x0135, r1
+    179c:	10 92 34 01 	sts	0x0134, r1
+  UART.AvailableBytes=0;
+    17a0:	10 92 33 01 	sts	0x0133, r1
+    17a4:	10 92 32 01 	sts	0x0132, r1
+  #endif
+  
+  #endif
+}
+    17a8:	08 95       	ret
+
+000017aa <UART_Interrupt_Service_Routine>:
+}
+#endif
+
+
+#ifdef UART_ENABLE_RX_INT
+void UART_Interrupt_Service_Routine(void){
+    17aa:	df 93       	push	r29
+    17ac:	cf 93       	push	r28
+    17ae:	0f 92       	push	r0
+    17b0:	cd b7       	in	r28, 0x3d	; 61
+    17b2:	de b7       	in	r29, 0x3e	; 62
+  volatile uint8_t received_byte=0;
+    17b4:	19 82       	std	Y+1, r1	; 0x01
+  received_byte=UART_Receive_Byte();
+    17b6:	0e 94 4d 09 	call	0x129a	; 0x129a <UART_Receive_Byte>
+    17ba:	89 83       	std	Y+1, r24	; 0x01
+  if(UART.Error==0x00){
+    17bc:	80 91 04 01 	lds	r24, 0x0104
+    17c0:	88 23       	and	r24, r24
+    17c2:	09 f0       	breq	.+2      	; 0x17c6 <UART_Interrupt_Service_Routine+0x1c>
+    17c4:	54 c0       	rjmp	.+168    	; 0x186e <UART_Interrupt_Service_Routine+0xc4>
+    UART.Buffer[UART.BufferIndex]=received_byte;
+    17c6:	e0 91 30 01 	lds	r30, 0x0130
+    17ca:	f0 91 31 01 	lds	r31, 0x0131
+    17ce:	89 81       	ldd	r24, Y+1	; 0x01
+    17d0:	ec 5f       	subi	r30, 0xFC	; 252
+    17d2:	fe 4f       	sbci	r31, 0xFE	; 254
+    17d4:	82 87       	std	Z+10, r24	; 0x0a
+    UART.BufferIndex++;
+    17d6:	80 91 30 01 	lds	r24, 0x0130
+    17da:	90 91 31 01 	lds	r25, 0x0131
+    17de:	01 96       	adiw	r24, 0x01	; 1
+    17e0:	90 93 31 01 	sts	0x0131, r25
+    17e4:	80 93 30 01 	sts	0x0130, r24
+	if(UART.BufferIndex>=UART.BufferSize){
+    17e8:	20 91 30 01 	lds	r18, 0x0130
+    17ec:	30 91 31 01 	lds	r19, 0x0131
+    17f0:	80 91 2e 01 	lds	r24, 0x012E
+    17f4:	90 91 2f 01 	lds	r25, 0x012F
+    17f8:	28 17       	cp	r18, r24
+    17fa:	39 07       	cpc	r19, r25
+    17fc:	20 f0       	brcs	.+8      	; 0x1806 <UART_Interrupt_Service_Routine+0x5c>
+      UART.BufferIndex=0;
+    17fe:	10 92 31 01 	sts	0x0131, r1
+    1802:	10 92 30 01 	sts	0x0130, r1
+    }
+
+    #ifdef UART_CIRCULAR_BUFFER_READ
+    UART.AvailableBytes++;
+    1806:	80 91 32 01 	lds	r24, 0x0132
+    180a:	90 91 33 01 	lds	r25, 0x0133
+    180e:	01 96       	adiw	r24, 0x01	; 1
+    1810:	90 93 33 01 	sts	0x0133, r25
+    1814:	80 93 32 01 	sts	0x0132, r24
+    if(UART.AvailableBytes>UART.BufferSize){
+    1818:	20 91 32 01 	lds	r18, 0x0132
+    181c:	30 91 33 01 	lds	r19, 0x0133
+    1820:	80 91 2e 01 	lds	r24, 0x012E
+    1824:	90 91 2f 01 	lds	r25, 0x012F
+    1828:	82 17       	cp	r24, r18
+    182a:	93 07       	cpc	r25, r19
+    182c:	00 f5       	brcc	.+64     	; 0x186e <UART_Interrupt_Service_Routine+0xc4>
+      UART.AvailableBytes=UART.BufferSize;
+    182e:	80 91 2e 01 	lds	r24, 0x012E
+    1832:	90 91 2f 01 	lds	r25, 0x012F
+    1836:	90 93 33 01 	sts	0x0133, r25
+    183a:	80 93 32 01 	sts	0x0132, r24
+      UART.ReadIndex++;
+    183e:	80 91 34 01 	lds	r24, 0x0134
+    1842:	90 91 35 01 	lds	r25, 0x0135
+    1846:	01 96       	adiw	r24, 0x01	; 1
+    1848:	90 93 35 01 	sts	0x0135, r25
+    184c:	80 93 34 01 	sts	0x0134, r24
+      if(UART.ReadIndex>=UART.BufferSize){
+    1850:	20 91 34 01 	lds	r18, 0x0134
+    1854:	30 91 35 01 	lds	r19, 0x0135
+    1858:	80 91 2e 01 	lds	r24, 0x012E
+    185c:	90 91 2f 01 	lds	r25, 0x012F
+    1860:	28 17       	cp	r18, r24
+    1862:	39 07       	cpc	r19, r25
+    1864:	20 f0       	brcs	.+8      	; 0x186e <UART_Interrupt_Service_Routine+0xc4>
+        UART.ReadIndex=0;
+    1866:	10 92 35 01 	sts	0x0135, r1
+    186a:	10 92 34 01 	sts	0x0134, r1
+    
+    #ifdef UART_LAST_RECEIVED_TIMESTAMP
+      UART.LastRecivedTimeStamp=UART_Reference_Time();
+    #endif
+  }
+}
+    186e:	0f 90       	pop	r0
+    1870:	cf 91       	pop	r28
+    1872:	df 91       	pop	r29
+    1874:	08 95       	ret
+
+00001876 <UART_Init>:
+#endif
+
+
+void UART_Init(uint32_t baud){
+    1876:	ef 92       	push	r14
+    1878:	ff 92       	push	r15
+    187a:	0f 93       	push	r16
+    187c:	1f 93       	push	r17
+    187e:	7b 01       	movw	r14, r22
+    1880:	8c 01       	movw	r16, r24
+  UART_Struct_Init();
+    1882:	0e 94 71 09 	call	0x12e2	; 0x12e2 <UART_Struct_Init>
+  UART_Config_GPIO();
+  UART_Config_Clock();
+  UART_Config_BAUD_Rate(baud);
+    1886:	c8 01       	movw	r24, r16
+    1888:	b7 01       	movw	r22, r14
+    188a:	0e 94 12 09 	call	0x1224	; 0x1224 <UART_Config_BAUD_Rate>
+  UBRR0L = UBRR_VAL & 0xFF ;
+}
+
+
+void UART_Config_Transmitter(void){
+  UCSR0B|=(1<<TXEN0);
+    188e:	e1 ec       	ldi	r30, 0xC1	; 193
+    1890:	f0 e0       	ldi	r31, 0x00	; 0
+    1892:	80 81       	ld	r24, Z
+    1894:	88 60       	ori	r24, 0x08	; 8
+    1896:	80 83       	st	Z, r24
+  UCSR0C=(1<<UCSZ00)| (1<<UCSZ01);
+    1898:	a2 ec       	ldi	r26, 0xC2	; 194
+    189a:	b0 e0       	ldi	r27, 0x00	; 0
+    189c:	96 e0       	ldi	r25, 0x06	; 6
+    189e:	9c 93       	st	X, r25
+}
+
+
+void UART_Config_Receiver(void){
+  UCSR0B|=(1<<RXEN0);
+    18a0:	80 81       	ld	r24, Z
+    18a2:	80 61       	ori	r24, 0x10	; 16
+    18a4:	80 83       	st	Z, r24
+  UCSR0C=(1<<UCSZ00)| (1<<UCSZ01);
+    18a6:	9c 93       	st	X, r25
+}
+
+void UART_Config_Receiver_Interrupt(void){
+  UCSR0B|=(1<<RXCIE0);
+    18a8:	80 81       	ld	r24, Z
+    18aa:	80 68       	ori	r24, 0x80	; 128
+    18ac:	80 83       	st	Z, r24
+  sei();
+    18ae:	78 94       	sei
+  #endif
+  
+  #ifdef UART_ENABLE_RX_INT
+  UART_Config_Receiver_Interrupt();
+  #endif
+}
+    18b0:	1f 91       	pop	r17
+    18b2:	0f 91       	pop	r16
+    18b4:	ff 90       	pop	r15
+    18b6:	ef 90       	pop	r14
+    18b8:	08 95       	ret
+
+000018ba <__vector_18>:
+
+
+#ifdef UART_ENABLE_RX_INT
+ISR(USART_RX_vect){
+    18ba:	1f 92       	push	r1
+    18bc:	0f 92       	push	r0
+    18be:	0f b6       	in	r0, 0x3f	; 63
+    18c0:	0f 92       	push	r0
+    18c2:	11 24       	eor	r1, r1
+    18c4:	2f 93       	push	r18
+    18c6:	3f 93       	push	r19
+    18c8:	4f 93       	push	r20
+    18ca:	5f 93       	push	r21
+    18cc:	6f 93       	push	r22
+    18ce:	7f 93       	push	r23
+    18d0:	8f 93       	push	r24
+    18d2:	9f 93       	push	r25
+    18d4:	af 93       	push	r26
+    18d6:	bf 93       	push	r27
+    18d8:	ef 93       	push	r30
+    18da:	ff 93       	push	r31
+  UART_Interrupt_Service_Routine();
+    18dc:	0e 94 d5 0b 	call	0x17aa	; 0x17aa <UART_Interrupt_Service_Routine>
+}
+    18e0:	ff 91       	pop	r31
+    18e2:	ef 91       	pop	r30
+    18e4:	bf 91       	pop	r27
+    18e6:	af 91       	pop	r26
+    18e8:	9f 91       	pop	r25
+    18ea:	8f 91       	pop	r24
+    18ec:	7f 91       	pop	r23
+    18ee:	6f 91       	pop	r22
+    18f0:	5f 91       	pop	r21
+    18f2:	4f 91       	pop	r20
+    18f4:	3f 91       	pop	r19
+    18f6:	2f 91       	pop	r18
+    18f8:	0f 90       	pop	r0
+    18fa:	0f be       	out	0x3f, r0	; 63
+    18fc:	0f 90       	pop	r0
+    18fe:	1f 90       	pop	r1
+    1900:	18 95       	reti
+
+00001902 <ProgRes_Init>:
+#define  ENR18_bp   0
+
+uint8_t  update_complete=0;
+
+void ProgRes_Init(void){
+  ENR1_DDR  |= (1<<ENR1_bp);
+    1902:	25 9a       	sbi	0x04, 5	; 4
+  ENR2_DDR  |= (1<<ENR2_bp);
+    1904:	24 9a       	sbi	0x04, 4	; 4
+  ENR3_DDR  |= (1<<ENR3_bp);
+    1906:	23 9a       	sbi	0x04, 3	; 4
+  ENR4_DDR  |= (1<<ENR4_bp);
+    1908:	22 9a       	sbi	0x04, 2	; 4
+  ENR5_DDR  |= (1<<ENR5_bp);
+    190a:	21 9a       	sbi	0x04, 1	; 4
+  ENR6_DDR  |= (1<<ENR6_bp);
+    190c:	20 9a       	sbi	0x04, 0	; 4
+  ENR7_DDR  |= (1<<ENR7_bp);
+    190e:	57 9a       	sbi	0x0a, 7	; 10
+  ENR8_DDR  |= (1<<ENR8_bp);
+    1910:	56 9a       	sbi	0x0a, 6	; 10
+  ENR9_DDR  |= (1<<ENR9_bp);
+    1912:	55 9a       	sbi	0x0a, 5	; 10
+  ENR10_DDR |= (1<<ENR10_bp);
+    1914:	27 9a       	sbi	0x04, 7	; 4
+  ENR11_DDR |= (1<<ENR11_bp);
+    1916:	26 9a       	sbi	0x04, 6	; 4
+  ENR12_DDR |= (1<<ENR12_bp);
+    1918:	54 9a       	sbi	0x0a, 4	; 10
+  ENR13_DDR |= (1<<ENR13_bp);
+    191a:	53 9a       	sbi	0x0a, 3	; 10
+  ENR14_DDR |= (1<<ENR14_bp);
+    191c:	52 9a       	sbi	0x0a, 2	; 10
+  ENR15_DDR |= (1<<ENR15_bp);
+    191e:	3b 9a       	sbi	0x07, 3	; 7
+  ENR16_DDR |= (1<<ENR16_bp);
+    1920:	3a 9a       	sbi	0x07, 2	; 7
+  ENR17_DDR |= (1<<ENR17_bp);
+    1922:	39 9a       	sbi	0x07, 1	; 7
+  ENR18_DDR |= (1<<ENR18_bp);
+    1924:	38 9a       	sbi	0x07, 0	; 7
+  ENR1_PORT &=~(1<<ENR1_bp);
+    1926:	2d 98       	cbi	0x05, 5	; 5
+  ENR2_PORT &=~(1<<ENR2_bp);
+    1928:	2c 98       	cbi	0x05, 4	; 5
+  ENR3_PORT &=~(1<<ENR3_bp);
+    192a:	2b 98       	cbi	0x05, 3	; 5
+  ENR4_PORT &=~(1<<ENR4_bp);
+    192c:	2a 98       	cbi	0x05, 2	; 5
+  ENR5_PORT &=~(1<<ENR5_bp);
+    192e:	29 98       	cbi	0x05, 1	; 5
+  ENR6_PORT &=~(1<<ENR6_bp);
+    1930:	28 98       	cbi	0x05, 0	; 5
+  ENR7_PORT &=~(1<<ENR7_bp);
+    1932:	5f 98       	cbi	0x0b, 7	; 11
+  ENR8_PORT &=~(1<<ENR8_bp);
+    1934:	5e 98       	cbi	0x0b, 6	; 11
+  ENR9_PORT &=~(1<<ENR9_bp);
+    1936:	5d 98       	cbi	0x0b, 5	; 11
+  ENR10_PORT&=~(1<<ENR10_bp);
+    1938:	2f 98       	cbi	0x05, 7	; 5
+  ENR11_PORT&=~(1<<ENR11_bp);
+    193a:	2e 98       	cbi	0x05, 6	; 5
+  ENR12_PORT&=~(1<<ENR12_bp);
+    193c:	5c 98       	cbi	0x0b, 4	; 11
+  ENR13_PORT&=~(1<<ENR13_bp);
+    193e:	5b 98       	cbi	0x0b, 3	; 11
+  ENR14_PORT&=~(1<<ENR14_bp);
+    1940:	5a 98       	cbi	0x0b, 2	; 11
+  ENR15_PORT&=~(1<<ENR15_bp);
+    1942:	43 98       	cbi	0x08, 3	; 8
+  ENR16_PORT&=~(1<<ENR16_bp);
+    1944:	42 98       	cbi	0x08, 2	; 8
+  ENR17_PORT&=~(1<<ENR17_bp);
+    1946:	41 98       	cbi	0x08, 1	; 8
+  ENR18_PORT&=~(1<<ENR18_bp);
+    1948:	40 98       	cbi	0x08, 0	; 8
+}
+    194a:	08 95       	ret
+
+0000194c <ProgRes_Disable_All>:
+
+void ProgRes_Disable_All(void){
+  ENR1_PORT &=~(1<<ENR1_bp);
+    194c:	2d 98       	cbi	0x05, 5	; 5
+  ENR2_PORT &=~(1<<ENR2_bp);
+    194e:	2c 98       	cbi	0x05, 4	; 5
+  ENR3_PORT &=~(1<<ENR3_bp);
+    1950:	2b 98       	cbi	0x05, 3	; 5
+  ENR4_PORT &=~(1<<ENR4_bp);
+    1952:	2a 98       	cbi	0x05, 2	; 5
+  ENR5_PORT &=~(1<<ENR5_bp);
+    1954:	29 98       	cbi	0x05, 1	; 5
+  ENR6_PORT &=~(1<<ENR6_bp);
+    1956:	28 98       	cbi	0x05, 0	; 5
+  ENR7_PORT &=~(1<<ENR7_bp);
+    1958:	5f 98       	cbi	0x0b, 7	; 11
+  ENR8_PORT &=~(1<<ENR8_bp);
+    195a:	5e 98       	cbi	0x0b, 6	; 11
+  ENR9_PORT &=~(1<<ENR9_bp);
+    195c:	5d 98       	cbi	0x0b, 5	; 11
+  ENR10_PORT&=~(1<<ENR10_bp);
+    195e:	2f 98       	cbi	0x05, 7	; 5
+  ENR11_PORT&=~(1<<ENR11_bp);
+    1960:	2e 98       	cbi	0x05, 6	; 5
+  ENR12_PORT&=~(1<<ENR12_bp);
+    1962:	5c 98       	cbi	0x0b, 4	; 11
+  ENR13_PORT&=~(1<<ENR13_bp);
+    1964:	5b 98       	cbi	0x0b, 3	; 11
+  ENR14_PORT&=~(1<<ENR14_bp);
+    1966:	5a 98       	cbi	0x0b, 2	; 11
+  ENR15_PORT&=~(1<<ENR15_bp);
+    1968:	43 98       	cbi	0x08, 3	; 8
+  ENR16_PORT&=~(1<<ENR16_bp);
+    196a:	42 98       	cbi	0x08, 2	; 8
+  ENR17_PORT&=~(1<<ENR17_bp);
+    196c:	41 98       	cbi	0x08, 1	; 8
+  ENR18_PORT&=~(1<<ENR18_bp);
+    196e:	40 98       	cbi	0x08, 0	; 8
+}
+    1970:	08 95       	ret
+
+00001972 <ProgRes_Enable_Resistor1>:
+
+void ProgRes_Enable_Resistor1(void){
+  ENR1_PORT |= (1<<ENR1_bp);
+    1972:	2d 9a       	sbi	0x05, 5	; 5
+}
+    1974:	08 95       	ret
+
+00001976 <ProgRes_Enable_Resistor2>:
+
+void ProgRes_Enable_Resistor2(void){
+  ENR2_PORT |= (1<<ENR2_bp);
+    1976:	2c 9a       	sbi	0x05, 4	; 5
+}
+    1978:	08 95       	ret
+
+0000197a <ProgRes_Enable_Resistor3>:
+
+void ProgRes_Enable_Resistor3(void){
+  ENR3_PORT |= (1<<ENR3_bp);
+    197a:	2b 9a       	sbi	0x05, 3	; 5
+}
+    197c:	08 95       	ret
+
+0000197e <ProgRes_Enable_Resistor4>:
+
+void ProgRes_Enable_Resistor4(void){
+  ENR4_PORT |= (1<<ENR4_bp);
+    197e:	2a 9a       	sbi	0x05, 2	; 5
+}
+    1980:	08 95       	ret
+
+00001982 <ProgRes_Enable_Resistor5>:
+
+void ProgRes_Enable_Resistor5(void){
+  ENR5_PORT |= (1<<ENR5_bp);
+    1982:	29 9a       	sbi	0x05, 1	; 5
+}
+    1984:	08 95       	ret
+
+00001986 <ProgRes_Enable_Resistor6>:
+
+void ProgRes_Enable_Resistor6(void){
+  ENR6_PORT |= (1<<ENR6_bp);
+    1986:	28 9a       	sbi	0x05, 0	; 5
+}
+    1988:	08 95       	ret
+
+0000198a <ProgRes_Enable_Resistor7>:
+
+void ProgRes_Enable_Resistor7(void){
+  ENR7_PORT |= (1<<ENR7_bp);
+    198a:	5f 9a       	sbi	0x0b, 7	; 11
+}
+    198c:	08 95       	ret
+
+0000198e <ProgRes_Enable_Resistor8>:
+
+void ProgRes_Enable_Resistor8(void){
+  ENR8_PORT |= (1<<ENR8_bp);
+    198e:	5e 9a       	sbi	0x0b, 6	; 11
+}
+    1990:	08 95       	ret
+
+00001992 <ProgRes_Enable_Resistor9>:
+
+void ProgRes_Enable_Resistor9(void){
+  ENR9_PORT |= (1<<ENR9_bp);
+    1992:	5d 9a       	sbi	0x0b, 5	; 11
+}
+    1994:	08 95       	ret
+
+00001996 <ProgRes_Enable_Resistor10>:
+
+void ProgRes_Enable_Resistor10(void){
+  ENR10_PORT |= (1<<ENR10_bp);
+    1996:	2f 9a       	sbi	0x05, 7	; 5
+}
+    1998:	08 95       	ret
+
+0000199a <ProgRes_Enable_Resistor11>:
+
+void ProgRes_Enable_Resistor11(void){
+  ENR11_PORT |= (1<<ENR11_bp);
+    199a:	2e 9a       	sbi	0x05, 6	; 5
+}
+    199c:	08 95       	ret
+
+0000199e <ProgRes_Enable_Resistor12>:
+
+void ProgRes_Enable_Resistor12(void){
+  ENR12_PORT |= (1<<ENR12_bp);
+    199e:	5c 9a       	sbi	0x0b, 4	; 11
+}
+    19a0:	08 95       	ret
+
+000019a2 <ProgRes_Enable_Resistor13>:
+
+void ProgRes_Enable_Resistor13(void){
+  ENR13_PORT |= (1<<ENR13_bp);
+    19a2:	5b 9a       	sbi	0x0b, 3	; 11
+}
+    19a4:	08 95       	ret
+
+000019a6 <ProgRes_Enable_Resistor14>:
+
+void ProgRes_Enable_Resistor14(void){
+  ENR14_PORT |= (1<<ENR14_bp);
+    19a6:	5a 9a       	sbi	0x0b, 2	; 11
+}
+    19a8:	08 95       	ret
+
+000019aa <ProgRes_Enable_Resistor15>:
+
+void ProgRes_Enable_Resistor15(void){
+  ENR15_PORT |= (1<<ENR15_bp);
+    19aa:	43 9a       	sbi	0x08, 3	; 8
+}
+    19ac:	08 95       	ret
+
+000019ae <ProgRes_Enable_Resistor16>:
+
+void ProgRes_Enable_Resistor16(void){
+  ENR16_PORT |= (1<<ENR16_bp);
+    19ae:	42 9a       	sbi	0x08, 2	; 8
+}
+    19b0:	08 95       	ret
+
+000019b2 <ProgRes_Enable_Resistor17>:
+
+void ProgRes_Enable_Resistor17(void){
+  ENR17_PORT |= (1<<ENR17_bp);
+    19b2:	41 9a       	sbi	0x08, 1	; 8
+}
+    19b4:	08 95       	ret
+
+000019b6 <ProgRes_Enable_Resistor18>:
+
+void ProgRes_Enable_Resistor18(void){
+  ENR18_PORT |= (1<<ENR18_bp);
+    19b6:	40 9a       	sbi	0x08, 0	; 8
+}
+    19b8:	08 95       	ret
+
+000019ba <ProgRes_Enable_Resistor>:
+
+void ProgRes_Enable_Resistor(uint8_t res){
+  if      (res==1){
+    19ba:	81 30       	cpi	r24, 0x01	; 1
+    19bc:	11 f4       	brne	.+4      	; 0x19c2 <ProgRes_Enable_Resistor+0x8>
+  ENR17_PORT&=~(1<<ENR17_bp);
+  ENR18_PORT&=~(1<<ENR18_bp);
+}
+
+void ProgRes_Enable_Resistor1(void){
+  ENR1_PORT |= (1<<ENR1_bp);
+    19be:	2d 9a       	sbi	0x05, 5	; 5
+    19c0:	08 95       	ret
+}
+
+void ProgRes_Enable_Resistor(uint8_t res){
+  if      (res==1){
+    ProgRes_Enable_Resistor1();
+  }else if(res==2){
+    19c2:	82 30       	cpi	r24, 0x02	; 2
+    19c4:	11 f4       	brne	.+4      	; 0x19ca <ProgRes_Enable_Resistor+0x10>
+void ProgRes_Enable_Resistor1(void){
+  ENR1_PORT |= (1<<ENR1_bp);
+}
+
+void ProgRes_Enable_Resistor2(void){
+  ENR2_PORT |= (1<<ENR2_bp);
+    19c6:	2c 9a       	sbi	0x05, 4	; 5
+    19c8:	08 95       	ret
+void ProgRes_Enable_Resistor(uint8_t res){
+  if      (res==1){
+    ProgRes_Enable_Resistor1();
+  }else if(res==2){
+    ProgRes_Enable_Resistor2();
+  }else if(res==3){
+    19ca:	83 30       	cpi	r24, 0x03	; 3
+    19cc:	11 f4       	brne	.+4      	; 0x19d2 <ProgRes_Enable_Resistor+0x18>
+void ProgRes_Enable_Resistor2(void){
+  ENR2_PORT |= (1<<ENR2_bp);
+}
+
+void ProgRes_Enable_Resistor3(void){
+  ENR3_PORT |= (1<<ENR3_bp);
+    19ce:	2b 9a       	sbi	0x05, 3	; 5
+    19d0:	08 95       	ret
+    ProgRes_Enable_Resistor1();
+  }else if(res==2){
+    ProgRes_Enable_Resistor2();
+  }else if(res==3){
+    ProgRes_Enable_Resistor3();
+  }else if(res==4){
+    19d2:	84 30       	cpi	r24, 0x04	; 4
+    19d4:	11 f4       	brne	.+4      	; 0x19da <ProgRes_Enable_Resistor+0x20>
+void ProgRes_Enable_Resistor3(void){
+  ENR3_PORT |= (1<<ENR3_bp);
+}
+
+void ProgRes_Enable_Resistor4(void){
+  ENR4_PORT |= (1<<ENR4_bp);
+    19d6:	2a 9a       	sbi	0x05, 2	; 5
+    19d8:	08 95       	ret
+    ProgRes_Enable_Resistor2();
+  }else if(res==3){
+    ProgRes_Enable_Resistor3();
+  }else if(res==4){
+    ProgRes_Enable_Resistor4();
+  }else if(res==5){
+    19da:	85 30       	cpi	r24, 0x05	; 5
+    19dc:	11 f4       	brne	.+4      	; 0x19e2 <ProgRes_Enable_Resistor+0x28>
+void ProgRes_Enable_Resistor4(void){
+  ENR4_PORT |= (1<<ENR4_bp);
+}
+
+void ProgRes_Enable_Resistor5(void){
+  ENR5_PORT |= (1<<ENR5_bp);
+    19de:	29 9a       	sbi	0x05, 1	; 5
+    19e0:	08 95       	ret
+    ProgRes_Enable_Resistor3();
+  }else if(res==4){
+    ProgRes_Enable_Resistor4();
+  }else if(res==5){
+    ProgRes_Enable_Resistor5();
+  }else if(res==6){
+    19e2:	86 30       	cpi	r24, 0x06	; 6
+    19e4:	11 f4       	brne	.+4      	; 0x19ea <ProgRes_Enable_Resistor+0x30>
+void ProgRes_Enable_Resistor5(void){
+  ENR5_PORT |= (1<<ENR5_bp);
+}
+
+void ProgRes_Enable_Resistor6(void){
+  ENR6_PORT |= (1<<ENR6_bp);
+    19e6:	28 9a       	sbi	0x05, 0	; 5
+    19e8:	08 95       	ret
+    ProgRes_Enable_Resistor4();
+  }else if(res==5){
+    ProgRes_Enable_Resistor5();
+  }else if(res==6){
+    ProgRes_Enable_Resistor6();
+  }else if(res==7){
+    19ea:	87 30       	cpi	r24, 0x07	; 7
+    19ec:	11 f4       	brne	.+4      	; 0x19f2 <ProgRes_Enable_Resistor+0x38>
+void ProgRes_Enable_Resistor6(void){
+  ENR6_PORT |= (1<<ENR6_bp);
+}
+
+void ProgRes_Enable_Resistor7(void){
+  ENR7_PORT |= (1<<ENR7_bp);
+    19ee:	5f 9a       	sbi	0x0b, 7	; 11
+    19f0:	08 95       	ret
+    ProgRes_Enable_Resistor5();
+  }else if(res==6){
+    ProgRes_Enable_Resistor6();
+  }else if(res==7){
+    ProgRes_Enable_Resistor7();
+  }else if(res==8){
+    19f2:	88 30       	cpi	r24, 0x08	; 8
+    19f4:	11 f4       	brne	.+4      	; 0x19fa <ProgRes_Enable_Resistor+0x40>
+void ProgRes_Enable_Resistor7(void){
+  ENR7_PORT |= (1<<ENR7_bp);
+}
+
+void ProgRes_Enable_Resistor8(void){
+  ENR8_PORT |= (1<<ENR8_bp);
+    19f6:	5e 9a       	sbi	0x0b, 6	; 11
+    19f8:	08 95       	ret
+    ProgRes_Enable_Resistor6();
+  }else if(res==7){
+    ProgRes_Enable_Resistor7();
+  }else if(res==8){
+    ProgRes_Enable_Resistor8();
+  }else if(res==9){
+    19fa:	89 30       	cpi	r24, 0x09	; 9
+    19fc:	11 f4       	brne	.+4      	; 0x1a02 <ProgRes_Enable_Resistor+0x48>
+void ProgRes_Enable_Resistor8(void){
+  ENR8_PORT |= (1<<ENR8_bp);
+}
+
+void ProgRes_Enable_Resistor9(void){
+  ENR9_PORT |= (1<<ENR9_bp);
+    19fe:	5d 9a       	sbi	0x0b, 5	; 11
+    1a00:	08 95       	ret
+    ProgRes_Enable_Resistor7();
+  }else if(res==8){
+    ProgRes_Enable_Resistor8();
+  }else if(res==9){
+    ProgRes_Enable_Resistor9();
+  }else if(res==10){
+    1a02:	8a 30       	cpi	r24, 0x0A	; 10
+    1a04:	11 f4       	brne	.+4      	; 0x1a0a <ProgRes_Enable_Resistor+0x50>
+void ProgRes_Enable_Resistor9(void){
+  ENR9_PORT |= (1<<ENR9_bp);
+}
+
+void ProgRes_Enable_Resistor10(void){
+  ENR10_PORT |= (1<<ENR10_bp);
+    1a06:	2f 9a       	sbi	0x05, 7	; 5
+    1a08:	08 95       	ret
+    ProgRes_Enable_Resistor8();
+  }else if(res==9){
+    ProgRes_Enable_Resistor9();
+  }else if(res==10){
+    ProgRes_Enable_Resistor10();
+  }else if(res==11){
+    1a0a:	8b 30       	cpi	r24, 0x0B	; 11
+    1a0c:	11 f4       	brne	.+4      	; 0x1a12 <ProgRes_Enable_Resistor+0x58>
+void ProgRes_Enable_Resistor10(void){
+  ENR10_PORT |= (1<<ENR10_bp);
+}
+
+void ProgRes_Enable_Resistor11(void){
+  ENR11_PORT |= (1<<ENR11_bp);
+    1a0e:	2e 9a       	sbi	0x05, 6	; 5
+    1a10:	08 95       	ret
+    ProgRes_Enable_Resistor9();
+  }else if(res==10){
+    ProgRes_Enable_Resistor10();
+  }else if(res==11){
+    ProgRes_Enable_Resistor11();
+  }else if(res==12){
+    1a12:	8c 30       	cpi	r24, 0x0C	; 12
+    1a14:	11 f4       	brne	.+4      	; 0x1a1a <ProgRes_Enable_Resistor+0x60>
+void ProgRes_Enable_Resistor11(void){
+  ENR11_PORT |= (1<<ENR11_bp);
+}
+
+void ProgRes_Enable_Resistor12(void){
+  ENR12_PORT |= (1<<ENR12_bp);
+    1a16:	5c 9a       	sbi	0x0b, 4	; 11
+    1a18:	08 95       	ret
+    ProgRes_Enable_Resistor10();
+  }else if(res==11){
+    ProgRes_Enable_Resistor11();
+  }else if(res==12){
+    ProgRes_Enable_Resistor12();
+  }else if(res==13){
+    1a1a:	8d 30       	cpi	r24, 0x0D	; 13
+    1a1c:	11 f4       	brne	.+4      	; 0x1a22 <ProgRes_Enable_Resistor+0x68>
+void ProgRes_Enable_Resistor12(void){
+  ENR12_PORT |= (1<<ENR12_bp);
+}
+
+void ProgRes_Enable_Resistor13(void){
+  ENR13_PORT |= (1<<ENR13_bp);
+    1a1e:	5b 9a       	sbi	0x0b, 3	; 11
+    1a20:	08 95       	ret
+    ProgRes_Enable_Resistor11();
+  }else if(res==12){
+    ProgRes_Enable_Resistor12();
+  }else if(res==13){
+    ProgRes_Enable_Resistor13();
+  }else if(res==14){
+    1a22:	8e 30       	cpi	r24, 0x0E	; 14
+    1a24:	11 f4       	brne	.+4      	; 0x1a2a <ProgRes_Enable_Resistor+0x70>
+void ProgRes_Enable_Resistor13(void){
+  ENR13_PORT |= (1<<ENR13_bp);
+}
+
+void ProgRes_Enable_Resistor14(void){
+  ENR14_PORT |= (1<<ENR14_bp);
+    1a26:	5a 9a       	sbi	0x0b, 2	; 11
+    1a28:	08 95       	ret
+    ProgRes_Enable_Resistor12();
+  }else if(res==13){
+    ProgRes_Enable_Resistor13();
+  }else if(res==14){
+    ProgRes_Enable_Resistor14();
+  }else if(res==15){
+    1a2a:	8f 30       	cpi	r24, 0x0F	; 15
+    1a2c:	11 f4       	brne	.+4      	; 0x1a32 <ProgRes_Enable_Resistor+0x78>
+void ProgRes_Enable_Resistor14(void){
+  ENR14_PORT |= (1<<ENR14_bp);
+}
+
+void ProgRes_Enable_Resistor15(void){
+  ENR15_PORT |= (1<<ENR15_bp);
+    1a2e:	43 9a       	sbi	0x08, 3	; 8
+    1a30:	08 95       	ret
+    ProgRes_Enable_Resistor13();
+  }else if(res==14){
+    ProgRes_Enable_Resistor14();
+  }else if(res==15){
+    ProgRes_Enable_Resistor15();
+  }else if(res==16){
+    1a32:	80 31       	cpi	r24, 0x10	; 16
+    1a34:	11 f4       	brne	.+4      	; 0x1a3a <ProgRes_Enable_Resistor+0x80>
+void ProgRes_Enable_Resistor15(void){
+  ENR15_PORT |= (1<<ENR15_bp);
+}
+
+void ProgRes_Enable_Resistor16(void){
+  ENR16_PORT |= (1<<ENR16_bp);
+    1a36:	42 9a       	sbi	0x08, 2	; 8
+    1a38:	08 95       	ret
+    ProgRes_Enable_Resistor14();
+  }else if(res==15){
+    ProgRes_Enable_Resistor15();
+  }else if(res==16){
+    ProgRes_Enable_Resistor16();
+  }else if(res==17){
+    1a3a:	81 31       	cpi	r24, 0x11	; 17
+    1a3c:	11 f4       	brne	.+4      	; 0x1a42 <ProgRes_Enable_Resistor+0x88>
+void ProgRes_Enable_Resistor16(void){
+  ENR16_PORT |= (1<<ENR16_bp);
+}
+
+void ProgRes_Enable_Resistor17(void){
+  ENR17_PORT |= (1<<ENR17_bp);
+    1a3e:	41 9a       	sbi	0x08, 1	; 8
+    1a40:	08 95       	ret
+    ProgRes_Enable_Resistor15();
+  }else if(res==16){
+    ProgRes_Enable_Resistor16();
+  }else if(res==17){
+    ProgRes_Enable_Resistor17();
+  }else if(res==18){
+    1a42:	82 31       	cpi	r24, 0x12	; 18
+    1a44:	09 f4       	brne	.+2      	; 0x1a48 <ProgRes_Enable_Resistor+0x8e>
+void ProgRes_Enable_Resistor17(void){
+  ENR17_PORT |= (1<<ENR17_bp);
+}
+
+void ProgRes_Enable_Resistor18(void){
+  ENR18_PORT |= (1<<ENR18_bp);
+    1a46:	40 9a       	sbi	0x08, 0	; 8
+    1a48:	08 95       	ret
+
+00001a4a <ProgRes_Get_Update_Complete_Status>:
+  }
+}
+
+uint8_t ProgRes_Get_Update_Complete_Status(void){
+  return update_complete;
+}
+    1a4a:	80 91 36 01 	lds	r24, 0x0136
+    1a4e:	08 95       	ret
+
+00001a50 <ProgRes_Set_Update_Complete_Status>:
+
+void ProgRes_Set_Update_Complete_Status(void){
+  update_complete=1;
+    1a50:	81 e0       	ldi	r24, 0x01	; 1
+    1a52:	80 93 36 01 	sts	0x0136, r24
+}
+    1a56:	08 95       	ret
+
+00001a58 <ProgRes_Clear_Update_Complete_Status>:
+
+void ProgRes_Clear_Update_Complete_Status(void){
+  update_complete=0;
+    1a58:	10 92 36 01 	sts	0x0136, r1
+}
+    1a5c:	08 95       	ret
+
+00001a5e <ProgRes_Enable_Resistor_Update>:
+
+void ProgRes_Enable_Resistor_Update(uint8_t res){
+    1a5e:	1f 93       	push	r17
+    1a60:	18 2f       	mov	r17, r24
+  if(!ProgRes_Get_Update_Complete_Status()){
+    1a62:	80 91 36 01 	lds	r24, 0x0136
+    1a66:	88 23       	and	r24, r24
+    1a68:	41 f4       	brne	.+16     	; 0x1a7a <ProgRes_Enable_Resistor_Update+0x1c>
+    ProgRes_Disable_All();
+    1a6a:	0e 94 a6 0c 	call	0x194c	; 0x194c <ProgRes_Disable_All>
+    ProgRes_Enable_Resistor(res);
+    1a6e:	81 2f       	mov	r24, r17
+    1a70:	0e 94 dd 0c 	call	0x19ba	; 0x19ba <ProgRes_Enable_Resistor>
+uint8_t ProgRes_Get_Update_Complete_Status(void){
+  return update_complete;
+}
+
+void ProgRes_Set_Update_Complete_Status(void){
+  update_complete=1;
+    1a74:	81 e0       	ldi	r24, 0x01	; 1
+    1a76:	80 93 36 01 	sts	0x0136, r24
+  if(!ProgRes_Get_Update_Complete_Status()){
+    ProgRes_Disable_All();
+    ProgRes_Enable_Resistor(res);
+	ProgRes_Set_Update_Complete_Status();
+  }
+    1a7a:	1f 91       	pop	r17
+    1a7c:	08 95       	ret
+
+00001a7e <Deep_Sleep>:
+#include <avr/sleep.h>
+
+volatile uint32_t WDT_Ticks=0;
+
+void Deep_Sleep(void){
+  sleep_enable();
+    1a7e:	83 b7       	in	r24, 0x33	; 51
+    1a80:	81 60       	ori	r24, 0x01	; 1
+    1a82:	83 bf       	out	0x33, r24	; 51
+  sleep_bod_disable();
+    1a84:	85 b7       	in	r24, 0x35	; 53
+    1a86:	80 66       	ori	r24, 0x60	; 96
+    1a88:	85 bf       	out	0x35, r24	; 53
+    1a8a:	8f 7d       	andi	r24, 0xDF	; 223
+    1a8c:	85 bf       	out	0x35, r24	; 53
+  sei();
+    1a8e:	78 94       	sei
+  sleep_cpu();
+    1a90:	88 95       	sleep
+  sleep_disable();
+    1a92:	83 b7       	in	r24, 0x33	; 51
+    1a94:	8e 7f       	andi	r24, 0xFE	; 254
+    1a96:	83 bf       	out	0x33, r24	; 51
+}
+    1a98:	08 95       	ret
+
+00001a9a <ADC_Disable>:
+
+void ADC_Disable(void){
+  ADCSRA &=~ (1<<ADEN);
+    1a9a:	ea e7       	ldi	r30, 0x7A	; 122
+    1a9c:	f0 e0       	ldi	r31, 0x00	; 0
+    1a9e:	80 81       	ld	r24, Z
+    1aa0:	8f 77       	andi	r24, 0x7F	; 127
+    1aa2:	80 83       	st	Z, r24
+}
+    1aa4:	08 95       	ret
+
+00001aa6 <Analog_Comparator_Disable>:
+
+void Analog_Comparator_Disable(void){
+  ACSR   &=~ (1<<ACD) ;
+    1aa6:	80 b7       	in	r24, 0x30	; 48
+    1aa8:	8f 77       	andi	r24, 0x7F	; 127
+    1aaa:	80 bf       	out	0x30, r24	; 48
+}
+    1aac:	08 95       	ret
+
+00001aae <WDT_Get_Ticks>:
+
+uint32_t WDT_Get_Ticks(void){
+  return WDT_Ticks;
+    1aae:	20 91 37 01 	lds	r18, 0x0137
+    1ab2:	30 91 38 01 	lds	r19, 0x0138
+    1ab6:	40 91 39 01 	lds	r20, 0x0139
+    1aba:	50 91 3a 01 	lds	r21, 0x013A
+}
+    1abe:	b9 01       	movw	r22, r18
+    1ac0:	ca 01       	movw	r24, r20
+    1ac2:	08 95       	ret
+
+00001ac4 <Sleep_Init>:
+
+
+void Sleep_Init(void){
+  cli();
+    1ac4:	f8 94       	cli
+  WDTCSR=(1<<WDCE)|(1<<WDE);
+    1ac6:	e0 e6       	ldi	r30, 0x60	; 96
+    1ac8:	f0 e0       	ldi	r31, 0x00	; 0
+    1aca:	88 e1       	ldi	r24, 0x18	; 24
+    1acc:	80 83       	st	Z, r24
+  WDTCSR=(1<<WDP1)|(1<<WDP2)|(1<<WDIE);
+    1ace:	86 e4       	ldi	r24, 0x46	; 70
+    1ad0:	80 83       	st	Z, r24
+  sei();
+    1ad2:	78 94       	sei
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+    1ad4:	83 b7       	in	r24, 0x33	; 51
+    1ad6:	81 7f       	andi	r24, 0xF1	; 241
+    1ad8:	84 60       	ori	r24, 0x04	; 4
+    1ada:	83 bf       	out	0x33, r24	; 51
+  sleep_cpu();
+  sleep_disable();
+}
+
+void ADC_Disable(void){
+  ADCSRA &=~ (1<<ADEN);
+    1adc:	ea e7       	ldi	r30, 0x7A	; 122
+    1ade:	f0 e0       	ldi	r31, 0x00	; 0
+    1ae0:	80 81       	ld	r24, Z
+    1ae2:	8f 77       	andi	r24, 0x7F	; 127
+    1ae4:	80 83       	st	Z, r24
+}
+
+void Analog_Comparator_Disable(void){
+  ACSR   &=~ (1<<ACD) ;
+    1ae6:	80 b7       	in	r24, 0x30	; 48
+    1ae8:	8f 77       	andi	r24, 0x7F	; 127
+    1aea:	80 bf       	out	0x30, r24	; 48
+  WDTCSR=(1<<WDP1)|(1<<WDP2)|(1<<WDIE);
+  sei();
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+  ADC_Disable();
+  Analog_Comparator_Disable();
+}
+    1aec:	08 95       	ret
+
+00001aee <__vector_6>:
+
+ISR(WDT_vect){
+    1aee:	1f 92       	push	r1
+    1af0:	0f 92       	push	r0
+    1af2:	0f b6       	in	r0, 0x3f	; 63
+    1af4:	0f 92       	push	r0
+    1af6:	11 24       	eor	r1, r1
+    1af8:	8f 93       	push	r24
+    1afa:	9f 93       	push	r25
+    1afc:	af 93       	push	r26
+    1afe:	bf 93       	push	r27
+    1b00:	ef 93       	push	r30
+    1b02:	ff 93       	push	r31
+  WDTCSR|=(1<<WDIE);
+    1b04:	e0 e6       	ldi	r30, 0x60	; 96
+    1b06:	f0 e0       	ldi	r31, 0x00	; 0
+    1b08:	80 81       	ld	r24, Z
+    1b0a:	80 64       	ori	r24, 0x40	; 64
+    1b0c:	80 83       	st	Z, r24
+  WDT_Ticks++;
+    1b0e:	80 91 37 01 	lds	r24, 0x0137
+    1b12:	90 91 38 01 	lds	r25, 0x0138
+    1b16:	a0 91 39 01 	lds	r26, 0x0139
+    1b1a:	b0 91 3a 01 	lds	r27, 0x013A
+    1b1e:	01 96       	adiw	r24, 0x01	; 1
+    1b20:	a1 1d       	adc	r26, r1
+    1b22:	b1 1d       	adc	r27, r1
+    1b24:	80 93 37 01 	sts	0x0137, r24
+    1b28:	90 93 38 01 	sts	0x0138, r25
+    1b2c:	a0 93 39 01 	sts	0x0139, r26
+    1b30:	b0 93 3a 01 	sts	0x013A, r27
+    1b34:	ff 91       	pop	r31
+    1b36:	ef 91       	pop	r30
+    1b38:	bf 91       	pop	r27
+    1b3a:	af 91       	pop	r26
+    1b3c:	9f 91       	pop	r25
+    1b3e:	8f 91       	pop	r24
+    1b40:	0f 90       	pop	r0
+    1b42:	0f be       	out	0x3f, r0	; 63
+    1b44:	0f 90       	pop	r0
+    1b46:	1f 90       	pop	r1
+    1b48:	18 95       	reti
+
+00001b4a <__udivmodsi4>:
+    1b4a:	a1 e2       	ldi	r26, 0x21	; 33
+    1b4c:	1a 2e       	mov	r1, r26
+    1b4e:	aa 1b       	sub	r26, r26
+    1b50:	bb 1b       	sub	r27, r27
+    1b52:	fd 01       	movw	r30, r26
+    1b54:	0d c0       	rjmp	.+26     	; 0x1b70 <__udivmodsi4_ep>
+
+00001b56 <__udivmodsi4_loop>:
+    1b56:	aa 1f       	adc	r26, r26
+    1b58:	bb 1f       	adc	r27, r27
+    1b5a:	ee 1f       	adc	r30, r30
+    1b5c:	ff 1f       	adc	r31, r31
+    1b5e:	a2 17       	cp	r26, r18
+    1b60:	b3 07       	cpc	r27, r19
+    1b62:	e4 07       	cpc	r30, r20
+    1b64:	f5 07       	cpc	r31, r21
+    1b66:	20 f0       	brcs	.+8      	; 0x1b70 <__udivmodsi4_ep>
+    1b68:	a2 1b       	sub	r26, r18
+    1b6a:	b3 0b       	sbc	r27, r19
+    1b6c:	e4 0b       	sbc	r30, r20
+    1b6e:	f5 0b       	sbc	r31, r21
+
+00001b70 <__udivmodsi4_ep>:
+    1b70:	66 1f       	adc	r22, r22
+    1b72:	77 1f       	adc	r23, r23
+    1b74:	88 1f       	adc	r24, r24
+    1b76:	99 1f       	adc	r25, r25
+    1b78:	1a 94       	dec	r1
+    1b7a:	69 f7       	brne	.-38     	; 0x1b56 <__udivmodsi4_loop>
+    1b7c:	60 95       	com	r22
+    1b7e:	70 95       	com	r23
+    1b80:	80 95       	com	r24
+    1b82:	90 95       	com	r25
+    1b84:	9b 01       	movw	r18, r22
+    1b86:	ac 01       	movw	r20, r24
+    1b88:	bd 01       	movw	r22, r26
+    1b8a:	cf 01       	movw	r24, r30
+    1b8c:	08 95       	ret
+
+00001b8e <_exit>:
+    1b8e:	f8 94       	cli
+
+00001b90 <__stop_program>:
+    1b90:	ff cf       	rjmp	.-2      	; 0x1b90 <__stop_program>

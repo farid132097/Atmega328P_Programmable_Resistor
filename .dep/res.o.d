@@ -1,0 +1,1 @@
+res.o: res.c
