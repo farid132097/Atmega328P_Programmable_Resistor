@@ -52,10 +52,10 @@
   60               	.LM8:
   61 0022 0E94 0000 		call WDT_Get_Ticks
   62               	.LVL3:
-  63 0026 2AE0      		ldi r18,lo8(10)
-  64 0028 30E0      		ldi r19,hi8(10)
-  65 002a 40E0      		ldi r20,hlo8(10)
-  66 002c 50E0      		ldi r21,hhi8(10)
+  63 0026 2FE0      		ldi r18,lo8(15)
+  64 0028 30E0      		ldi r19,hi8(15)
+  65 002a 40E0      		ldi r20,hlo8(15)
+  66 002c 50E0      		ldi r21,hhi8(15)
   67 002e 0E94 0000 		call __udivmodsi4
   68 0032 6115      		cp r22,__zero_reg__
   69 0034 7105      		cpc r23,__zero_reg__
@@ -81,13 +81,13 @@
  114               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\FARIDU~1\AppData\Local\Temp/ccmzn17r.s:2      *ABS*:0000003f __SREG__
-C:\Users\FARIDU~1\AppData\Local\Temp/ccmzn17r.s:3      *ABS*:0000003e __SP_H__
-C:\Users\FARIDU~1\AppData\Local\Temp/ccmzn17r.s:4      *ABS*:0000003d __SP_L__
-C:\Users\FARIDU~1\AppData\Local\Temp/ccmzn17r.s:5      *ABS*:00000034 __CCP__
-C:\Users\FARIDU~1\AppData\Local\Temp/ccmzn17r.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\FARIDU~1\AppData\Local\Temp/ccmzn17r.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\FARIDU~1\AppData\Local\Temp/ccmzn17r.s:18     .text:00000000 main
+C:\Users\WALTON\AppData\Local\Temp/ccUW8tzL.s:2      *ABS*:0000003f __SREG__
+C:\Users\WALTON\AppData\Local\Temp/ccUW8tzL.s:3      *ABS*:0000003e __SP_H__
+C:\Users\WALTON\AppData\Local\Temp/ccUW8tzL.s:4      *ABS*:0000003d __SP_L__
+C:\Users\WALTON\AppData\Local\Temp/ccUW8tzL.s:5      *ABS*:00000034 __CCP__
+C:\Users\WALTON\AppData\Local\Temp/ccUW8tzL.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\WALTON\AppData\Local\Temp/ccUW8tzL.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\WALTON\AppData\Local\Temp/ccUW8tzL.s:18     .text:00000000 main
 
 UNDEFINED SYMBOLS
 Sleep_Init

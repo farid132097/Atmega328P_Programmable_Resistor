@@ -21,11 +21,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   8 .debug_frame  000008e0  00000000  00000000  00008190  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00001216  00000000  00000000  00008a70  2**0
+  9 .debug_str    00001227  00000000  00000000  00008a70  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000d51  00000000  00000000  00009c86  2**0
+ 10 .debug_loc    00000d51  00000000  00000000  00009c97  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000048  00000000  00000000  0000a9d7  2**0
+ 11 .debug_ranges 00000048  00000000  00000000  0000a9e8  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -149,9 +149,9 @@ _delay_loop_2(uint16_t __count)
   uint8_t res_en=0;
   while(1){
       
-	  if(WDT_Get_Ticks()%10==0){
+	  if(WDT_Get_Ticks()%15==0){
       c8:	0e 94 57 0d 	call	0x1aae	; 0x1aae <WDT_Get_Ticks>
-      cc:	2a e0       	ldi	r18, 0x0A	; 10
+      cc:	2f e0       	ldi	r18, 0x0F	; 15
       ce:	30 e0       	ldi	r19, 0x00	; 0
       d0:	40 e0       	ldi	r20, 0x00	; 0
       d2:	50 e0       	ldi	r21, 0x00	; 0

@@ -16,7 +16,7 @@ int main(void){
   uint8_t res_en=0;
   while(1){
       
-	  if(WDT_Get_Ticks()%10==0){
+	  if(WDT_Get_Ticks()%15==0){
 	    ProgRes_Clear_Update_Complete_Status();
 		res_en++;
 	    if(res_en>18){
